@@ -1,0 +1,37 @@
+.carStatus_NULL_1{
+	background:url('../gps/icons/circle_red_16.png') no-repeat !important;
+}
+.carStatus_NULL_2{
+	background:url('../gps/icons/circle_blue_16.png') no-repeat !important;
+}
+.carStatus_NULL_3{
+	background:url('../gps/icons/circle_green_16.png') no-repeat !important;
+}
+.carStatus_NULL_4{
+	background:url('../gps/icons/circle_black_16.png') no-repeat !important;
+}
+.carStatus_NULL_5{
+	background:url('../gps/icons/circle_zi_16.png') no-repeat !important;
+}
+
+.carStatus_user_1{
+	background:url('../gps/icons/user1.png') no-repeat !important;
+}
+.carStatus_user_2{
+	background:url('../gps/icons/user2.png') no-repeat !important;
+}
+.carStatus_user_3{
+	background:url('../gps/icons/user3.png') no-repeat !important;
+}
+.carStatus_user_4{
+	background:url('../gps/icons/user4.png') no-repeat !important;
+}
+.carStatus_user_5{
+	background:url('../gps/icons/user5.png') no-repeat !important;
+}
+
+.group1{
+	background:url('../gps/icons/group1.png') no-repeat !important;
+}
+
+

@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ page import="com.lingx.core.utils.Utils,com.lingx.core.model.bean.UserBean,com.lingx.core.service.*,com.lingx.core.Constants,com.lingx.core.service.*,com.lingx.core.model.*,java.util.*,com.alibaba.fastjson.JSON,org.springframework.context.ApplicationContext,org.springframework.web.context.support.WebApplicationContextUtils,org.springframework.jdbc.core.JdbcTemplate" %>
+<%@ page import="com.lingx.core.utils.*,org.activiti.engine.impl.form.StartFormDataImpl,org.apache.commons.io.FileUtils,javax.imageio.ImageIO,java.awt.image.BufferedImage,org.activiti.engine.repository.*,java.io.*,org.activiti.engine.ProcessEngine,java.util.*,com.alibaba.fastjson.JSON,org.springframework.context.ApplicationContext,org.springframework.web.context.support.WebApplicationContextUtils,org.springframework.jdbc.core.JdbcTemplate" %>
+    
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+	String code=request.getParameter("code");
+	ApplicationContext applicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getSession().getServletContext());
+	JdbcTemplate jdbc=applicationContext.getBean("jdbcTemplate",JdbcTemplate.class);
+
+	String content=jdbc.queryForObject("select content from tlingx_wf_define_form where code=?", String.class,code);
+	request.setAttribute("content",content);
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<base href="<%=basePath%>">
+<title>表单</title>
+<%@ include file="/lingx/include/include_JavaScriptAndCss.jsp"%> 
+
+<%@ include file="/lingx/include/include_JavaScriptAndCss.jsp"%> 
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+table.sortEnabled tr.firstRow th,table.sortEnabled tr.firstRow td{padding-right:20px;background-repeat: no-repeat;background-position: center right;   background-image:url(ueditor/themes/default/images/sortable.png);}
+.selectTdClass{background-color:#edf5fa !important}table.noBorderTable td,table.noBorderTable th,table.noBorderTable caption{border:1px dashed #ddd !important}table{margin-bottom:10px;border-collapse:collapse;display:table;}td,th{padding: 5px 10px;border: 1px solid #DDD;}caption{border:1px dashed #DDD;border-bottom:0;padding:3px;text-align:center;}th{border-top:1px solid #BBB;background-color:#F7F7F7;}table tr.firstRow th{border-top-width:2px;}.ue-table-interlace-color-single{ background-color: #fcfcfc; } .ue-table-interlace-color-double{ background-color: #f7faff; }td p{margin:0;padding:0;}
+
+</style>
+
+<script type="text/javascript">
+</script>
+</head>
+<body style="background-color:#FFF;">
+<form id="form" action="w" method="post">
+<div style="dispaly:none;">
+</div>
+<table width="100%">
+
+<tr>
+<td>
+
+<div style="width:990px">
+${content }
+</div>
+</td>
+</tr>
+</table>
+</form>
+</body>
+
+</html>

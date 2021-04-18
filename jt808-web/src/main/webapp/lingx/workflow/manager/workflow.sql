@@ -1,0 +1,1 @@
+SELECT t.*,a.expire,b.`name` instance_name,b.user_id instance_user_id from tlingx_wf_instance_task t ,tlingx_wf_define_task a,tlingx_wf_instance b where t.task_id=a.id and t.instance_id=b.id  and expire<>0 and t.stime < date_format( date_sub(current_timestamp() , interval a.expire hour),'%Y%m%d%H%i%S') 
