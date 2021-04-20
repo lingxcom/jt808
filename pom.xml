@@ -9,48 +9,4 @@
   	<module>jt808-server</module>
   	<module>jt808-web</module>
   </modules>
-  
-	<!-- 国内阿里云maven仓库 -->
-	<repositories>
-		<repository>
-			<id>alimaven</id>
-			<name>aliyun maven</name>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>alimaven</id>
-			<name>aliyun maven</name>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<encoding>UTF-8</encoding>
-					<compilerArguments>
-					</compilerArguments>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>

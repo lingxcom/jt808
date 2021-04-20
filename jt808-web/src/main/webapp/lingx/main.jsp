@@ -1,4 +1,4 @@
-﻿<%@page import="com.lingx.core.service.*,java.util.List,java.util.Map"%>
+﻿<%@ page import="java.net.*,java.io.*,com.lingx.core.utils.Utils,com.lingx.core.model.bean.UserBean,com.lingx.core.service.*,com.lingx.core.Constants,com.lingx.core.service.*,com.lingx.core.model.*,java.util.*,com.alibaba.fastjson.JSON,org.springframework.context.ApplicationContext,org.springframework.web.context.support.WebApplicationContextUtils,org.springframework.jdbc.core.JdbcTemplate" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -6,31 +6,11 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	org.springframework.context.ApplicationContext spring = org.springframework.web.context.support.WebApplicationContextUtils.getRequiredWebApplicationContext(request.getSession().getServletContext());
-	String logoutUrl="d?c=logout";
-	try{
-		ISsoCasService ssocas=spring.getBean(ISsoCasService.class);
-		logoutUrl=ssocas.getLogoutUrl();
-	}catch(Exception e){}
-	request.setAttribute("logoutUrl", logoutUrl);
-	
-	
-
-	String lanuage="";
-	if(session.getAttribute("SESSION_LANGUAGE")!=null){
-		lanuage=session.getAttribute("SESSION_LANGUAGE").toString();
-	}
 	II18NService i18n=spring.getBean(II18NService.class);
-	List<Map<String,Object>> list=i18n.getLanuages();
-	String select="<select style=\"border:0px;none;\" onchange=\"setLanuage(this.value)\">";
-	for(Map<String,Object> map:list){
-		select+="<option "+(lanuage.equals(map.get("lanuage").toString())?"selected":"")+" value=\""+map.get("lanuage")+"\">"+map.get("name")+"</option>";
-	}
-	select+="</select>";
-	if(list.size()<=1)select="";
-	request.setAttribute("select", select);
+	UserBean userBean=(UserBean)session.getAttribute(Constants.SESSION_USER);
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE>
+<html style="height:100%">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="renderer" content="webkit" />
@@ -38,137 +18,206 @@
 <base href="<%=basePath%>">
 <title>${SESSION_USER.app.name }</title>
 <%@ include file="/lingx/include/include_JavaScriptAndCss.jsp"%> 
-<script type="text/javascript" src="lingx/js/rootApi.js?1234"></script>
+<link rel="stylesheet" type="text/css" href="lingx/js/resources/css/style.css">
+<script type="text/javascript" src="lingx/js/rootApi.js?123"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
 <style type="text/css">
-.leftmenu {
-        width:100%;
-        overflow:auto;
-        padding:0px;
-        text-align:center;
+.div_1{
+	padding: 4px 0;
+    border-top: 1px solid hsla(0,0%,100%,.1);
+    border-bottom: 1px solid hsla(0,0%,100%,.1);
+    width: 100%;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    display:block;
 }
-.leftmenu li {
-        display: inline;
-        white-space: nowrap;
+.ul_1{
+    overflow-y: auto;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.li_1{
+cursor:pointer;
+    color: #fff;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-transition: all .2s ease-out 0s;
+    transition: all .2s ease-out 0s;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    display: list-item;
+    text-align:center;
+    -webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
 }
 
-.leftmenu span,
-.leftmenu a:active,
-.leftmenu a:visited,
-.leftmenu a:link {
-	display: block;
-	text-decoration: none;
-	margin: 6px 10px 6px 0px;
-	padding: 2px 6px 2px 6px;
-	color: #00527f;
+.li_2{
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-transition: all .2s ease-out 0s;
+    transition: all .2s ease-out 0s;
+    width: 100%;
+    height: 10px;
+    line-height: 10px;
+    box-sizing: border-box;
+    display: list-item;
+    text-align:center;
 }
 
-.leftmenu a:hover {
-	color: red;
+.li_1:hover{
+background-color:#dbe6f4;
+color:#333333;
+}
+
+.li_1_hover{
+background-color:#fff;
+color:#333333;
+}
+
+.product-item-name {
+    display: inline-block;
+    vertical-align: middle;
+    width: 178px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #fff;
+    font-size: 12px;
+    padding-right: 8px;
+}
+.menu_2{
+position:fixed;
+z-index:30001;
+top:50px;
+left:60px;
+width:170px;
+height:100%;
+color:#333333;
+background-color:#fff;
+border-right:1px solid #4088c8;
+}
+
+.closeBtn{
+position:fixed;
+top:50px;
+left:203px;
+cursor:pointer;
+width:16px;
+height:16px;
+color:#aaa;
+background:url('lingx/images/close.png') no-repeat;
+z-index:999;
+}
+
+.closeBtn:hover{
+cursor:pointer;
+width:16px;
+height:16px;
+color:#aaa;
+background:url('lingx/images/close.png') no-repeat #e6725d;
 }
 
 </style>
 <script type="text/javascript">
-setInterval("keepSession()", 5*60*1000); //隔5分钟访问一次
-var logo='${SESSION_USER.app.logo}';
-var logoIMG='';
-if(logo){
-	logoIMG='<img src="'+logo+'" height="40" style="margin-top:10px;margin-right:10px;"/>';
-}
-function keepSession(){
-	Lingx.post("d",{},function(json){
+var menu;
+Ext.onReady(function(){
+Lingx.post("d",{c:"menu"},function(json){
+menu=json;
+var ul=$(".ul_1");
+for(var i=0;i<menu.length;i++){
+	var li=$("<li class='li_1' >"+menu[i].short_name+"</li>");
+	ul.append(li);
+// 	li.bind("mouseover",function(e){
+		
+// 	});
+	li.bind("click",function(e){
+		
+		removeMenu();
+		var name=($(this).html());
+		menu2(name);
+		$(this).addClass("li_1_hover");
+		return false;
 	});
 }
-function setLanuage(lanuage){
-	Lingx.post("lingx/common/handler.jsp",{c:"lanuage",lanuage:lanuage},function(json){
-		window.location.href="d?c=i";
+Ext.create('Ext.Viewport', {
+	id:'viewport',
+	layout: 'fit',
+	contentEl:"vp"
+	}).show();
+	
+	
+var tabs = Ext.widget('tabpanel', {
+    renderTo: 'workArea',
+    activeTab: 0,
+    width:getApi().getWidth()-65,
+    height:getApi().getHeight()-55,
+    id: 'tabpanel',
+    bodyStyle:"background:#fff;",
+    border:false,
+    items: [{
+    	id:"<%=i18n.text("首页",session)%>",
+    	html: '<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="${SESSION_USER.app.indexPage}"> </iframe>',
+        title: '<%=i18n.text("首页",session)%>',
+        autoScroll: true
+       // ,closable: true
+
+    }]
+});
+
+$(window).bind("resize",function(){
+	Ext.getCmp("tabpanel").setWidth(getApi().getWidth()-65);
+	Ext.getCmp("tabpanel").setHeight(getApi().getHeight()-55);
+});
+});
+});
+
+function menu2(name){
+	var div=$("<div class='menu_2'><div class='closeBtn'></div><ul class='ul_1' style='margin-top:15px;'></ul></div>");
+	$("body").append(div);
+	div.bind("mouseleave",function(){
+		//removeMenu();
 	});
-}
-function getItems(list){
-	var str="";
-	for(var i=0;i<list.length;i++){
-		if(list[i].text&&list[i].uri!='e?e=public&m=public'){
-			str=str+"<li><a style='font-size:16px;line-height:28px;' href='javascript:;' onclick='addTab(\""+list[i].itemId+"\",\""+list[i].text+"\",\""+list[i].uri+"\")'>"+list[i].text+"</a></li>";
-		}else if(list[i]=="-"){
-			str=str+"<li><hr style='height:1px;border:none;border-top:1px dotted #aaa;'/></li>";
-			
-		}
-		if(list[i].menu){
-			str=str+getItems(list[i].menu);
+	div.find(".closeBtn").bind("click",removeMenu);
+	for(var i=0;i<menu.length;i++){
+		if(menu[i].short_name==name){
+			var list2=menu[i].menu;
+			for(var j=0;j<list2.length;j++){
+				if(list2[j].text){
+				var li=$("<li class='li_1' style='color:#333;' id='"+list2[j].itemId+"' uri='"+list2[j].uri+"'>"+list2[j].text+"</li>");
+				div.find(".ul_1").append(li);
+				li.bind("click",function(){
+					var temp=$(this);
+					var id=temp.attr("id");
+					var uri=temp.attr("uri");
+					addTab(id,temp.html(),uri);
+					removeMenu();
+				});
+				}else{
+					var li=$("<li class='li_2' style='color:#333;' id='"+list2[j].itemId+"' ><hr style='height:1px;border:none;border-top:1px dotted #aaa;'></li>");
+					div.find(".ul_1").append(li);
+				}
+			}
+			break;
 		}
 	}
-	return str;
 }
-Ext.onReady(function(){
-	Lingx.post("d",{c:"menu"},function(json){
-		var menus=[];
-		for(var i=0;i<json.length;i++){
-			menus.push({title:json[i].text,html:"<ul class='leftmenu'>"+getItems(json[i].menu)+"</ul>",iconCls:"Resultsetnext",bodyStyle:"padding:0px; overflow:auto;"});
-		}
-    Ext.create('Ext.Viewport', {
-    	id:'viewport',
-    	layout: 'border',
-    	items:[{
-    			region:'north',
-               // margins: '5 5 5 5',
-    			//height:100,
-    			height:72,
-                split: true,
-    			border:false,
-    			bodyStyle: 'background:#4088c8;',//89b9e1 images/obd/top.jpg 347cc6
-				html:'<div style="-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:absolute;padding-left:10px; left:0; top:0;color:#fff;font-size:24px;line-height:60px;height:60px;vertical-align:top;font:"Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,"WenQuanYi Micro Hei",Verdana,sans-serif,"\5B8B\4F53"><div style="height:60px;float:left;">'+logoIMG+'</div><div style="line-height:60px;height:60px;float:left;font-size:20px">${SESSION_USER.app.name}</div></div>'// 
-				
-				+'<div style="position:absolute; right:0; top:0;color:#fff;font-size:14px;line-height:24px;height:24px;">'
-				+'${select}'
-				+'</div>'
-				
-				+'<div style="position:absolute; right:0; bottom:0;color:#fff;font-size:14px;line-height:28px;height:28px;">'
-				+'<%=i18n.text("当前用户")%>：<a style="color:#fff;font-size:14px;" href="javascript:;" onclick="javascript:openWindow(\'<%=i18n.text("修改用户信息")%>\',\'e?e=tlingx_user&m=editSelf&id=${SESSION_USER.id}\');";>${SESSION_USER.name}</a>[${SESSION_USER.account}] '
-				+'&nbsp;|&nbsp;'
-				+'<a style="color:#fff;font-size:14px;" href="javascript:;" onclick="javascript:openWindow(\'<%=i18n.text("修改密码")%>\',\'e?e=tlingx_user&m=editPassword\');";><%=i18n.text("修改密码")%></a>'
-				+'&nbsp;|&nbsp;'
-				+'<a style="color:#fff;font-size:14px;" href="${logoutUrl}"><%=i18n.text("退出系统")%></a>&nbsp;</div>'
-				+'</div>'
-    		},{
-    			region:"west",
-    			//margins: '2 0 2 0',
-    			width:200,
-    			title:"系统菜单",
-    			iconCls:"Anchor",
-                split: true,
-                collapsible: true,
-    			defaults: {
-    		        // applied to each contained panel
-    		        bodyStyle: 'padding:15px'
-    		    },
-    		    layout: {
-    		        // layout-specific configs go here
-    		        type: 'accordion',
-    		        titleCollapse: true,
-    		        animate: true
-    		    },
-    		    items: menus
-    		},
-    	       {
-    			region:'center',
-    			margins: '2 0 2 0',
-    			id: 'tabpanel',
-    			xtype: 'tabpanel',
-    			region: 'center', // a center region is ALWAYS required for border layout
-    			//tabPosition:'bottom',
-               // deferredRender: false,
-                activeTab: 0,     // first tab initially active
-                items: [{
-                	id:"<%=i18n.text("首页")%>",
-                	html: '<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="${SESSION_USER.app.indexPage}"> </iframe>',
-                    title: '<%=i18n.text("首页")%>',
-                    autoScroll: true
-                }]
-    		}]
-       
-    }).show();
 
-	});
-});
+function removeMenu(){
+	$(".menu_2").remove();
+	$(".li_1_hover").removeClass("li_1_hover");
+}
+function stopEvent(e){
+	e.stopPropagation();
+}
 
 function addTab(id,title,url){
 	var tab=Ext.getCmp("tabpanel").queryById(id);
@@ -185,9 +234,49 @@ function addTab(id,title,url){
 		}).show();
 	}
 }
+
+function keepSession(){
+	Lingx.post("d",{},function(json){
+	});
+}
+setInterval("keepSession()", 5*60*1000); //隔5分钟访问一次
+
 </script>
 </head>
-<body>
-	
+<body style="height:100%">
+
+<div id="vp">
+<!-- 头部工具栏 -->
+<div style="background-color:#4088c8;height:60px;line-height:50px;position:fixed;top:0px;width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;" onclick="removeMenu()">
+<div style="width:60px;height:50px;float:left;padding-top:5px;padding-left:10px;">
+<%if(Utils.isNotNull(userBean.getApp().getLogo()) ){ %>
+<img width="40" height="40" src="${SESSION_USER.app.logo }">
+<%} %>
+</div>
+
+<div style="color:#fff;font-size:16px;font-weight:bold ;height:50px;line-height:50px;float:left;">${SESSION_USER.app.name }</div>
+
+<div style="color:#fff;font-size:14px;height:50px;line-height:50px;margin-left:50px;position:fixed;top:0px;right:10px;">
+
+<a style="text-decoration:none;color:#fff;font-size:14px;" href="javascript:;" onclick="javascript:openWindow('修改用户信息','e?e=tlingx_user&m=editSelf&id=${SESSION_USER.id}');">${SESSION_USER.name } </a>
+&nbsp;| &nbsp;
+<a style="text-decoration:none;color:#fff;font-size:14px;" href="javascript:;" onclick="javascript:openWindow('修改用户密码','e?e=tlingx_user&m=editPassword&id=${SESSION_USER.id}');">修改密码 </a>
+&nbsp;|&nbsp;
+<a style="text-decoration:none;color:#fff;font-size:14px;" href="d?c=logout">退出系统 </a>
+</div>
+</div>
+<!-- 左侧菜单栏 -->
+<div id="menu" style="background-color:#4088c8;height:100%;position:fixed;top:50px;left:0px;width:60px;;z-index:9999;" onclick="removeMenu()">
+<div class="div_1">
+<ul class="ul_1" onclick="return false;" style="margin-top:10px;">
+
+</ul>
+</div>
+</div>
+<!-- 工作区 -->
+<div id="workArea" style="background-color:#dbe6f4;height:100%;position:fixed;top:50px;left:60px;width:100%;padding-top:5px;padding-left:5px;" onclick="removeMenu()">
+
+</div>
+</div>
 </body>
 </html> 
