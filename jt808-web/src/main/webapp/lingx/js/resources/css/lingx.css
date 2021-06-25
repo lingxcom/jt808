@@ -1,0 +1,115 @@
+*{font-family:  "Microsoft YaHei","Open Sans", "Helvetica Neue", helvetica, arial, verdana, sans-serif ;}
+table{text-align:left;}
+ a:visited {
+    color:#0000FF;
+    }
+.icon-delete{
+background-image:url('icons/remove.png') !important;
+}
+.icon-1{
+background-image:url('icons/212.gif') !important;
+}
+.icon-2{
+background-image:url('icons/leaf.png')  !important;
+}
+.icon-3{
+background-image:url('icons/41.png')  !important;
+}
+.icon-4{
+background-image:url('icons/lightbulb_off.png')  !important;
+}
+.icon-5{
+background-image:url('icons/lightbulb.png')  !important;
+}
+.icon-6{
+background-image:url('icons/046.png')  !important;
+}
+.icon-7{
+background-image:url('icons/page_2.png')  !important;
+}
+.icon-8{
+background-image:url('icons/config1.png')  !important;
+}
+.icon-blank{
+	background-image:url('icons/blank.gif') !important;
+}
+.icon-add{
+	background-image:url('icons/edit_add.png') !important;
+}
+.icon-edit{
+	background-image:url('icons/pencil.png') !important;
+}
+.icon-remove{
+	background-image:url('icons/edit_remove.png') !important;
+}
+.icon-save{
+	background-image:url('icons/filesave.png') !important;
+}
+.icon-cut{
+	background-image:url('icons/cut.png') !important;
+}
+.icon-ok{
+	background-image:url('icons/ok.png') !important;
+}
+.icon-no{
+	background-image:url('icons/no.png') !important;
+}
+.icon-cancel{
+	background-image:url('icons/cancel.png') !important;
+}
+.icon-reload{
+	background-image:url('icons/reload.png') !important;
+}
+.icon-search{
+	background-image:url('icons/search.png') !important;
+}
+.icon-print{
+	background-image:url('icons/print.png') !important;
+}
+.icon-help{
+	background-image:url('icons/help.png') !important;
+}
+.icon-undo{
+	background-image:url('icons/undo.png') !important;
+}
+.icon-redo{
+	background-image:url('icons/redo.png') !important;
+}
+.icon-back{
+	background-image:url('icons/back.png') !important;
+}
+.icon-sum{
+	background-image:url('icons/sum.png') !important;
+}
+.icon-tip{
+	background-image:url('icons/tip.png') !important;
+}
+
+.icon-mini-add{
+	background-image:url('icons/mini_add.png') !important;
+}
+.icon-mini-edit{
+	background-image:url('icons/mini_edit.png') !important;
+}
+.icon-mini-refresh{
+	background-image:url('icons/mini_refresh.png') !important;
+}
+
+.icon-circle-green{
+	background-image:url('icons/circle_green_16.png')  !important;
+}
+.icon-circle-black{
+	background-image:url('icons/circle_black_16.png')  !important;
+}
+.icon-circle-red{
+	background-image:url('icons/circle_red_16.png')  !important;
+}
+.icon-circle-blue{
+	background-image:url('icons/circle_blue_16.png')  !important;
+}
+
+
+
+.icon-arrow-left:before{content:"\e091"}
+
+.icon-arrow-right:before{content:"\e092"}
