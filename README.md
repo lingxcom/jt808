@@ -1,13 +1,12 @@
 
-![](https://gitee.com/lingxcom/jt808/raw/master/QQ20210420155620.png)
-> 流媒体服务源码引用于 https://gitee.com/matrixy/jtt1078-video-server
+![](https://www.lingx.com/wp-content/uploads/2021/07/QQ图片20210701174626.png)
+> 流媒体服务源码引用于 https://gitee.com/matrixy/jtt1078-video-server，这里只是为了部署方便，代码基本不动
 > 需要功能定制或分布式JT808，联系QQ：283853318，微信或电话:15060620800
 
 > 该项目由商业版简化而来，所以是成熟代码，放心使用；商业版地址：http://gps.lingx.com
 ## 项目介绍
  - 后台基于Netty开发，支持分包，同时支持JT808-2013，JT808-2019
- - WEB采用灵犀模驱低代码框架，框架地址： https://gitee.com/lingxcom/lingx
- - 采用最新的MySQL8.0；Spring5.2
+ - WEB采用灵犀模驱低代码框架，框架地址： https://github.com/lingxcom/lingx
  
 ## 项目特色
  - 源码真正100%开源，无封装包，纯自主研发
@@ -24,6 +23,8 @@
 ### WEB后台
  - 实时定位
  - 历史轨迹
+ - 实时视频
+ - 历史视频
  - 车辆列表
  - 分队管理
  - 用户组织
