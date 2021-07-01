@@ -4,7 +4,7 @@
 public void funcTree(List<Map<String,Object>> list,String roleid,JdbcTemplate jdbc){
 	String sql="select count(*) from tlingx_rolefunc where role_id=? and func_id=?";
 	for(Map<String,Object> map:list){
-		map.put("checked", jdbc.queryForObject(sql,Integer.class,roleid,map.get("id"))>0);
+		map.put("checked", jdbc.queryForInt(sql,roleid,map.get("id"))>0);
 		if(map.get("children")!=null){
 			 funcTree((List<Map<String,Object>>)map.get("children"), roleid, jdbc);
 		}
@@ -14,7 +14,7 @@ public void funcTree(List<Map<String,Object>> list,String roleid,JdbcTemplate jd
 public void roleTree(List<Map<String,Object>> list,String roleid,JdbcTemplate jdbc){
 	String sql="select count(*) from tlingx_rolerole where role_id=? and refrole_id=?";
 	for(Map<String,Object> map:list){
-		map.put("checked", jdbc.queryForObject(sql,Integer.class,roleid,map.get("id"))>0);
+		map.put("checked", jdbc.queryForInt(sql,roleid,map.get("id"))>0);
 		if(map.get("children")!=null){
 			 funcTree((List<Map<String,Object>>)map.get("children"), roleid, jdbc);
 		}
@@ -24,7 +24,7 @@ public void roleTree(List<Map<String,Object>> list,String roleid,JdbcTemplate jd
 public void orgTree(List<Map<String,Object>> list,String roleid,JdbcTemplate jdbc){
 	String sql="select count(*) from tlingx_roleorg where role_id=? and org_id=?";
 	for(Map<String,Object> map:list){
-		map.put("checked", jdbc.queryForObject(sql,Integer.class,roleid,map.get("id"))>0);
+		map.put("checked", jdbc.queryForInt(sql,roleid,map.get("id"))>0);
 		if(map.get("children")!=null){
 			 funcTree((List<Map<String,Object>>)map.get("children"), roleid, jdbc);
 		}
@@ -34,7 +34,7 @@ public void orgTree(List<Map<String,Object>> list,String roleid,JdbcTemplate jdb
 public void menuTree(List<Map<String,Object>> list,String roleid,JdbcTemplate jdbc){
 	String sql="select count(*) from tlingx_rolemenu where role_id=? and menu_id=?";
 	for(Map<String,Object> map:list){
-		map.put("checked", jdbc.queryForObject(sql,Integer.class,roleid,map.get("id"))>0);
+		map.put("checked", jdbc.queryForInt(sql,roleid,map.get("id"))>0);
 		if(map.get("children")!=null){
 			 funcTree((List<Map<String,Object>>)map.get("children"), roleid, jdbc);
 		}
@@ -51,8 +51,6 @@ IScriptApisService apisService=applicationContext.getBean(IScriptApisService.cla
 IContext context=ContextHelper.createContext(user, request.getParameterMap(), new HashMap<String,Object>(), new HashMap<String,Object>());
 DefaultPerformer jsper=new DefaultPerformer(apisService.getScriptApis(),context.getRequest());
 IChooseService chooser=applicationContext.getBean(IChooseService.class);
-
-ILingxService lingx=applicationContext.getBean(ILingxService.class);
 
 List<ICondition> clist=new ArrayList<ICondition>();
 clist.add(applicationContext.getBean(RuleCondition.class));
@@ -131,7 +129,7 @@ if("funcTree".equals(cmd)){
 	
 }else if("trolefunc_add".equals(cmd)){
 	String sql="select count(*) from tlingx_rolefunc where role_id in(select role_id from tlingx_userrole where user_id=?) and func_id=?";//
-	if(lingx.queryForInt("select count(*) from tlingx_rolefunc where role_id=? and func_id=?",roleid,request.getParameter("funcid"))==0&&lingx.queryForInt(sql,user.getId(),request.getParameter("funcid"))>=0)
+	if(jdbc.queryForInt("select count(*) from tlingx_rolefunc where role_id=? and func_id=?",roleid,request.getParameter("funcid"))==0&&jdbc.queryForInt(sql,user.getId(),request.getParameter("funcid"))>=0)
 	jdbc.update("insert into tlingx_rolefunc(id,role_id,func_id)values(uuid(),?,?)",roleid,request.getParameter("funcid"));
 	out.println(JSON.toJSONString(success));
 }else if("trolefunc_del".equals(cmd)){
@@ -139,7 +137,7 @@ if("funcTree".equals(cmd)){
 	out.println(JSON.toJSONString(success));
 }else if("troleorg_add".equals(cmd)){
 	String sql="select count(*) from tlingx_roleorg where role_id in(select role_id from tlingx_userrole where user_id=?) and org_id=?";//
-	if(lingx.queryForInt("select count(*) from tlingx_roleorg where role_id=? and org_id=?",roleid,request.getParameter("orgid"))==0&&lingx.queryForInt(sql,user.getId(),request.getParameter("orgid"))>=0)
+	if(jdbc.queryForInt("select count(*) from tlingx_roleorg where role_id=? and org_id=?",roleid,request.getParameter("orgid"))==0&&jdbc.queryForInt(sql,user.getId(),request.getParameter("orgid"))>=0)
 	jdbc.update("insert into tlingx_roleorg(id,role_id,org_id)values(uuid(),?,?)",roleid,request.getParameter("orgid"));
 	out.println(JSON.toJSONString(success));
 }else if("troleorg_del".equals(cmd)){
@@ -147,7 +145,7 @@ if("funcTree".equals(cmd)){
 	out.println(JSON.toJSONString(success));
 }else if("trolemenu_add".equals(cmd)){
 	String sql="select count(*) from tlingx_rolemenu where role_id in(select role_id from tlingx_userrole where user_id=?) and menu_id=?";//
-	if(lingx.queryForInt("select count(*) from tlingx_rolemenu where role_id=? and menu_id=?",roleid,request.getParameter("menuid"))==0&&lingx.queryForInt(sql,user.getId(),request.getParameter("menuid"))>=0)
+	if(jdbc.queryForInt("select count(*) from tlingx_rolemenu where role_id=? and menu_id=?",roleid,request.getParameter("menuid"))==0&&jdbc.queryForInt(sql,user.getId(),request.getParameter("menuid"))>=0)
 	jdbc.update("insert into tlingx_rolemenu(id,role_id,menu_id)values(uuid(),?,?)",roleid,request.getParameter("menuid"));
 	out.println(JSON.toJSONString(success));
 }else if("trolemenu_del".equals(cmd)){
@@ -155,7 +153,7 @@ if("funcTree".equals(cmd)){
 	out.println(JSON.toJSONString(success));
 }else if("trolerole_add".equals(cmd)){
 	String sql="select count(*) from tlingx_rolerole where role_id in(select role_id from tlingx_userrole where user_id=?) and refrole_id=?";//
-	if(lingx.queryForInt("select count(*) from tlingx_rolerole where role_id=? and refrole_id=?",roleid,request.getParameter("refroleid"))==0&&lingx.queryForInt(sql,user.getId(),request.getParameter("refroleid"))>=0)
+	if(jdbc.queryForInt("select count(*) from tlingx_rolerole where role_id=? and refrole_id=?",roleid,request.getParameter("refroleid"))==0&&jdbc.queryForInt(sql,user.getId(),request.getParameter("refroleid"))>=0)
 	jdbc.update("insert into tlingx_rolerole(id,role_id,refrole_id)values(uuid(),?,?)",roleid,request.getParameter("refroleid"));
 	out.println(JSON.toJSONString(success));
 }else if("trolerole_del".equals(cmd)){

@@ -70,12 +70,10 @@ if("findAndAddFile".equals(cmd)){
 	for(String temp:filesArray){
 		modelList.add(temp);
 	}
-	bean.setSjmx(modelList.size()>0);
 	bean.setModelList(modelList);
 	//URLDecoder.decode(request.getParameter("msg"),"UTF-8") 
 	bean.setName(URLDecoder.decode(request.getParameter("name"),"UTF-8") );
 	bean.setOption("1".equals(request.getParameter("isOption")));
-	bean.setGncd("1".equals(request.getParameter("gncd")));
 	bean.setReboot("1".equals(reboot));
 	bean.setSecret(URLDecoder.decode(request.getParameter("secret"),"UTF-8") );
 	bean.setType(Integer.parseInt(type));

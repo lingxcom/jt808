@@ -59,7 +59,7 @@
             items: [{
                 region: 'north',
                 split: false,
-                height: 48,
+                height: 28,
                 minSize: 50,
                 maxSize: 100,
                 items:{
@@ -70,44 +70,39 @@
                 	        
                 	        {
                 	            xtype: 'splitbutton',
-                	            text : '新建模型',
+                	            text : '创建',
                 	            iconCls:'Add',
                 	            handler:function(){
-                	            	//openWindow("新建表模型","lingx/model/editor/create/entity.jsp?pageid="+pageId);
-                	            	openWindow("新建模型","lingx/model/editor/create/auto_step1.jsp?pageid="+pageId);
+                	            	openWindow("创建表对象","lingx/model/editor/create/entity.jsp?pageid="+pageId);
+                	            	//Lingx.getRootWindow().getApi().openWindow("创建对象","lingx/model/editor/create/auto_step1.jsp?pageid="+pageId);
                 	            },
                 	            menu:new Ext.menu.Menu({
                 	            items:[
-                	                   {text:'新建表模型',handler:function(e){
-										openWindow("新建表模型","lingx/model/editor/create/entity.jsp?pageid="+pageId);
+                	                   {text:'创建表对象',handler:function(e){
+										openWindow("创建表对象","lingx/model/editor/create/entity.jsp?pageid="+pageId);
 									   }},
-                	                   {text:'新建视图模型',handler:function(e){
-                	                	 	Lingx.getRootWindow().getApi().openWindow("新建视图模型","lingx/model/editor/create/view_entity.jsp?pageid="+pageId);
+                	                   {text:'创建视图对象',handler:function(e){
+                	                	 	Lingx.getRootWindow().getApi().openWindow("创建视图对象","lingx/model/editor/create/view_entity.jsp?pageid="+pageId);
                             	            
                 	                   }},
                 	                   
                 	                   /*
-                	                   {text:'新建查询模型',handler:function(e){
-                	            		openWindow("新建查询模型","lingx/model/editor/create/query_entity.jsp?pageid="+pageId);
+                	                   {text:'创建查询对象',handler:function(e){
+                	            		openWindow("创建查询对象","lingx/model/editor/create/query_entity.jsp?pageid="+pageId);
                 	                   }},
                 	                   */
                 	                   
-                	                   {text:'新建克隆模型',handler:function(e){
-                	                	   openWindow("新建克隆模型","lingx/model/editor/create/clone.jsp?code="+currentEntityCode);
-                	                   }},{
-                	                	   text:'新建Excel模型',handler:function(e){
-                    	                	   openWindow("新建Excel模型","lingx/model/editor/create/excel_step1.jsp?code="+currentEntityCode);
-                    	                   }
-                	                	   
-                	                   }]
+                	                   {text:'创建克隆对象',handler:function(e){
+                	                	   openWindow("创建克隆对象","lingx/model/editor/create/clone.jsp?code="+currentEntityCode);
+                	                   }}]
                 	            
                 	            })
                 	        },{
                 	            xtype: 'button', // 默认的工具栏类型
-                	            text: '删除模型',
+                	            text: '删除',
                 	            iconCls:'Delete',
                 	            handler:function(){
-                	            	if(!confirm("删除["+currentEntityCode+"]的模型与权限，确定删除吗？"))return;
+                	            	if(!confirm("删除["+currentEntityCode+"]的对象与权限，确定删除吗？"))return;
                 	            	
                 	            	Lingx.post(handlerJsp,{c:'deleteEntity',code:currentEntityCode},function(json){
    									 lgxInfo(json.message);
@@ -199,11 +194,11 @@
 								 // openWindow("纵向权限","e?e=trole_clone_field&m=grid&ec=true");
 							 }
 						 },{
-							 text:'模型预览',
+							 text:'对象预览',
 							 iconCls:'World',
 							 handler:function(){
 								 Lingx.post(handlerJsp,{c:"getDisplayModel",code:currentEntityCode},function(json){
-									 openWindow2("模型预览","e?e="+currentEntityCode+"&m="+json.method);
+									 openWindow2("对象预览","e?e="+currentEntityCode+"&m="+json.method);
 								 });
 								  
 							 }
@@ -229,14 +224,7 @@
 						 }
 						 ,
 						 '-',
-						 {	text:"远程提交",
-							 iconCls:"Transmitblue",
-							 handler:function(){
-								 openWindow2("远程提交","lingx/model/editor/submit_editor.jsp?code="+currentEntityCode);
-							 }
-							 },
-							 
-						 {	text:"刷新界面",
+						 {	text:"刷新",
 							 iconCls:"Reload",
 							 handler:function(){
 								 window.location.reload();
@@ -264,7 +252,7 @@
                 	        ,{iconCls:"Outline",text: '参数配置',handler:function(){
                 	        	openWindow2("参数配置","e?e=tlingx_config&m=grid");
                 	        }},
-                	        '-', // 等同 {xtype: 'tbseparator'} 新建 Ext.toolbar.Separator
+                	        '-', // 等同 {xtype: 'tbseparator'} 创建 Ext.toolbar.Separator
                 	        ,{iconCls:"Chartline",text: '超管授权',handler:function(){
                 	        	Lingx.post(handlerJsp,{c:"supermanAuth"},function(json){
                 	        		lgxInfo(json.message);
@@ -281,26 +269,26 @@
 								  
 							 }
 						 },{
-							 text:"上传模型",
+							 text:"上传对象",
 							 iconCls:'Tableadd',
 							 handler:function(){
-								 openWindow("上传模型","e?e=tlingx_tools&m=updateLingx");
+								 openWindow("上传对象","e?e=tlingx_tools&m=updateLingx");
 							 }
 						 },'-',{
-							 text:"导入模型",
+							 text:"导入",
 							 handler:function(){
-								 openWindow("导入模型","lingx/model/update/download_step2.jsp");
+								 openWindow("导入","lingx/model/update/download_step2.jsp");
 							 }
 						 },{
-							 text:"导出模型",
+							 text:"导出",
 							 handler:function(){
-								 openWindowFull("导出模型","e?e=tlingx_tools&m=package");
+								 openWindowFull("导出","e?e=tlingx_tools&m=package");
 							 }
 						 }]
             	            })
             	            },
-                	       // 等同 {xtype: 'tbtext', text: 'text1'} 新建 Ext.toolbar.TextItem
-                	        { xtype: 'tbspacer' },// 等同 ' ' 新建 Ext.toolbar.Spacer
+                	       // 等同 {xtype: 'tbtext', text: 'text1'} 创建 Ext.toolbar.TextItem
+                	        { xtype: 'tbspacer' },// 等同 ' ' 创建 Ext.toolbar.Spacer
                 	        {
       							 text:'技术文档',
       							 iconCls:'Pagewhitefont',
@@ -323,7 +311,10 @@
                 height: 150,
                 minSize: 100,
                 maxSize: 300,
+                collapsible: true,
                 //collapsed: true,
+                title: '代码编辑区',
+                iconCls:"Pagewhitecode",
                 margins: '0 2 2 2',
                 items:[
                        {
@@ -335,7 +326,6 @@
                     		   xtype:"textarea",
                     		   border:false,
                     		   disabled:true,
-                    		  //style:"color:red!important;font-weight:bold;font-size:16px;",
                     		   enableKeyEvents:true,
                     		   listeners:{
                     			   keyup:function(textarea){
@@ -367,6 +357,8 @@
             }, {
                 xtype: 'tabpanel',
                 region: 'east',
+                iconCls:"Applicationviewlist",
+                title: '属性区',
               /*  dockedItems: [{
                     dock: 'top',
                     xtype: 'toolbar',
@@ -377,10 +369,9 @@
                     }]
                 }],*/
                 animCollapse: true,
-                border:true,
-             	bodyStyle: 'border:1px #ddd solid !important;',
+                collapsible: true,
                 split: true,
-                width: 320, // give east and west regions a width
+                width: 300, // give east and west regions a width
                 minSize: 175,
                 maxSize: 400,
                 margins: '0 2 0 0',
@@ -427,20 +418,25 @@
                 region: 'west',
                 stateId: 'navigation-panel',
                 id: 'west-panel', // see Ext.getCmp() below
+                title: '对象区',
+                iconCls:"Database",
                 split: true,
-                width: 300,
+                width: 240,
                 minWidth: 175,
                 maxWidth: 400,
+                collapsible: true,
+                animCollapse: true,
                 margins: '0 0 0 2',
-               border:true,	bodyStyle: 'border:1px #ddd solid !important;',
+               
                 	id: 'entityGrid_1',
                 	stateId: 'entityGrid_2',
+                    title: '对象区',
                    // iconCls: 'icon-7',
                     xtype:'grid',
                     //border:false,
             	   
                     columns: [{ xtype: 'rownumberer',width:26}, 
-                              { header: '代码',  dataIndex: 'code',width:142 },
+                              { header: '代码',  dataIndex: 'code' },
                               { header: '名称', dataIndex: 'name' }
                           ],
                     store: entityStore,
@@ -448,7 +444,7 @@
             	        xtype: 'toolbar',
                         //border:false,
             	        items: [
-            	                {id:"text", xtype: 'textfield',width:140, emptyText: '模型名称/代码',listeners:{
+            	                {id:"text", xtype: 'textfield',width:140, emptyText: '查询条件',listeners:{
             	                	specialkey: function(field, e){
             	                		if(e.getKey()== e.ENTER){
             	                			extParams={param:Ext.getCmp("text").getValue()};
@@ -469,7 +465,7 @@
             					}},
             	                { xtype: 'button', text: '编辑' ,handler:function(){
             		        		var record=Ext.getCmp("entityGrid_1").getSelectionModel().getSelection()[0];
-            		        		openWindow("编辑模型","e?e=tlingx_entity&m=edit&id="+record.data.id);
+            		        		openWindow("编辑对象","e?e=tlingx_entity&m=edit&id="+record.data.id);
             	                }}
             	            ],
             	        dock: 'top',
@@ -483,32 +479,6 @@
                     //    	    }
                     ],
                     listeners:{
-                    	 itemcontextmenu: function(menutree, record, items, index, e) {
-                    		 if(record.data.id){
-         	        			e.preventDefault();  
-           		                e.stopEvent();  
-           		                var menu=Ext.create("Ext.menu.Menu",{
-              						 floating : true,  
-              						 items:[{
-              							 text:"编辑",
-              							 iconCls:"Pencil",
-              							 handler:function(){
-              								openWindow("编辑模型","e?e=tlingx_entity&m=edit&id="+record.data.id);
-              							 }
-              						 },{
-          							 text:"提交",
-          							 iconCls:"Transmitblue",
-          							 handler:function(){
-
-          								$.post("lingx/model/editor/submit_handler.jsp",{c:"submitDataOne",value:record.data.code},function(json){
-          									lgxInfo(json.message);
-          								},"json");
-          							 }
-          						 }
-              						 ]
-           		                });
-           		                menu.showAt(e.getXY());}
-                    	 },
                     	select:function(view,record,item,index,event,obj){
                     		currentEntityCode=record.data.code;
                     		var tab=Ext.getCmp("tabpanel").queryById(record.data.code);
@@ -533,12 +503,12 @@
                             	     root: {
                             	         text: record.data.name+' ['+record.data.code+']',
                             	         id: record.data.modelId,
-                            	         iconCls:'Shape3d',
+                            	         iconCls:'icon-1',
                             	         expanded: true
                             	    },
                             	     autoLoad: true
                             	}),
-                    			xtype:"treepanel",
+                    			xtype:"tree",
                     			listeners:{
                     				activate:function(panel,eopts){
                     					
@@ -605,61 +575,6 @@
                     							 iconCls:'icon-reload',
                     							 //disabled:true,
                     							 handler:reloadCurrentTree
-                    						 },{
-                    						 text:"表单分栏",iconCls:"Textcolumns",menu:new Ext.menu.Menu({
-     items:[{
-     text:"一栏 (10-4-8)默认",
-     handler:function(){
-		var node= Ext.getCmp(currentEntityCode).getSelectionModel().getLastSelected();
-        Ext.Ajax.request({url:handlerJsp,params:{c:"formClass",type:"10-4-8",code:currentEntityCode,id:node.data.id},success:function(res){
-            var json=Ext.JSON.decode(res.responseText);lgxInfo(json.message);
-        }}); 
-
-     }
-     }
-//s
-	,{
-     text:"一栏 (12-2-10)",
-     handler:function(){
-var node= Ext.getCmp(currentEntityCode).getSelectionModel().getLastSelected();
-        Ext.Ajax.request({url:handlerJsp,params:{c:"formClass",type:"12-2-10",code:currentEntityCode,id:node.data.id},success:function(res){
-            var json=Ext.JSON.decode(res.responseText);lgxInfo(json.message);
-        }}); 
-     	}
-     }
-//s
-	,{
-     text:"一栏 (12-3-9)",
-     handler:function(){
-var node= Ext.getCmp(currentEntityCode).getSelectionModel().getLastSelected();
-        Ext.Ajax.request({url:handlerJsp,params:{c:"formClass",type:"12-3-9",code:currentEntityCode,id:node.data.id},success:function(res){
-            var json=Ext.JSON.decode(res.responseText);lgxInfo(json.message);
-        }}); 
-     	}
-     }
-//s
-	,{
-     text:"两栏 (6-2-4)",
-     handler:function(){
-var node= Ext.getCmp(currentEntityCode).getSelectionModel().getLastSelected();
-        Ext.Ajax.request({url:handlerJsp,params:{c:"formClass",type:"6-2-4",code:currentEntityCode,id:node.data.id},success:function(res){
-            var json=Ext.JSON.decode(res.responseText);lgxInfo(json.message);
-        }}); 
-     	}
-     }
-//s
-	,{
-     text:"两栏 (6-3-3)",
-     handler:function(){
-var node= Ext.getCmp(currentEntityCode).getSelectionModel().getLastSelected();
-        Ext.Ajax.request({url:handlerJsp,params:{c:"formClass",type:"6-3-3",code:currentEntityCode,id:node.data.id},success:function(res){
-            var json=Ext.JSON.decode(res.responseText);lgxInfo(json.message);
-        }}); 
-     	}
-     }
-]
-     }),
-                    						 handler:function(){}
                     						 }, '-',{
                     							 text:"添加属性",
                     							 iconCls:'icon-2',
@@ -718,12 +633,12 @@ var node= Ext.getCmp(currentEntityCode).getSelectionModel().getLastSelected();
                                 					}});
                     							 }
                     						 },{
-                    							 text:"添加操作",
+                    							 text:"添加方法",
                     							 iconCls:'icon-3',
                     							 handler:function(){
                     								var node= Ext.getCmp(currentEntityCode).getSelectionModel().getLastSelected();
-                    								if(node.data.text!='操作'){
-                    									lgxInfo("请选择“操作”分组添加操作");
+                    								if(node.data.text!='方法'){
+                    									lgxInfo("请选择“方法”分组添加属性");
                     									return;
                     								}
                     								Ext.Ajax.request({url:handlerJsp,params:{c:"addMethod",code:currentEntityCode,id:node.data.id},success:function(res){
@@ -828,9 +743,7 @@ var node= Ext.getCmp(currentEntityCode).getSelectionModel().getLastSelected();
                     									 }
                     								 });
                     							 }
-                    						 },
-                    						 /*
-                    						 {
+                    						 },{
                     							 text:"上移",
                     							 handler:function(){
 
@@ -862,9 +775,7 @@ var node= Ext.getCmp(currentEntityCode).getSelectionModel().getLastSelected();
                     									 }
                     								 });
                     							 }
-                    						 },'-',
-                    						 */
-                    						 {
+                    						 },'-',{
                     							 text:"删除",
                     							 iconCls:'icon-delete',
                     							 handler:function(){
@@ -896,18 +807,7 @@ var node= Ext.getCmp(currentEntityCode).getSelectionModel().getLastSelected();
                     									 }
                     								 });
                     							 }
-                    						 }
-                    						 /*,{
-                    							 text:"提交",
-                    							 iconCls:'Transmitblue',
-                    							 handler:function(){
-                    								 $.post("lingx/model/editor/submit_handler.jsp",{c:"submitDataOne",value:currentEntityCode},function(json){
-                    										lgxInfo(json.message);
-                    									},"json");
-                    							 }
-                    						 }*/
-                    						 
-                    						 ]
+                    						 }]
                     					 });
                     					 menu.showAt(e.getXY());
                     		            }

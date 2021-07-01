@@ -10,7 +10,7 @@
 	ILingxService lingx=spring.getBean(ILingxService.class);
 	if(!lingx.isSuperman(request))return;
 	JdbcTemplate jdbc=spring.getBean("jdbcTemplate",JdbcTemplate.class);
-	request.setAttribute("exists", jdbc.queryForObject("select count(*) from tlingx_entity where code=?",Integer.class,request.getParameter("tableName")));
+	request.setAttribute("exists", jdbc.queryForInt("select count(*) from tlingx_entity where code=?",request.getParameter("tableName")));
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,7 +18,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <base href="<%=basePath%>">
 <title>创建实体对象</title>
-<%@ include file="/lingx/include/include_JavaScriptAndCss4.jsp"%> 
+<%@ include file="/lingx/include/include_JavaScriptAndCss.jsp"%> 
 <script type="text/javascript">
 var exists="${exists}";
 var fromPageId='${param.pageid}';
@@ -64,22 +64,21 @@ Ext.onReady(function(){
 	            width: 420
 	        },
 			items:[{
-	            fieldLabel: '<span style="color:red;">*</span>模型代码',
+	            fieldLabel: '<span style="color:red;">*</span>对象代码',
 	            xtype:'displayfield',
 	            name: 'code',
 	            value:'${param.tableName}'
 	        },{
 	        	id:'name',
-	            fieldLabel: '<span style="color:red;">*</span>模型名称',
-	            emptyText: '模型名称',
+	            fieldLabel: '<span style="color:red;">*</span>对象名称',
+	            emptyText: '对象名称',
 	            name: 'name'
 	        },{
 	        	id:'app',
 	            fieldLabel: '<span style="color:red;">*</span>隶属应用',
 	            emptyText: '隶属应用',
 	            name: 'app',
-	            xtype:'hidden',
-	            value:"${SESSION_USER.app.id}",
+	            xtype:'dialogoption',
 	        	etype:"tlingx_app"
 	        },{
             	id:'idtype',
@@ -93,7 +92,7 @@ Ext.onReady(function(){
             }],
 	        listeners:{
 	        	afterrender:function(panel){
-	        		Lingx.getRootWindow().resizeWindow({height:panel.getHeight()+Lingx.PANEL_HEIGHT+50});
+	        		Lingx.getRootWindow().resizeWindow({height:panel.getHeight()+Lingx.PANEL_HEIGHT});
 	        	}
 	        }
 		}]
@@ -111,7 +110,7 @@ function checkParam(){
 		}
 	}
 	if(!objCache["name"]){
-		lgxInfo("模型名称不可为空");
+		lgxInfo("对象名称不可为空");
 		return false;
 	}
 	if(!objCache["app"]){

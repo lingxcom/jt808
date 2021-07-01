@@ -63,7 +63,7 @@ Ext.onReady(function(){
 			id:'tree',
 			border:false,
 			store: store,
-			xtype:"treepanel"
+			xtype:"tree"
 		}
 		       
 		       ]

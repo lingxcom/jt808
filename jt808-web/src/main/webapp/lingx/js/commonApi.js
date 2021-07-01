@@ -105,9 +105,6 @@ function openReadonlyWindow(title,url,type){
 function openWindowFull(title,url){
 	Lingx.getRootWindow().getApi().openWindowFull(title,url,getPageID());
 }
-function openWindowFull2(title,url){
-	Lingx.getRootWindow().getApi().openReadonlyWindowFull(title,url,getPageID());
-}
 /**
  * 打开对话框，只有“关闭”按钮
  * @param title

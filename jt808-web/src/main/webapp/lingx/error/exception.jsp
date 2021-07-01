@@ -17,7 +17,7 @@ String basePath = request.getScheme() + "://"
 </head>
 
 <body>
-<div style="margin:10px;color:red;font-size:14px;">
+<div style="margin:2px;color:red;font-size:12px;">
 <%
 Exception e=(Exception)request.getAttribute("e");
 out.println(e.toString());

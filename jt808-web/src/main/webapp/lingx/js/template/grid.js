@@ -183,10 +183,9 @@ Ext.onReady(function(){
 			
 			for(var i=0;i<json.fields.list.length;i++){
 				var field=json.fields.list[i];
-				if(params[field.code])continue;//当外部传参进来就不需要这个查询字段了
 				if((","+json.GridConfig.queryField+",").indexOf(","+field.code+",")>=0){
 					searchFieldCache.push(field.code);
-					tool.push(field.name);
+					tool.push(field.name+":");
 					if(field.refEntity){
 						var store=null;
 						if("tlingx_optionitem"==field.refEntity){
@@ -200,11 +199,11 @@ Ext.onReady(function(){
 							id:"id-search-"+field.code,
 							xtype    : 'combobox',
 		    	            name     : field.code,
-		    	            
+		    	            emptyText: field.name,
 		    	            store:store,
 								displayField:"text",
 								valueField:"value",
-		    	            width:110,listeners:{
+		    	            width:100,listeners:{
 	    	                	specialkey: function(field, e){
 	    	                		if(e.getKey()== e.ENTER){
 	    	                			search();
@@ -218,7 +217,7 @@ Ext.onReady(function(){
 							id:"id-search-"+field.code,
 							xtype    : 'textfield',
 		    	            name     : field.code,
-		    	            
+		    	            emptyText: field.name,
 		    	            width:100,listeners:{
 	    	                	specialkey: function(field, e){
 	    	                		if(e.getKey()== e.ENTER){
@@ -257,17 +256,16 @@ Ext.onReady(function(){
 			var tool=[];
 			for(var i=0;i<json.queryParams.length;i++){
 				var obj=json.queryParams[i];
-				if(params[obj.code])continue;//当外部传参进来就不需要这个查询字段了
-				var w=110;
+				var w=100;
 				var store=new Ext.data.Store({proxy: ({ model:'TextValueModel',type:'ajax',url:obj.url,reader:{type:'json'}}),
 					autoLoad:false});
 				searchFieldCache.push(obj.code);
-				tool.push(obj.name);
+				tool.push(obj.name+":");
 				var options111={
 						id:"id-search-"+obj.code,
 						xtype    : obj.xtype,
 			            name     : obj.code,
-			            //emptyText: obj.name,
+			            emptyText: obj.name,
 			            store:store,
 			            displayField:"text",
 						valueField:"value",
@@ -282,10 +280,10 @@ Ext.onReady(function(){
 		                }
 
 					};
-				if(obj.xtype=="datetimefield"){//不支持了2021-04-10
-					options111.width=150;
+				if(obj.xtype=="datetimefield"){
+					options111.width=180;
 				}else if(obj.xtype=="datefield"){
-					options111.width=130;
+					options111.width=120;
 					options111.format="Y-m-d";
 					options111.altFormats='Y-m-d';
 				}
@@ -306,9 +304,6 @@ Ext.onReady(function(){
 			     dock: 'top',
 			     displayInfo: true
 			});*/
-		}
-		if(LingxOpertor=="input"){//当打开方式为选择对框话时，不显示操作按钮；且双击变选择
-		json.toolbar=[];
 		}
 		if(json.GridConfig.toolbarSingle){
 			if(json.toolbar.length>0){
@@ -339,13 +334,13 @@ Ext.onReady(function(){
 		}
 		/*
 		* Model
-		
+		*/
 		Ext.define(entityCode, {
 		    extend: 'Ext.data.Model',
 		    fields:json.model,
 		    idProperty: json.GridConfig.idField
 		});
-		*/
+		
 		/*
 		* Store
 		*/
@@ -353,7 +348,7 @@ Ext.onReady(function(){
 		if(json.GridConfig.requestUrl){requestUrl=json.GridConfig.requestUrl;}
 		var store = Ext.create('Ext.data.Store', {
 		    pageSize: json.GridConfig.pageSize,
-		   // model: entityCode,
+		    model: entityCode,
 		    remoteSort: json.GridConfig.remoteSort,
 		    autoLoad:json.GridConfig.autoLoad,
 		    proxy: {
@@ -414,12 +409,7 @@ Ext.onReady(function(){
 			    dockedItems: toolbars,
 	    	        listeners:{
 	    	        	itemdblclick:function(view,record,item,index,event,obj){
-	    	        		if(LingxOpertor=="input"){//当打开方式为选择对框话时，不显示操作按钮；且双击变选择
-								lingxSubmit();
-								return;
-							}
 	    	        		var dblclickMethod=json.GridConfig.dblclickMethod||"view";
-	    	        		if("none"==dblclickMethod)return;
 	    	        		var id=record.data.id;
 	    	        		Lingx.post("d",{c:"method_script",e:entityCode,m:dblclickMethod,id:id},function(json2){
 	    						if(json2.ret){
@@ -436,10 +426,6 @@ Ext.onReady(function(){
 	    					});
 	    	        	},
 	    	        	itemcontextmenu: function(view, record, item, index, e) { 
-	    	        		if(LingxOpertor=="input"){//当打开方式为选择对框话时，不显示操作按钮；且双击变选择
-								//lingxSubmit();
-								return;
-							}
 	    	        		if(json.rightmenu.length>0){
 	    	        			e.preventDefault();  
 	      		                e.stopEvent();  

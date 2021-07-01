@@ -163,9 +163,6 @@ Ext.onReady(function(){
 					}
 				}
 				
-				if(obj.xtype=='numberfield'){
-					obj.hideTrigger=true;
-				}
 				items.push(obj);
 			
 		}
@@ -202,9 +199,9 @@ Ext.onReady(function(){
 		        			Lingx.getRootWindow().resizeWindow({height:extParamJson.height});
 		        		}else{
 		        			if(panel.getHeight()+Lingx.PANEL_HEIGHT>Lingx.MAX_HEIGHT){
-				        		Lingx.getRootWindow().resizeWindow({height:Lingx.MAX_HEIGHT+30});
+				        		Lingx.getRootWindow().resizeWindow({height:Lingx.MAX_HEIGHT});
 			        		}else{
-			        			Lingx.getRootWindow().resizeWindow({height:panel.getHeight()+Lingx.PANEL_HEIGHT+30});
+			        			Lingx.getRootWindow().resizeWindow({height:panel.getHeight()+Lingx.PANEL_HEIGHT});
 			        		}
 		        		}
 		        		

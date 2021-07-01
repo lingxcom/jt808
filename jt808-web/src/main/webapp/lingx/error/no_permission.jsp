@@ -16,17 +16,11 @@ com.lingx.core.service.II18NService i18n=spring.getBean(com.lingx.core.service.I
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>实体列表</title>
 
-<%@ include file="/lingx/include/include_JavaScriptAndCss2.jsp"%> 
-<script type="text/javascript">
-$(function(){
-	Lingx.getRootWindow().resizeWindow({height:$("body").height()+Lingx.PANEL_HEIGHT+60+20});
-});
-</script>
 </head>
 
 <body>
-<div style="margin:10px;color:red;font-size:16px;width:100%;text-align:left;">
- <%=i18n.text("操作失败，权限不足！如需开通，请联系系统管理员。",session)%>
+<div style="margin:2px;color:red;font-size:12px;">
+<%=i18n.text("权限不足",session)%>
 </div>
 </body>
 </html>

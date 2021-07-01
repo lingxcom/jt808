@@ -200,7 +200,7 @@ Ext.onReady(function(){
             border:false,
             width: 162,
             minWidth: 75,
-            maxWidth: 260,
+            maxWidth: 200,
             contentEl:"Value-DIV"
 		},{
 			
@@ -217,8 +217,8 @@ Ext.onReady(function(){
 		        	id:"orgtrees",
 					region: 'west',
 					margins: '2 2 2 2',
-		            width: 200,
-		            xtype:"treepanel",
+		            width: 140,
+		            xtype:"tree",
 		            border:false,
 		            autoScroll: true,
 		            rootVisible: false,
@@ -232,13 +232,13 @@ Ext.onReady(function(){
 		        	     },
 		        	     root: {
 		        	         text: "ROOT",
-		        	         id:"0",
+		        	         id:"",
 		        	         expanded: true
 		        	    },
 		        	     autoLoad: true,
 		        	     listeners:{
 		        	    	 datachanged:function(){
-		        	    		 if(Ext.getCmp("orgtrees")&&Ext.getCmp("orgtrees").getSelectionModel().getCount()==0)
+		        	    		 if(Ext.getCmp("orgtrees").getSelectionModel().getCount()==0)
 		           		    		Ext.getCmp("orgtrees").getSelectionModel().select(0);
 		      		    	}
 		         	     }
@@ -277,8 +277,8 @@ Ext.onReady(function(){
 		        items:[{
 					region: 'west',
 					margins: '2 2 2 2',
-		            width: 200,
-		            xtype:"treepanel",
+		            width: 140,
+		            xtype:"tree",
 		            border:false,
 		            autoScroll: true,
 		            rootVisible: false,
@@ -292,7 +292,7 @@ Ext.onReady(function(){
 		        	     },
 		        	     root: {
 		        	         text: "ROOT",
-		        	         id:"0",
+		        	         id:"",
 		        	         expanded: true
 		        	    },
 		        	     autoLoad: true,
@@ -381,7 +381,7 @@ function delItem(el){
 }
 </script>
 <style type="text/css">
-.label{font-size:14px;line-height:28px;text-align:center;width:140px;margin:2px;border:1px solid #99bbe8;background-color:#ffefbb;}
+.label{font-size:12px;line-height:24px;text-align:center;width:140px;margin:2px;border:1px solid #99bbe8;background-color:#dfe8f6;}
 .remove{line-height:24px;height:24px;border:0px none;}
 </style>
 </head>

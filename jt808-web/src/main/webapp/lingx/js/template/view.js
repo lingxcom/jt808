@@ -120,9 +120,9 @@ Ext.onReady(function(){
 		        listeners:{
 		        	afterrender:function(panel){
 		        		if(panel.getHeight()+Lingx.PANEL_HEIGHT>Lingx.MAX_HEIGHT){
-			        		Lingx.getRootWindow().resizeWindow({height:Lingx.MAX_HEIGHT+30});
+			        		Lingx.getRootWindow().resizeWindow({height:Lingx.MAX_HEIGHT});
 		        		}else{
-		        			Lingx.getRootWindow().resizeWindow({height:panel.getHeight()+Lingx.PANEL_HEIGHT+30});
+		        			Lingx.getRootWindow().resizeWindow({height:panel.getHeight()+Lingx.PANEL_HEIGHT});
 		        		}
 		        	}
 		        }

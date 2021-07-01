@@ -123,18 +123,25 @@ Ext.onReady(function(){
 		if(json.GridConfig.rownumbers){
 			json.columns.unshift({ xtype: 'rownumberer'});
 		}
-		/*
 		json.toolbar.push("->");
 		json.toolbar.push({iconCls:'icon-search',text:"查询",handler:function(){
 			openSearchWindow(items);
 		}});//,xtype:"cycle"
+		/*
+		* Model
 		*/
+		Ext.define(entityCode, {
+		    extend: 'Ext.data.Model',
+		    fields:json.model,
+		    idProperty: json.GridConfig.idField
+		});
+		
 		/*
 		* Store
 		*/
 		var store = Ext.create('Ext.data.Store', {
 		    pageSize: json.GridConfig.pageSize,
-		   // model: entityCode,
+		    model: entityCode,
 		    remoteSort: json.GridConfig.remoteSort,
 		    autoLoad:json.GridConfig.autoLoad,
 		    proxy: {

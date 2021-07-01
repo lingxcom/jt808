@@ -51,16 +51,22 @@ Ext.onReady(function(){
 	Lingx.post(handlerJsp,{c:"isComplete",code:tableName},function(json){
 		isComplete=json.isComplete;
 	});
-	
+	 Ext.define('DbTableField',{
+	        extend: 'Ext.data.Model',
+	        fields: [
+	            {name: 'column_name', type: 'string'},
+	            {name: 'column_type', type: 'string'},
+	            {name: 'is_nullable', type: 'string'},
+	            {name: 'column_comment', type: 'string'}
+	        ]
+	    });
 	var store = Ext.create('Ext.data.Store', {
-		//model:'DbTableField',
+		model:'DbTableField',
 		proxy: {
 	         type: 'ajax',
 	         url: handlerJsp+'?c=getColumns&table='+tableName,
 	         reader: {
-	             type: 'json',
-	             root: 'rows',
-		         totalProperty: 'total'
+	             type: 'json'
 	         }
 	     },
 	     autoLoad: true
@@ -74,10 +80,10 @@ Ext.onReady(function(){
 			store: store,
 			xtype:"grid",
 			columns: [
-                       { header: '代码',  dataIndex: 'column_name1' },
-                       { header: '类型', dataIndex: 'column_type1' },
-                       { header: '空值', dataIndex: 'is_nullable1' },
-                       { header: '注释', dataIndex: 'column_comment1' }
+                       { header: '代码',  dataIndex: 'column_name' },
+                       { header: '类型', dataIndex: 'column_type' },
+                       { header: '空值', dataIndex: 'is_nullable' },
+                       { header: '注释', dataIndex: 'column_comment' }
                    ]
 		}
 		       

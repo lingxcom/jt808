@@ -17,16 +17,13 @@
 		
 		org.springframework.context.ApplicationContext spring = org.springframework.web.context.support.WebApplicationContextUtils.getRequiredWebApplicationContext(request.getSession().getServletContext());
 		IReportService report=spring.getBean(IReportService.class);
-		ILingxService lingx=spring.getBean(ILingxService.class);
 		String sql=report.getSqlBySession(entityCode, request.getSession());
 		int index=sql.toLowerCase().lastIndexOf(" limit ");
 		if(index!=-1){
 			sql=sql.substring(0,index);
 		}
-		
 		//System.out.println(sql);
 		if(!"".equals(sql)){
-			sql+=" limit "+lingx.getConfigValue("lingx.grid.excel.limit", "1000") ;
 			response.setContentType("application/vnd.ms-excel;charset=utf-8"); 
 			response.addHeader("Content-Disposition", "attachment;filename="+Utils.getTime()+".xlsx");  
 			report.createExcelBySQL(sql, entityCode,request).write(response.getOutputStream());

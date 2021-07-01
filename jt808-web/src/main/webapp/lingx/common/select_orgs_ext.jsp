@@ -20,7 +20,7 @@
 
 <script type="text/javascript" src="<%=basePath %>js/jquery.js"></script>
 <style type="text/css">
-.label{font-size:14px;line-height:28px;text-align:center;width:140px;margin:2px;border:1px solid #99bbe8;background-color:#ffefbb;}
+.label{font-size:12px;line-height:24px;text-align:center;width:140px;margin:2px;border:1px solid #99bbe8;background-color:#dfe8f6;}
 .remove{line-height:24px;height:24px;border:0px none;}
 </style>
 <script type="text/javascript">
@@ -131,13 +131,13 @@ Ext.onReady(function(){
         	     },
         	     root: {
         	         text: "ROOT",
-        	         id:"0",
+        	         id:"",
         	         expanded: true
         	    },
         	     autoLoad: true,
         	     listeners:{
         	    	datachanged:function(){
-        	    		if(Ext.getCmp("datas")&&Ext.getCmp("datas").getSelectionModel().getCount()==0)
+        	    		if(Ext.getCmp("datas").getSelectionModel().getCount()==0)
      		    		Ext.getCmp("datas").getSelectionModel().select(0);
      		    	}/* ,
      		    	boforeload:function(store, operation, eOpts){
@@ -148,7 +148,7 @@ Ext.onReady(function(){
      		    	} */
         	     }
         	}),
-			xtype:"treepanel",
+			xtype:"tree",
 			/* dockedItems: [{
 	    	        xtype: 'toolbar',
 	    	        items:json.toolbar,

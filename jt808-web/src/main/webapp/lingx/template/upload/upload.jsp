@@ -15,7 +15,7 @@
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>上传文件</title>
-<%@ include file="/lingx/include/include_JavaScriptAndCss4.jsp"%> 
+<%@ include file="/lingx/include/include_JavaScriptAndCss.jsp"%> 
 <script type="text/javascript" src="<%=basePath %>js/jquery.js"></script>
 
 	<script type="text/javascript" src="<%=basePath %>js/plupload/Basic.js"></script>
@@ -473,7 +473,6 @@ Ext.onReady(function(){
 		    	        displayInfo: true
 		    	}],
 		    	listeners:{
-		    		
 		    		select:function(view,record,item,index,event,obj){
 		        		var id=record.data.id;
 		        		extParams.category_id=id;
@@ -495,20 +494,6 @@ Ext.onReady(function(){
 
 			    dockedItems: toolbars,
 	    	        listeners:{
-	    	        	itemcontextmenu: function(view, record, item, index, e) { 
-				        	
-			        		if(json.rightmenu.length>0){
-			        			e.preventDefault();  
-		  		                e.stopEvent();  
-		  		                var menu=Ext.create("Ext.menu.Menu",{
-		     						 floating : true,  
-		     						 items:json.rightmenu
-		  		                });
-		  		                menu.showAt(e.getXY());
-			        		}
-				                
-				            }
-			        ,
 	    	        	itemdblclick:function(view,record,item,index,event,obj){
 	    	        		lingxSubmit();
 	    	        	}

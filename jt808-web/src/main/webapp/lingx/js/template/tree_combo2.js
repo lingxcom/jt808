@@ -78,9 +78,9 @@ Ext.onReady(function(){
             split: true,
             autoScroll:true,
             border:false,
-            width: 210,
+            width: 162,
             minWidth: 75,
-            maxWidth: 260,
+            maxWidth: 200,
             margins: '0 0 0 0',
             contentEl:"Value-DIV"
 		},{
@@ -106,16 +106,18 @@ Ext.onReady(function(){
         	     autoLoad: true,
         	     listeners:{
         	    	datachanged:function(){
-        	    		if(Ext.getCmp("datas")&&Ext.getCmp("datas").getSelectionModel().getCount()==0)
+        	    		if(Ext.getCmp("datas").getSelectionModel().getCount()==0)
      		    		Ext.getCmp("datas").getSelectionModel().select(0);
      		    	}/* ,
      		    	boforeload:function(store, operation, eOpts){
+     		    		console.log(store.parentNode);
      		    		store.parentNode=store.getRootNode();
+     		    		console.log(store.parentNode);
      		    		///console.log();
      		    	} */
         	     }
         	}),
-			xtype:"treepanel",
+			xtype:"tree",
 			dockedItems: [{
 	    	        xtype: 'toolbar',
 	    	        //items:json.toolbar,
@@ -140,7 +142,6 @@ Ext.onReady(function(){
 function initItem(){
 	textField='text';//因为树型控件的显示值固定为text，所以有此设置；在列表多选里，没有这个限制
 	if(!value)return;
-	if(!text)return;
 	var arrayValue=value.split(",");
 	var arrayText=text.split(",");
 	for(var i=0;i<arrayValue.length;i++){

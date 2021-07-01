@@ -27,7 +27,7 @@ if("orgtree".equals(cmd)){
 	}
 	boolean b=true;
 	for(Map<String,Object> map : tree){
-		b=lingx.queryForInt("select count(*) from tlingx_org where fid=?",map.get("id"))>0;
+		b=jdbc.queryForInt("select count(*) from tlingx_org where fid=?",map.get("id"))>0;
 		map.put("isParent", b);
 		map.put("leaf", !b);
 		if(map.get("state")!=null){
@@ -53,7 +53,7 @@ if("orgtree".equals(cmd)){
 	}
 	boolean b=true;
 	for(Map<String,Object> map : tree){
-		b=lingx.queryForInt("select count(*) from tlingx_role where fid=?",map.get("id"))>0;
+		b=jdbc.queryForInt("select count(*) from tlingx_role where fid=?",map.get("id"))>0;
 		map.put("isParent", b);
 		map.put("leaf", !b);
 		if(map.get("state")!=null){
@@ -97,7 +97,7 @@ if("orgtree".equals(cmd)){
 	
 		List<Map<String,Object>> list=jdbc.queryForList("select id,account,name from tlingx_user where status=1 and id in(select user_id from tlingx_userorg where org_id=?) order by "+sort+" "+order+" limit "+(Integer.parseInt(limit)*(Integer.parseInt(page1)-1))+","+limit,id);//convert(name using gbk)
 		ret.put("rows",list);
-		ret.put("total",lingx.queryForInt("select count(*) from tlingx_user where status=1 and id in(select user_id from tlingx_userorg where org_id=?)",id));
+		ret.put("total",jdbc.queryForInt("select count(*) from tlingx_user where status=1 and id in(select user_id from tlingx_userorg where org_id=?)",id));
 	}
 	
 	out.print(JSON.toJSONString(ret));
@@ -117,7 +117,7 @@ if("orgtree".equals(cmd)){
 	
 		List<Map<String,Object>> list=jdbc.queryForList("select id,account,name from tlingx_user where status=1 and id in(select user_id from tlingx_userrole where role_id=?) order by "+sort+" "+order+" limit "+(Integer.parseInt(limit)*(Integer.parseInt(page1)-1))+","+limit,id);//convert(name using gbk)
 		ret.put("rows",list);
-		ret.put("total",lingx.queryForInt("select count(*) from tlingx_user where status=1 and id in(select user_id from tlingx_userorg where org_id=?)",id));
+		ret.put("total",jdbc.queryForInt("select count(*) from tlingx_user where status=1 and id in(select user_id from tlingx_userorg where org_id=?)",id));
 	}
 	
 	out.print(JSON.toJSONString(ret));
@@ -135,7 +135,7 @@ if("orgtree".equals(cmd)){
 	}
 	boolean b=true;
 	for(Map<String,Object> map : tree){
-		b=lingx.queryForInt("select count(*) from tlingx_org where fid=?",map.get("id"))>0;
+		b=jdbc.queryForInt("select count(*) from tlingx_org where fid=?",map.get("id"))>0;
 		map.put("isParent", b);
 		map.put("leaf", !b);
 		if(map.get("state")!=null){
@@ -150,7 +150,7 @@ if("orgtree".equals(cmd)){
 	//tree
 }else if("authcode".equals(cmd)){//335ec1fc-1011-11e5-b7ab-1234567b5f61
 	String authcode=request.getParameter("p2"),time=Utils.getTime();
-	if(lingx.queryForInt("select count(*) from tlingx_config where id=? ","SN")==0){
+	if(jdbc.queryForInt("select count(*) from tlingx_config where id=? ","SN")==0){
 		jdbc.update(String.format("INSERT INTO `tlingx_config` VALUES ('SN', 'SN', 'SN', '%s', '1', '%s', '%s', 'SN', 'SN')",authcode,time,time));
 	}else{
 		String temp=jdbc.queryForObject("select config_value from tlingx_config where id=?", String.class,"SN");
@@ -159,10 +159,6 @@ if("orgtree".equals(cmd)){
 	}
 	ret.put("message", "授权码已保存，请重新登录！");
 	out.println(JSON.toJSONString(ret));
-}else if("server".equals(cmd)){
-	com.lingx.support.local.Server server=new com.lingx.support.local.Server();
-	server.copyTo();
-	out.println(JSON.toJSONString(server));
 }else{
 	System.out.println("参数c的值["+cmd+"]有误,system/workflow/manager/handler.jsp");
 }

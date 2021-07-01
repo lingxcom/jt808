@@ -29,7 +29,7 @@ function gotoLogin(){
 </head>
 
 <body>
-<div style="margin:10px;color:red;font-size:16px;">
+<div style="margin:2px;color:red;font-size:12px;">
 用户登陆超时，请<a href="javascript:;" onclick="gotoLogin();">重新登陆</a>。
 </div>
 </body>

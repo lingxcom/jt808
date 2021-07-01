@@ -39,16 +39,11 @@ $(function(){
 		table.append(tr);
 	} */
 	
-	$(window).bind("resize",function(){
-		$("#div").height($(window).height());
-	})
 });
-
-
 
 function add(){
 	var tr=$("<tr/>");
-	tr.append($("<td>"+ index++ +"</td>"));
+	tr.append($("<td>"+ ++index +"</td>"));
 	tr.append($("<td><input id='name_"+index+"' class='name' value=''/></td>"));
 	tr.append($("<td><select id='value_"+index+"' ><option>文本</option><option>数字</option><option>金额</option></select></td>"));
 	tr.append($("<td><a href='javascript:;' onclick='del(this);'>删除</a></td>"));
@@ -91,28 +86,27 @@ function lingxSubmit(){
 
 <style type="text/css">
 body{
-padding:0px;
+padding:5px;
 }
-tr{height:24px;text-align:center;}
+tr{height:30px;text-align:center;}
 </style>
 </head>
-<body style="background-color:#dfe9f6;">
-<div id="div" style="padding:0px;width:100%;height:400px;overflow:auto;">
+<body>
 <table width="100%">
-<tr><td colspan="4" align="center"><span  class="tdname" style="font-size:14px;" ></span> </td> </tr>
-<tr><td><span style="color:#999">说明：在建立树形模型时属性名“树型上级”、“树型状态”、“树型图标”，对应fid、state、icon_cls。</span> </td></tr>
+<tr><td colspan="4" align="center"><span  class="tdname" style="font-size:18px;" ></span> </td> </tr>
 <tr>
 <td align="center" >
 
 	<table id="options" width="450" cellSpacing="0" cellPadding="0" >
 	<tr><th>序号</th><th>属性名称</th> <th>数据类型</th> <th>操作</th></tr>
+	<tr><td>1</td><td>主键</td> <td>数字</td> <td>-</td></tr>
 	</table>
 	<button onclick="add()">添加属性</button><!--
 	<button onclick="save()">保存设置</button>  -->
 	</td>
 </tr>
 </table>
-</div>
+
 </body>
 
 </html>

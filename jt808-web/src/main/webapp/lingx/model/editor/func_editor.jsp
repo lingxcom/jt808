@@ -53,7 +53,7 @@ Ext.create("Ext.Viewport",{
  		    	}
     	     }
     	}),
-		xtype:"treepanel",
+		xtype:"tree",
         listeners:{
         	checkchange:function(record,checked){
 				 if (checked) {

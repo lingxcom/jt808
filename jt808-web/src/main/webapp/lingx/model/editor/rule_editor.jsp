@@ -148,7 +148,7 @@ function getHtml(obj,div){
 		temp.find(".op").val(obj.op);
 		
 		var t1=temp.find(".right").find("option[value='"+obj.right+"']");
-		if(!t1.html()){//当中介模型转为实体模型时，补上该项的值
+		if(!t1.html()){//当中介对象转为实体对象时，补上该项的值
 			temp.find(".right").append("<option value='"+obj.right+"'>"+obj.right+"</option>");
 		}
 		temp.find(".right").val(obj.right);

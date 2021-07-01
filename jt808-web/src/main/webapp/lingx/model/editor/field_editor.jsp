@@ -110,12 +110,11 @@ Ext.onReady(function(){
         	     autoLoad: true,
         	     listeners:{
       		    	load:function(){
-      		    		if(Ext.getCmp("tree"))
       		    		Ext.getCmp("tree").getSelectionModel().select(0);
       		    	}
          	     }
         	}),
-			xtype:"treepanel",
+			xtype:"tree",
 	        listeners:{
 	        	itemdblclick:function(view,record,item,index,event,obj){
 	        		openViewWindow(entityCode,json.name,record.data.id);

@@ -46,7 +46,7 @@ var extparam="${extparam}";
 var fieldNames=["<%=i18n.text("查询",session)%>","<%=i18n.text("高级",session)%>"];
 </script>
 <style type="text/css">
-.label{font-size:14px;line-height:28px;text-align:center;width:200px;margin:2px;border:1px solid #99bbe8;background-color:#ffefbb;}
+.label{font-size:12px;line-height:24px;text-align:center;width:140px;margin:2px;border:1px solid #99bbe8;background-color:#dfe8f6;}
 .remove{line-height:24px;height:24px;border:0px none;}
 </style>
 </head>

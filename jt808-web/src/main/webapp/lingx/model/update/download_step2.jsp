@@ -19,7 +19,7 @@ if(!lingx.isSuperman(request))return;
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>实体列表</title>
-<%@ include file="/lingx/include/include_JavaScriptAndCss4.jsp"%> 
+<%@ include file="/lingx/include/include_JavaScriptAndCss.jsp"%> 
 <SCRIPT type="text/javascript">
 var downloadUrl="<%="" %>"+"?callback=?";
 var handlerJsp="<%=basePath %>lingx/model/update/handler.jsp";
@@ -56,7 +56,7 @@ Ext.onReady(function(){
 	        		if(panel.getHeight()+Lingx.PANEL_HEIGHT>Lingx.MAX_HEIGHT){
 		        		Lingx.getRootWindow().resizeWindow({height:Lingx.MAX_HEIGHT});
 	        		}else{
-	        			Lingx.getRootWindow().resizeWindow({height:panel.getHeight()+Lingx.PANEL_HEIGHT+50});
+	        			Lingx.getRootWindow().resizeWindow({height:panel.getHeight()+Lingx.PANEL_HEIGHT});
 	        		}
 	        	}
 	        }

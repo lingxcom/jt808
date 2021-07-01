@@ -342,9 +342,6 @@ function callbackFormSubmit(form, action) {
 	        	getFromWindow(fromPageId).reloadGrid();
         	}
         	closeWindow();
-        }else if(action.result.code==2){
-        	//不刷新，例如大型树形结构数据，刷新很麻烦2021-01-25
-        	closeWindow();
         }else{
         	var json=action.result;
         		if(json.messages){
@@ -387,21 +384,3 @@ Date.prototype.format = function (fmt) { //author: meizz
     if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 };
-
-$(function(){
-	$(window).bind("click",function(){
-		if(window.parent&&window.parent.removeMenu){
-		window.parent.removeMenu();
-		}else if(window.parent.window.parent&&window.parent.window.parent.removeMenu){
-			window.parent.window.parent.removeMenu();
-		}
-	});
-});
-/*
-function blockContextmen(){
-console.log(window.event);
-if(window.event&&window.event.target.tagName!="INPUT"&&window.event.target.tagName!="TEXTAREA"){
-window.event.returnValue=false;
-}
-}
-document.oncontextmenu=blockContextmen;*/

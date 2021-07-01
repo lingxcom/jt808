@@ -1,9 +1,9 @@
 
-<link rel="stylesheet" type="text/css" href="js/ext-theme-triton/theme-triton-all.css">
+<link rel="stylesheet" type="text/css" href="js/ext-theme-classic/ext-theme-classic-all.css">
 <link rel="stylesheet" type="text/css" href="js/ext-theme-classic/icon.css">
 <link rel="stylesheet" type="text/css" href="js/lingx-ext-icon.css">
 <script type="text/javascript" src="js/ext-all.gzjs"></script>
-<script type="text/javascript" src="js/ext-theme-triton/theme-triton.js?1"></script>
+<!-- //cdn.bootcss.com/extjs/4.2.1/ext-all.min.js -->
 <%
 Object lanuageJS=session.getAttribute("SESSION_LANGUAGE");
 if(lanuageJS==null){
@@ -19,6 +19,6 @@ if(lanuageJS==null){
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <link rel="stylesheet" type="text/css" href="lingx/js/resources/css/lingx.css">
-<script type="text/javascript" src="lingx/js/lingx.js?1234"></script>
-<script type="text/javascript" src="lingx/js/commonApi.js?1"></script> 
-<script type="text/javascript" src="lingx/js/lingx-ext.js?123"></script> 
+<script type="text/javascript" src="lingx/js/lingx.js"></script>
+<script type="text/javascript" src="lingx/js/commonApi.js"></script>
+<script type="text/javascript" src="lingx/js/lingx-ext.js"></script>

@@ -26,7 +26,6 @@
 		<property name="filters" value="${database.filters}" /> 
 		<property name="validationQuery" value="${database.validationQuery}"/><!-- 
 		<property name="connectionProperties" value="config.decrypt=true" /> -->
-		<property name="connectionProperties" value="druid.mysql.usePingMethod=false" />
 		<property name="testWhileIdle" value="${database.testWhileIdle}"/>
 		<property name="proxyFilters">
         	<list>

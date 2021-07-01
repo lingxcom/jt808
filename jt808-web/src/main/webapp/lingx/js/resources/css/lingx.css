@@ -1,111 +1,111 @@
-*{font-family:  "Microsoft YaHei","Open Sans", "Helvetica Neue", helvetica, arial, verdana, sans-serif ;}
+*{font-size:12px;font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei"}
 table{text-align:left;}
  a:visited {
     color:#0000FF;
     }
 .icon-delete{
-background-image:url('icons/remove.png') !important;
+background:url('icons/remove.png') no-repeat;
 }
 .icon-1{
-background-image:url('icons/212.gif') !important;
+background:url('icons/212.gif') no-repeat !important;
 }
 .icon-2{
-background-image:url('icons/leaf.png')  !important;
+background:url('icons/leaf.png') no-repeat !important;
 }
 .icon-3{
-background-image:url('icons/41.png')  !important;
+background:url('icons/41.png') no-repeat !important;
 }
 .icon-4{
-background-image:url('icons/lightbulb_off.png')  !important;
+background:url('icons/lightbulb_off.png') no-repeat !important;
 }
 .icon-5{
-background-image:url('icons/lightbulb.png')  !important;
+background:url('icons/lightbulb.png') no-repeat !important;
 }
 .icon-6{
-background-image:url('icons/046.png')  !important;
+background:url('icons/046.png') no-repeat !important;
 }
 .icon-7{
-background-image:url('icons/page_2.png')  !important;
+background:url('icons/page_2.png') no-repeat !important;
 }
 .icon-8{
-background-image:url('icons/config1.png')  !important;
+background:url('icons/config1.png') no-repeat !important;
 }
 .icon-blank{
-	background-image:url('icons/blank.gif') !important;
+	background:url('icons/blank.gif') no-repeat center center;
 }
 .icon-add{
-	background-image:url('icons/edit_add.png') !important;
+	background:url('icons/edit_add.png') no-repeat center center;
 }
 .icon-edit{
-	background-image:url('icons/pencil.png') !important;
+	background:url('icons/pencil.png') no-repeat center center;
 }
 .icon-remove{
-	background-image:url('icons/edit_remove.png') !important;
+	background:url('icons/edit_remove.png') no-repeat center center;
 }
 .icon-save{
-	background-image:url('icons/filesave.png') !important;
+	background:url('icons/filesave.png') no-repeat center center;
 }
 .icon-cut{
-	background-image:url('icons/cut.png') !important;
+	background:url('icons/cut.png') no-repeat center center;
 }
 .icon-ok{
-	background-image:url('icons/ok.png') !important;
+	background:url('icons/ok.png') no-repeat center center;
 }
 .icon-no{
-	background-image:url('icons/no.png') !important;
+	background:url('icons/no.png') no-repeat center center;
 }
 .icon-cancel{
-	background-image:url('icons/cancel.png') !important;
+	background:url('icons/cancel.png') no-repeat center center;
 }
 .icon-reload{
-	background-image:url('icons/reload.png') !important;
+	background:url('icons/reload.png') no-repeat center center;
 }
 .icon-search{
-	background-image:url('icons/search.png') !important;
+	background:url('icons/search.png') no-repeat center center !important;
 }
 .icon-print{
-	background-image:url('icons/print.png') !important;
+	background:url('icons/print.png') no-repeat center center;
 }
 .icon-help{
-	background-image:url('icons/help.png') !important;
+	background:url('icons/help.png') no-repeat center center;
 }
 .icon-undo{
-	background-image:url('icons/undo.png') !important;
+	background:url('icons/undo.png') no-repeat center center;
 }
 .icon-redo{
-	background-image:url('icons/redo.png') !important;
+	background:url('icons/redo.png') no-repeat center center;
 }
 .icon-back{
-	background-image:url('icons/back.png') !important;
+	background:url('icons/back.png') no-repeat center center;
 }
 .icon-sum{
-	background-image:url('icons/sum.png') !important;
+	background:url('icons/sum.png') no-repeat center center;
 }
 .icon-tip{
-	background-image:url('icons/tip.png') !important;
+	background:url('icons/tip.png') no-repeat center center;
 }
 
 .icon-mini-add{
-	background-image:url('icons/mini_add.png') !important;
+	background:url('icons/mini_add.png') no-repeat center center;
 }
 .icon-mini-edit{
-	background-image:url('icons/mini_edit.png') !important;
+	background:url('icons/mini_edit.png') no-repeat center center;
 }
 .icon-mini-refresh{
-	background-image:url('icons/mini_refresh.png') !important;
+	background:url('icons/mini_refresh.png') no-repeat center center;
 }
 
 .icon-circle-green{
-	background-image:url('icons/circle_green_16.png')  !important;
+	background:url('icons/circle_green_16.png') no-repeat !important;
 }
 .icon-circle-black{
-	background-image:url('icons/circle_black_16.png')  !important;
+	background:url('icons/circle_black_16.png') no-repeat !important;
 }
 .icon-circle-red{
-	background-image:url('icons/circle_red_16.png')  !important;
+	background:url('icons/circle_red_16.png') no-repeat !important;
 }
 .icon-circle-blue{
-	background-image:url('icons/circle_blue_16.png')  !important;
+	background:url('icons/circle_blue_16.png') no-repeat !important;
 }
 
 

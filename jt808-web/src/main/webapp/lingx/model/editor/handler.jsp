@@ -5,15 +5,14 @@ public static Object lock=new Object();
 private static synchronized boolean insertFunc(JdbcTemplate jdbc,String module, String func, boolean isScriptEntity,IChooseService chooser,IModelService modelService) {
 	
 	String sql = "select count(*) from tlingx_func where module=? and func=?";
-	int c =jdbc.queryForObject(sql,Integer.class, new Object[] { module, func });
+	int c =jdbc.queryForInt(sql, new Object[] { module, func });
 	if (c == 0) {
 		if (isScriptEntity) {
 			
 			IEntity se =modelService.getEntity(module); //modelService.get(module);
 			String methodName = "";
 			if (chooser.defaultMethodContains(func)) {
-				//methodName = func;
-				methodName = chooser.getMethod(func, se).getName();
+				methodName = func;
 			} else {
 				List<IMethod> list = se.getMethods().getList();
 				for (IMethod m : list) {
@@ -145,15 +144,13 @@ String databaseName=databaseService.getDatabaseName();
 	root.add(tableNode);
 	out.println(JSON.toJSONString(tables));
 }else if("getColumns".equals(cmd)){
-	Map<String,Object> res=new HashMap<String,Object>();
 	String databaseName=databaseService.getDatabaseName();
 	String table=request.getParameter("table");
-	String sql="SELECT column_name as id,table_schema as table_schema1,table_name as table_name1, column_name as column_name1,is_nullable as is_nullable1,column_type as column_type1,column_key as column_key1,extra as extra1,column_default as column_default1,column_comment as column_comment1 from information_schema.columns where table_name= ? and table_schema=? order by ordinal_position asc";//(column_name LIKE ? AND) 
+	String sql="SELECT column_name as id,table_schema,table_name, column_name,is_nullable,column_type,column_key,extra,column_default,column_comment from information_schema.columns where table_name= ? and table_schema=? order by ordinal_position asc";//(column_name LIKE ? AND) 
 
 	List<Map<String,Object>> list=jdbc.queryForList(sql,new Object[]{table,databaseName});
-	res.put("rows", list);
-	res.put("total", list.size());
-	out.println(JSON.toJSONString(res));	
+
+	out.println(JSON.toJSONString(list));	
 }else if("createEntity".equals(cmd)){
 	Map<String,Object> res=new HashMap<String,Object>();
 	String code=request.getParameter("code");
@@ -162,7 +159,7 @@ String databaseName=databaseService.getDatabaseName();
 	String idtype=request.getParameter("idtype");
 	IEntity entity=modelService.createScriptEntity(code,name, userBean.getAccount() ,Integer.parseInt(idtype),databaseService.getDatabaseName(), jdbc);
 	modelService.save(entity);
-	if(lingx.queryForInt("select count(*) from tlingx_entity where code=?",code)==0){
+	if(jdbc.queryForInt("select count(*) from tlingx_entity where code=?",code)==0){
 		jdbc.update("insert into tlingx_entity(id,name,code,type,status,app_id,create_time)values(uuid(),?,?,1,1,?,?)",name,code,app,Utils.getTime());
 	}
 	res.put("code", 1);
@@ -512,7 +509,7 @@ String databaseName=databaseService.getDatabaseName();
 	List<Map<String,Object>> tree=new ArrayList<Map<String,Object>>();
 	List<Map<String,Object>> children=new ArrayList<Map<String,Object>>();
 	Map<String,Object> root=new HashMap<String,Object>();
-	int count=lingx.queryForInt("select count(*) from tlingx_func where module=?",code+"_object");
+	int count=jdbc.queryForInt("select count(*) from tlingx_func where module=?",code+"_object");
 	root.put("text", entity.getName());
 	root.put("expanded", true);//expanded: true
 	root.put("checked", count>0);
@@ -520,7 +517,7 @@ String databaseName=databaseService.getDatabaseName();
 	tree.add(root);
 	root.put("children", children);
 	for(IMethod m:entity.getMethods().getList()){
-		count=lingx.queryForInt("select count(*) from tlingx_func where module=? and func=?",code,m.getCode());
+		count=jdbc.queryForInt("select count(*) from tlingx_func where module=? and func=?",code,m.getCode());
 		Map<String,Object> leaf=new HashMap<String,Object>();
 		leaf.put("text", m.getName()+"["+m.getCode()+"]");
 		leaf.put("id", m.getCode());
@@ -532,7 +529,7 @@ String databaseName=databaseService.getDatabaseName();
 	IChooseService chooser=applicationContext.getBean(IChooseService.class);
 	Map<String,IMethod> map=chooser.getDefaultMethods();
 	for(String s:map.keySet()){
-		count=lingx.queryForInt("select count(*) from tlingx_func where module=? and func=?",code,s);
+		count=jdbc.queryForInt("select count(*) from tlingx_func where module=? and func=?",code,s);
 		Map<String,Object> leaf=new HashMap<String,Object>();
 		IMethod m=map.get(s);
 		leaf.put("text",m.getName()+"["+s+"]");
@@ -589,7 +586,7 @@ String databaseName=databaseService.getDatabaseName();
 	newEntity.setName(newName);
 	modelService.save(newEntity);
 	String appid=jdbc.queryForObject("select app_id from tlingx_entity where code=?",String.class,code);
-	if(lingx.queryForInt("select count(*) from tlingx_entity where code=?",newCode)==0)
+	if(jdbc.queryForInt("select count(*) from tlingx_entity where code=?",newCode)==0)
 	jdbc.update("insert into tlingx_entity(id,name,code,type,status,app_id,create_time)values(uuid(),?,?,1,1,?,?)",newName,newCode,appid,Utils.getTime());
 	res.put("success", true);
 	res.put("code", 1);
@@ -652,7 +649,7 @@ String databaseName=databaseService.getDatabaseName();
 	out.println(JSON.toJSONString(res));
 }else if("isComplete".equals(cmd)){
 	Map<String,Object> res=new HashMap<String,Object>();
-	int c=lingx.queryForInt("select count(*) from tlingx_entity where code=? and status=2",request.getParameter("code"));
+	int c=jdbc.queryForInt("select count(*) from tlingx_entity where code=? and status=2",request.getParameter("code"));
 	res.put("code", 1);
 	res.put("isComplete", c==1);
 	res.put("message", "操作成功");
@@ -715,15 +712,6 @@ String databaseName=databaseService.getDatabaseName();
 		res.put("message", e.getMessage());
 	}
 	
-	out.println(JSON.toJSONString(res));
-}else if("formClass".equals(cmd)){
-	Map<String,Object> res=new HashMap<String,Object>();
-	res.put("code", 1);
-	res.put("message", "操作成功");
-	String code=request.getParameter("code");
-	String id=request.getParameter("id");
-	String type=request.getParameter("type");
-	modelService.setFormClass(code,id,type);
 	out.println(JSON.toJSONString(res));
 }else{
 	System.out.println("参数c的值有误,editor/handler.jsp");

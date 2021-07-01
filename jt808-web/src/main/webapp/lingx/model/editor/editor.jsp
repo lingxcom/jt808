@@ -15,30 +15,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <base href="<%=basePath%>">
-<title>模型编辑工具</title>
+<title>对象编辑工具</title>
 <%@ include file="/lingx/include/include_JavaScriptAndCss.jsp"%> 
 </head>
-<script type="text/javascript" src="lingx/model/editor/editor.js?12345678"></script>
-<!-- 统计日均使用人数 font: 300 13px/21px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif; -->
-<script type="text/javascript" src="http://mdd.lingx.com/lingx_count.jsp"></script>
-<style>
-.x-form-text-default {
-    color: #333;
-    padding: 5px 10px 4px;
-    background-color: #fafafa;
-    min-height: 30px;
-    font-size:16px;
-    line-height:32px;
-    font-family:  "Microsoft YaHei","Open Sans", "Helvetica Neue", helvetica, arial, verdana, sans-serif ;
-}
-</style>
+<script type="text/javascript" src="lingx/model/editor/editor.js"></script>
 <script type="text/javascript">
 var fromPageId='${param.pageid}';
 var handlerJsp="<%=basePath%>lingx/model/editor/handler.jsp";
 </script>
 <body>
 <div style="display:none;">
-<div id="API" style="overflow:auto;height:100%;font-weight:bold;font-size:14px;line-height:28px;padding-left:10px;">
+<div id="API" style="overflow:auto;height:100%">
 CUser 当前用户<br/>
 JDBC 数据库操作<br/>
 LINGX 综合API<br/>

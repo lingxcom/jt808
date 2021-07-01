@@ -77,49 +77,49 @@ width:320px;
 <!-- -->
 <tr>
 <td>1.系统名称: </td>
-<td class="form-group "><input class="ipt form-control  col-sm-8" id="appname"  value="${app.name }"/> <input type="button" class="btn btn-default" onclick="saveAppName()" value="保存"> </td>
+<td><input class="ipt" id="appname" value="${app.name }"/> <input type="button" onclick="saveAppName()" value="保存"> </td>
 <td>用来显示头部的系统名称</td>
 </tr>
 <!-- -->
 <tr>
-<td>2.系统Logo: </td>
-<td><input class="ipt form-control  col-sm-8" id="logo" value="${app.logo }"/> <input type="button" class="btn btn-default" onclick="saveAppLogo()" value="保存"> </td>
+<td>1.系统Logo: </td>
+<td><input class="ipt" id="logo" value="${app.logo }"/> <input type="button" onclick="saveAppLogo()" value="保存"> </td>
 <td>用来显示头部的Logo图标</td>
 </tr>
 <!-- -->
 <tr>
-<td>3.系统默认页: </td>
-<td><input class="ipt form-control  col-sm-8" id="indexpage" value="${app.indexpage }"/> <input type="button" class="btn btn-default" onclick="saveIndexpage()" value="保存"> </td>
+<td>2.系统默认页: </td>
+<td><input class="ipt" id="indexpage" value="${app.indexpage }"/> <input type="button" onclick="saveIndexpage()" value="保存"> </td>
 <td>登陆成功后默认显示的界面</td>
 </tr>
 
 <!-- -->
 <tr>
-<td>4.登录验证码: </td>
-<td><input type="checkbox"  onchange="saveConfig('lingx.login.verifycode',this)" <%="true".equals(lingx.getConfigValue("lingx.login.verifycode", "true"))?"checked":"" %>/></td>
+<td>3.登录验证码: </td>
+<td><input type="checkbox" onchange="saveConfig('lingx.login.verifycode',this)" <%="true".equals(lingx.getConfigValue("lingx.login.verifycode", "true"))?"checked":"" %>/></td>
 <td>登陆的验证功能</td>
 </tr>
 <!--  -->
 <tr>
-<td>5.弱密码保护 </td>
+<td>4.弱密码保护 </td>
 <td><input type="checkbox" onchange="saveConfig('lingx.login.password.zero6',this)" <%="true".equals(lingx.getConfigValue("lingx.login.password.zero6", "false"))?"checked":"" %>/></td>
 <td>密码为6个0时，强制要求重置</td>
 </tr>
 <!--  -->
 <tr>
-<td>6.防止暴力破解密码</td>
+<td>5.防止暴力破解密码</td>
 <td><input type="checkbox" onchange="saveConfig('lingx.login.islock',this)" <%="true".equals(lingx.getConfigValue("lingx.login.islock", "false"))?"checked":"" %>/></td>
 <td>密码错误输入次数过多时自动锁定账号5分钟 </td>
 </tr>
 <!--  -->
 <tr>
-<td>7.密码错误输入次数: </td>
-<td><input class="ipt form-control  col-sm-8" id="islock_max" value="<%=lingx.getConfigValue("lingx.login.lock.max", 10)%>"/> <input type="button" class="btn btn-default" onclick="saveConfig2('lingx.login.lock.max','islock_max')" value="保存"> </td>
-<td>第6点为true时生效</td>
+<td>6.密码错误输入次数: </td>
+<td><input class="ipt" id="islock_max" value="<%=lingx.getConfigValue("lingx.login.lock.max", 10)%>"/> <input type="button" onclick="saveConfig2('lingx.login.lock.max','islock_max')" value="保存"> </td>
+<td>第5点为true时生效</td>
 </tr>
 <!--  -->
 <tr>
-<td>8.TOKEN登陆 </td>
+<td>7.TOKEN登陆 </td>
 <td><input type="checkbox" onchange="saveConfig('lingx.login.user.token',this)" <%="true".equals(lingx.getConfigValue("lingx.login.user.token", "false"))?"checked":"" %>/></td>
 <td>通过TOKEN单点登录,URL参数名lingx_user_token对应tlingx_user.token</td>
 </tr>

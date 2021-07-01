@@ -5,9 +5,7 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
-	String text="";
-	if(request.getParameter("text")!=null)
-	text=java.net.URLDecoder.decode(request.getParameter("text"),"UTF-8");
+	String text=java.net.URLDecoder.decode(request.getParameter("text"),"UTF-8");
 	String value=request.getParameter("value");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,7 +20,7 @@
 <script type="text/javascript" src="<%=basePath %>js/jquery.js"></script>
 <script type="text/javascript" src="lingx/js/template/tree_combo2.js"></script>
 <style type="text/css">
-.label{font-size:14px;line-height:28px;text-align:center;width:200px;margin:2px;border:1px solid #99bbe8;background-color:#ffefbb;}
+.label{font-size:12px;line-height:24px;text-align:center;width:140px;margin:2px;border:1px solid #99bbe8;background-color:#dfe8f6;}
 .remove{line-height:24px;height:24px;border:0px none;}
 </style>
 <script type="text/javascript">

@@ -117,7 +117,7 @@ Ext.onReady(function(){
 			}],
 	        listeners:{
 	        	afterrender:function(panel){
-	        		Lingx.getRootWindow().resizeWindow({height:panel.getHeight()+Lingx.PANEL_HEIGHT+50});
+	        		Lingx.getRootWindow().resizeWindow({height:panel.getHeight()+Lingx.PANEL_HEIGHT});
 	        	}
 	        }
 		}

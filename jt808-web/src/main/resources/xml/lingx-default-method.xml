@@ -230,61 +230,10 @@
     	</property>
     </bean>
     <!-- Excel导出方法 -->
-    <bean id="import" class="com.lingx.core.model.impl.DefaultMethod">
- 		<property name="visible" value="true"></property>
- 		<property name="code" value="import"></property>
-		<property name="name" value="导入"></property>
-		<property name="prompt" value="Excel文件的第一行为模型属性，第二行开始为数据；只读取Sheet1。"></property>
-		<property name="type" value="JSON"></property>
-		<property name="iconCls" value="Tablego"></property>
-		<property name="validation" value="false"></property>
-		<property name="currentRow" value="false"></property>
-		<property name="viewUri" value="lingx/template/edit.jsp"></property>
-		<property name="executors" ref="importExecutors"></property>
-		<property name="fields" ref="importFieldsNode"></property>
-	</bean>
-	<bean id="importFieldsNode" class="com.lingx.core.model.impl.DefaultNode">
-		<constructor-arg>
-			<value>属性</value>
-		</constructor-arg>
-		<property name="list">
-			<list>
-				<bean class="com.lingx.core.model.impl.DefaultField">
- 					<property name="code" value="file"></property>
-					<property name="name" value="文件"></property>
-					<property name="isNotNull" value="true"></property>
-					<property name="inputType" value="file"></property>
-					<property name="inputOptions" value="URL"></property>
-				</bean>
-				<bean class="com.lingx.core.model.impl.DefaultField">
- 					<property name="code" value="type"></property>
-					<property name="name" value="操作"></property>
-					<property name="isNotNull" value="true"></property>
-					<property name="inputType" value="radio"></property>
-					<property name="inputOptions" value="CZLX"></property>
-					<property name="refEntity" value="tlingx_optionitem"></property>
-					<property name="defaultValue" value="add"></property>
-				</bean>
-			</list>
-		</property>
-	</bean>
-	<bean id="importExecutors" class="com.lingx.core.model.impl.DefaultNode">
-		<constructor-arg>
-			<value>列表展示执行器</value>
-		</constructor-arg>
-		<property name="list">
-			<list>
-				<ref bean="importExecutor"/>
-			</list>
-		</property>
-	</bean>
-	<bean id="importExecutor" class="com.lingx.support.method.executor.ImportExecutor">
-    </bean>
  	<bean id="excel" class="com.lingx.core.model.impl.DefaultMethod">
  		<property name="visible" value="true"></property>
  		<property name="code" value="excel"></property>
 		<property name="name" value="导出"></property>
-		<property name="winStyle" value="readonly"></property>
 		<property name="type" value="JSON"></property>
 		<property name="iconCls" value="Pageexcel"></property>
 		<property name="validation" value="false"></property>
@@ -314,6 +263,7 @@
 	</bean>
 	
 	<bean id="getExecutor" class="com.lingx.support.method.executor.GetExecutor">
+    	
     </bean>
     <bean id="getNode" class="com.lingx.core.model.impl.DefaultNode">
 		<constructor-arg>

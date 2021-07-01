@@ -49,7 +49,7 @@ Ext.onReady(function(){
 	         },
 	     },
 	     root: {
-	         text: '数据视图',
+	         text: '数据表',
 	         id: '00',
 	         expanded: true
 	    },
@@ -63,7 +63,7 @@ Ext.onReady(function(){
 			id:'tree',
 			border:false,
 			store: store,
-			xtype:"treepanel"
+			xtype:"tree"
 		}
 		       
 		       ]

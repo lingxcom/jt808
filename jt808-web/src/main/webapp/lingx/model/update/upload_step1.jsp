@@ -147,7 +147,7 @@ function next(){
 
 }
 
-function download(){
+function download1(){
 	if(!confirm("确认是否打包并下载到本地吗？"))return;
 	var entityids="",files="",sqltext,remark,type,reboot,isdata;
 	/* var temp1=$("#list1").find("span");
@@ -170,8 +170,7 @@ function download(){
 	}
 	type=2;
 	reboot=$('input[name="sfcq"]:checked').val();
-	var option=$('input[name="option"]:checked').val();
-	var gncd=$('input[name="gncd"]:checked').val();
+	option=1;
 	entityids=$("#entity_value").val();
 	var url=Lingx.urlAddParams(handler,{c:"packAndDownload",
 		appid:$("#appid").val(),
@@ -182,7 +181,6 @@ function download(){
 		type:type,
 		reboot:reboot,
 		isOption:option,
-		gncd:gncd,
 		name:encodeURI(encodeURI($("#name").val())),
 		secret:encodeURI(encodeURI($("#secret").val()))
 		});
@@ -212,7 +210,8 @@ button{padding-left:10px;padding-right:10px;}
 
 <tr><td align="right"><span style="color:red">*</span>更新描述：</td><td><input id="remark" style="width:600px;"></input></td></tr>
 
-<tr  style="display:none;"><td  align="right"><span style="color:red">*</span>选择应用：</td><td><input id="appid" name="appid" value="${SESSION_USER.app.id }" /> </td></tr> 
+<tr><td  align="right"><span style="color:red">*</span>选择应用：</td><td><select id="appid" name="appid"><option value="0">--请选择打包应用--</option>
+</select> </td></tr> 
 <!-- <tr><td width="120" align="right"><span style="color:red">*</span>数据类型：</td><td>
 <input id="id1" type="radio" name="xjlx" value="1" checked/><label for="id1">系统补丁</label>
 <input id="id2" type="radio" name="xjlx" value="2"/><label for="id2">应用更新</label>

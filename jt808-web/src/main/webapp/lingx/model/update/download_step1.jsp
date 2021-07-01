@@ -24,7 +24,7 @@ if(!lingx.isSuperman(request))return;
 <%@ include file="/lingx/include/include_JavaScriptAndCss2.jsp"%> 
 <script type="text/javascript" src="lingx/model/update/pager.js"></script>
 <SCRIPT type="text/javascript">
-var downloadUrl="<%="http://mdd.lingx.com/updatelist" %>"+"?callback=?";
+var downloadUrl="<%="http://www.lingx.com/updatelist" %>"+"?callback=?";
 var handlerJsp="<%=basePath %>lingx/model/update/handler.jsp";
 
 var pager=new Pager({id:"footer",rows:20,callback:reloadGrid});

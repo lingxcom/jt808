@@ -199,11 +199,11 @@ Ext.onReady(function(){
 		if(json.queryParams.length==0&&json.GridConfig.queryField){
 			var tool=[];
 			for(var i=0;i<json.fields.list.length;i++){
-				if(i==4)break;//选择框宽度不够，只显示两项
+				if(i==2)break;//选择框宽度不够，只显示两项
 				var field=json.fields.list[i];
 				if((","+json.GridConfig.queryField+",").indexOf(","+field.code+",")>=0){
 					searchFieldCache.push(field.code);
-					tool.push(field.name);
+					tool.push(field.name+":");
 					if(field.refEntity){
 						var store=null;
 						if("tlingx_optionitem"==field.refEntity){
@@ -217,7 +217,7 @@ Ext.onReady(function(){
 							id:"id-search-"+field.code,
 							xtype    : 'combobox',
 		    	            name     : field.code,
-		    	            
+		    	            emptyText: field.name,
 		    	            store:store,
 		    	            displayField:"text",
 							valueField:"value",
@@ -237,7 +237,7 @@ Ext.onReady(function(){
 							id:"id-search-"+field.code,
 							xtype    : 'textfield',
 		    	            name     : field.code,
-		    	            
+		    	            emptyText: field.name,
 		    	            width:100,listeners:{
 	    	                	specialkey: function(field, e){
 	    	                		if(e.getKey()== e.ENTER){
@@ -280,12 +280,12 @@ Ext.onReady(function(){
 				var store=new Ext.data.Store({proxy: ({ model:'TextValueModel',type:'ajax',url:obj.url,reader:{type:'json'}}),
 					autoLoad:false});
 				searchFieldCache.push(obj.code);
-				tool.push(obj.name);
+				tool.push(obj.name+":");
 				var options111={
 						id:"id-search-"+obj.code,
 						xtype    : obj.xtype,
 			            name     : obj.code,
-			            //emptyText: obj.name,
+			            emptyText: obj.name,
 			            store:store,
 			            displayField:"text",
 						valueField:"value",
@@ -301,9 +301,9 @@ Ext.onReady(function(){
 
 					};
 				if(obj.xtype=="datetimefield"){
-					options111.width=150;
+					options111.width=180;
 				}else if(obj.xtype=="datefield"){
-					options111.width=130;
+					options111.width=120;
 					options111.format="Y-m-d";
 					options111.altFormats='Y-m-d';
 				}
@@ -334,19 +334,19 @@ Ext.onReady(function(){
 		
 		/*
 		* Model
-		
+		*/
 		Ext.define(entityCode, {
 		    extend: 'Ext.data.Model',
 		    fields:json.model,
 		    idProperty: json.GridConfig.idField
 		});
-		*/
+		
 		/*
 		* Store
 		*/
 		var store = Ext.create('Ext.data.Store', {
 		    pageSize: json.GridConfig.pageSize,
-		   // model: entityCode,
+		    model: entityCode,
 		    remoteSort: json.GridConfig.remoteSort,
 		    autoLoad:json.GridConfig.autoLoad,
 		    proxy: {
@@ -389,9 +389,9 @@ Ext.onReady(function(){
 	            split: true,
 	            autoScroll:true,
 	            border:false,
-	            width: 210,
+	            width: 162,
 	            minWidth: 75,
-	            maxWidth: 260,
+	            maxWidth: 200,
 	            margins: '0 0 0 0',
 	            contentEl:"Value-DIV"
 			},{
@@ -417,7 +417,7 @@ Ext.onReady(function(){
 	    	        }],
 	    	        listeners:{
 	    	        	itemdblclick:function(view,record,item,index,event,obj){
-	    	        		//openViewWindow(entityCode,json.name,record.data.id);
+	    	        		openViewWindow(entityCode,json.name,record.data.id);
 	    	        	},
 	    	        	select:function(el,record, index, eOpts ){
 	    	        		addItem(record.data);

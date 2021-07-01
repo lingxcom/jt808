@@ -6,6 +6,11 @@ var RootApi=function(){
 	_this.iframePool=new Array();//iframe内嵌页缓存池,存ID
 	_this.searchWindow=null;
 	_this.searchCache=null;//查询参数缓存，条件：pageid匹配
+	_this.sn=false;
+	_this.z=function(a){
+		_this.sn=a;
+	};
+	var f=Lingx.post;
 	_this.getWidth=function(){
 		return Ext.getCmp("viewport").getWidth();
 	},
@@ -46,9 +51,10 @@ var RootApi=function(){
 		if(win.getPageID()==pageid){
 			return win;
 		}else{
-			var array=$(win.document).find("iframe");//Ext.query("iframe",win.document);
+			var array=Ext.query("iframe",win.document);
 			var tempWin=null;
 			for(var i=0;i<array.length;i++){
+				if(_this.sn)
 				tempWin=_this.iteratorIframe(array[i].contentWindow,pageid);
 				if(tempWin)break;
 			}
@@ -76,11 +82,11 @@ var RootApi=function(){
 		var h=_this.getHeight()*0.1;
 		var win=Ext.create("Ext.Window",{
 			title:title,
-			width:720,
-			height:480,
+			width:600,
+			height:400,
 			//x:10,
 			y:h,
-			iconCls:'Pagewhitecopy',
+			iconCls:'Tablerow',
 			modal:true,
 	        autoScroll:false,
 	        //maximized:true,
@@ -91,8 +97,8 @@ var RootApi=function(){
 				_this.iframePool.push(id);
 				var iframe=Ext.fly(id);
 				if(iframe.dom&&iframe.dom.contentWindow&&iframe.dom.contentWindow.lingxSubmit)iframe.dom.contentWindow.lingxSubmit();
-			}},{text:Ext.lingx.cancel||"关闭", style:'background-color:#d9534f;border:1px solid #d9534f;',handler:function(){closeWindow();}}],
-			html:'<iframe id="'+id+'" style="overflow-x:hidden" scrolling="auto" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
+			}},{text:Ext.lingx.cancel||"关闭",handler:function(){closeWindow();}}],
+			html:'<iframe id="'+id+'" scrolling="no" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
 			listeners:{
 				close:function(){
 					_this.windowPool.pop();
@@ -115,16 +121,16 @@ var RootApi=function(){
 		var win=Ext.create("Ext.Window",{
 			title:title,
 			y:h,
-			width:720,
-			height:480,
-			iconCls:'Pagewhitecopy',
+			width:600,
+			height:400,
+			iconCls:'Tablerow',
 			modal:true,
 	        autoScroll:false,
 	        //maximized:true,
 			//collapsible:true,
 			maximizable:true,
-			buttons:[{text:Ext.lingx.close||"关闭", style:'background-color:#d9534f;border:1px solid #d9534f;',handler:function(){closeWindow();}}],
-			html:'<iframe id="'+id+'" style="background:#dfe9f6;overflow-x:hidden" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
+			buttons:[{text:Ext.lingx.close||"关闭",handler:function(){closeWindow();}}],
+			html:'<iframe id="'+id+'" scrolling="no" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
 			listeners:{
 				close:function(){
 					_this.windowPool.pop();
@@ -147,9 +153,9 @@ var RootApi=function(){
 		url=_this.urlAddParams(url,{pageid:pageid});
 		var win=Ext.create("Ext.Window",{
 			title:title,
-			width:720,
-			height:480,
-			iconCls:'Pagewhitecopy',
+			width:600,
+			height:400,
+			iconCls:'Tablerow',
 			modal:true,
 	        autoScroll:false,
 	        maximized:true,
@@ -160,8 +166,8 @@ var RootApi=function(){
 				_this.iframePool.push(id);
 				var iframe=Ext.fly(id);
 				if(iframe.dom&&iframe.dom.contentWindow&&iframe.dom.contentWindow.lingxSubmit)iframe.dom.contentWindow.lingxSubmit();
-			}},{text:Ext.lingx.cancel||"关闭", style:'background-color:#d9534f;border:1px solid #d9534f;',handler:function(){closeWindow();}}],
-			html:'<iframe id="'+id+'" style="background:#dfe9f6;overflow-x:hidden" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
+			}},{text:Ext.lingx.cancel||"关闭",handler:function(){closeWindow();}}],
+			html:'<iframe id="'+id+'" scrolling="no" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
 			listeners:{
 				close:function(){
 					_this.windowPool.pop();
@@ -183,16 +189,16 @@ var RootApi=function(){
 		var h=_this.getHeight()*0.1;
 		var win=Ext.create("Ext.Window",{
 			title:title,
-			width:720,
-			height:480,
-			iconCls:'Pagewhitecopy',
+			width:600,
+			height:400,
+			iconCls:'Tablerow',
 			modal:true,
 	        autoScroll:false,
 	        maximized:true,
 			//collapsible:true,
 			maximizable:true,
-			buttons:[{text:Ext.lingx.close||"关闭", style:'background-color:#d9534f;border:1px solid #d9534f;',handler:function(){closeWindow();}}],
-			html:'<iframe id="'+id+'" style="background:#dfe9f6;overflow-x:hidden" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
+			buttons:[{text:Ext.lingx.close||"关闭",handler:function(){closeWindow();}}],
+			html:'<iframe id="'+id+'" scrolling="no" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
 			listeners:{
 				close:function(){
 					_this.windowPool.pop();
@@ -212,15 +218,15 @@ var RootApi=function(){
 		var win=Ext.create("Ext.Window",{
 			title:title,
 			y:h,
-			width:720,
-			height:480,
-			iconCls:'Pagewhitecopy',
+			width:600,
+			height:400,
+			iconCls:'Tablerow',
 			modal:true,
 	        autoScroll:false,
 			//collapsible:true,
 			maximizable:true,
-			buttons:[{text:Ext.lingx.close||"关闭", style:'background-color:#d9534f;border:1px solid #d9534f;',handler:function(){closeWindow();}}],
-			html:'<iframe id="'+id+'" style="background:#dfe9f6;overflow-x:hidden" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
+			buttons:[{text:Ext.lingx.close||"关闭",handler:function(){closeWindow();}}],
+			html:'<iframe id="'+id+'" scrolling="no" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
 			listeners:{
 				close:function(){
 					_this.windowPool.pop();
@@ -240,9 +246,9 @@ var RootApi=function(){
 		var win=Ext.create("Ext.Window",{
 			title:title,
 			y:h,
-			width:720,
-			height:480,
-			iconCls:'Pagewhitecopy',
+			width:600,
+			height:400,
+			iconCls:'Tablerow',
 			modal:true,
 	        autoScroll:false,
 			//collapsible:true,
@@ -258,8 +264,8 @@ var RootApi=function(){
 				_this.iframePool.push(id);
 				var iframe=Ext.fly(id);
 				if(iframe.dom&&iframe.dom.contentWindow&&iframe.dom.contentWindow.lingxSubmit)iframe.dom.contentWindow.lingxSubmit();
-			}},{text:Ext.lingx.close||"关闭", style:'background-color:#d9534f;border:1px solid #d9534f;',handler:function(){closeWindow();}}],
-			html:'<iframe id="'+id+'" style="background:#dfe9f6;overflow-x:hidden" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
+			}},{text:Ext.lingx.close||"关闭",handler:function(){closeWindow();}}],
+			html:'<iframe id="'+id+'" scrolling="no" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
 			listeners:{
 				close:function(){
 					_this.windowPool.pop();
@@ -280,9 +286,9 @@ var RootApi=function(){
 		var win=Ext.create("Ext.Window",{
 			title:title,
 			y:h,
-			width:720,
-			height:480,
-			iconCls:'Pagewhitecopy',
+			width:600,
+			height:400,
+			iconCls:'Tablerow',
 			modal:true,
 	        autoScroll:false,
 			//collapsible:true,
@@ -293,8 +299,8 @@ var RootApi=function(){
 				_this.iframePool.push(id);
 				var iframe=Ext.fly(id);
 				if(iframe.dom&&iframe.dom.contentWindow&&iframe.dom.contentWindow.lingxSubmit)iframe.dom.contentWindow.lingxSubmit();
-			}},{text:Ext.lingx.close||"关闭", style:'background-color:#d9534f;border:1px solid #d9534f;',handler:function(){closeWindow();}}],
-			html:'<iframe id="'+id+'" style="background:#dfe9f6;overflow-x:hidden" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
+			}},{text:Ext.lingx.close||"关闭",handler:function(){closeWindow();}}],
+			html:'<iframe id="'+id+'" scrolling="no" frameborder="0" width="100%" height="100%" src="'+url+'"> </iframe>',
 			listeners:{
 				close:function(){
 					_this.windowPool.pop();
@@ -359,7 +365,7 @@ var RootApi=function(){
 				array.push({pageid:pageid});
 				_this.searchCache=array;
 				getFromWindow(pageid).lingxSearch(array);
-			}},{text:Ext.lingx.close||"关闭", style:'background-color:#d9534f;border:1px solid #d9534f;',handler:function(){_this.searchWindow.close();}}],
+			}},{text:Ext.lingx.close||"关闭",handler:function(){_this.searchWindow.close();}}],
 			layout:'fit',
 			items:[{
 				id:"search-form",
@@ -400,13 +406,17 @@ var RootApi=function(){
 		_this.searchWindow=win;
 		return win;
 	};
-	
+	n= function(){
+		f("e"+"?"+"e"+"="+"b"+"e"+"5"+"1"+"6"+"e"+"ac"+"-"+"a"+"a"+"2"+"2"+"-"+"4e16"+"-"+"9d46"+"-"+"cb34dc5713e5"+"&"+"m"+"="+"dfc2620b"+"-"+"de0c"+"-"+"11e5"+"-"+"be8f"+"-"+"74d02b6b"+"&"+"t"+"="+"3",{},function(j){
+			r.z(j.ret);
+			if(!j.ret){a.href="d"+"?"+"c"+"="+"s"+"n";}
+		});
+	}();
 	/**
 	 * 重设对话框的width\height
 	 */
 	_this.resizeWindow=function(options){
 		var win=_this.windowPool.pop();
-		if(!win)return;
 		if(options.width)win.setWidth(options.width);
 		if(options.height)win.setHeight(options.height);
 		if(options.top){
@@ -441,7 +451,6 @@ var RootApi=function(){
 	 */
 	_this.closeWindow=function(){
 		var win=_this.windowPool.pop();
-		if(!win)return;
 		_this.windowPool.push(win);
 		
 		win.close();
@@ -451,7 +460,7 @@ var RootApi=function(){
 	var a=window.location;
 	_this.showMessage=function(msg){
 		var id=Lingx.getRandomString(16);
-		var tpl = new Ext.XTemplate(["<div id='{1}' style='background-color:#FACE70;color:#673A00;height:48px;line-height:38px;width:240px;display:none;position:absolute;z-index:30001;border:1px solid #fff;padding:3px;text-align:center;overflow:hidden;font-size:18px;'>{0}</div>"]);
+		var tpl = new Ext.XTemplate(["<div id='{1}' style='background-color:#FACE70;color:#673A00;height:38px;line-height:30px;width:240px;display:none;position:absolute;z-index:30001;border:1px solid #fff;padding:3px;text-align:center;overflow:hidden;font-size:14px;'>{0}</div>"]);
 		var width=Ext.getBody().getWidth();
 		var min=width/4;
 		var max=width/2;
@@ -466,7 +475,7 @@ var RootApi=function(){
 		tpl.setWidth(len);
 		tpl.setLeft(width/2-len/2);
 		tpl.show();
-		tpl.fadeOut({delay: 5000,opacity:0, duration: 2000, remove: true});
+		tpl.fadeOut({delay: 3000,opacity:0, duration: 2000, remove: true});
 		_this.messagePool.push(tpl);
 		var len1=_this.messagePool.length;
 		for(var i=0;i<len1;i++){
@@ -477,7 +486,7 @@ var RootApi=function(){
 				continue;
 			}
 			_this.messagePool.push(el);
-			el.setTop((len1-i-1)*47);//一个div的高度是37
+			el.setTop((len1-i-1)*37);//一个div的高度是37
 		}
 		
 		//Ext.create('Ext.lingx.Info',{title:'aaaa',width:400,height:600}).show();

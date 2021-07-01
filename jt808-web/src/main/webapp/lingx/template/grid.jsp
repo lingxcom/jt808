@@ -16,7 +16,7 @@
 <title>实体列表</title>
 
 <%@ include file="/lingx/include/include_JavaScriptAndCss.jsp"%> 
-<script type="text/javascript" src="lingx/js/template/grid.js?1234"></script>
+<script type="text/javascript" src="lingx/js/template/grid.js"></script>
 <script type="text/javascript">
 
 var request_params=${REQUEST_PARAMS};
@@ -29,7 +29,6 @@ var params=${_params};
 params=request_params;
 removeDefaultAttribute(params);
 var cmpId='${param.cmpId}';
-var LingxOpertor='${param.LingxOpertor}';
 var textField='id';
 var valueField='id';
 var extParams={};

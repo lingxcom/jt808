@@ -22,7 +22,7 @@ String basePath = request.getScheme() + "://"
 <script type="text/javascript">
 var fromPageId='${param.pageid}';
 $(function(){
-	Lingx.getRootWindow().resizeWindow({height:150+Lingx.PANEL_HEIGHT});
+	Lingx.getRootWindow().resizeWindow({height:120+Lingx.PANEL_HEIGHT});
 	if(store.get("name")){
 		$("#name").val(store.get("name"));
 	}
@@ -41,10 +41,10 @@ padding:10px;
 tr{height:30px;}
 </style>
 </head>
-<body style="background-color:#dfe9f6;">
+<body>
 <table width="100%" border="0" cellSpacing="0" cellPadding="0">
-<tr><td><span style="color:#999">说明：名称是将要对某个事物管理的名称，例如：客户、通讯录、商品。</span> </td></tr>
-<tr><td><span style="color:red;">*</span>模型名称：<input id="name" /></td></tr>
+<tr><td><span style="color:#999">说明：对象名称是将要对某个事物管理的名称，例如：客户、通讯录、商品。</span> </td></tr>
+<tr><td><span style="color:red;">*</span>对象名称：<input id="name" /></td></tr>
 
 <tr><td><span style="color:#999"> 点击“确定”进入下一步。</span> </td></tr>
 </table>
