@@ -1,6 +1,7 @@
 
 ![](https://www.lingx.com/wp-content/uploads/2021/07/QQ图片20210701174626.png)
 > 流媒体服务源码引用于 https://gitee.com/matrixy/jtt1078-video-server，这里只是为了部署方便，代码基本不动
+
 > 需要功能定制或分布式JT808，联系QQ：283853318，微信或电话:15060620800
 
 > 该项目由商业版简化而来，所以是成熟代码，放心使用；商业版地址：http://gps.lingx.com
