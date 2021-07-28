@@ -7,7 +7,7 @@ public String getLanguage(HttpSession session){
 }
 %>
 <%
-String jt1078Ip="192.168.0.104";
+String jt1078Ip="127.0.0.1";
 String cmd=request.getParameter("c");
 ApplicationContext spring = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getSession().getServletContext());
 JdbcTemplate jdbc=spring.getBean(JdbcTemplate.class);

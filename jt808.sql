@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50561
 File Encoding         : 65001
 
-Date: 2021-07-01 17:44:39
+Date: 2021-07-16 14:44:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -2033,7 +2033,7 @@ CREATE TABLE `tlingx_login_log` (
   `message` varchar(64) NOT NULL COMMENT '状态',
   `ts` char(14) NOT NULL DEFAULT '' COMMENT '时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tlingx_login_log
@@ -2156,6 +2156,8 @@ INSERT INTO `tlingx_login_log` VALUES ('189', 'admin', '127.0.0.1', '登录成�
 INSERT INTO `tlingx_login_log` VALUES ('190', 'admin', '127.0.0.1', '登录成功', '20210629110632');
 INSERT INTO `tlingx_login_log` VALUES ('191', 'admin', '127.0.0.1', '登录成功', '20210629173718');
 INSERT INTO `tlingx_login_log` VALUES ('192', 'admin', '127.0.0.1', '登录成功', '20210701172910');
+INSERT INTO `tlingx_login_log` VALUES ('193', 'admin', '127.0.0.1', '登录成功', '20210701174520');
+INSERT INTO `tlingx_login_log` VALUES ('194', 'admin', '127.0.0.1', '登录成功', '20210716140111');
 
 -- ----------------------------
 -- Table structure for `tlingx_menu`
@@ -3702,7 +3704,7 @@ CREATE TABLE `tlingx_user` (
 -- Records of tlingx_user
 -- ----------------------------
 INSERT INTO `tlingx_user` VALUES ('292329cf-554b-4617-8561-96a28605f5a1', 'test', '测试人员', 'b2a57308b03a503770a5d1a16964209f098f6bcd4621d373cade4e832627b4f6', '1', '', '', '78', '20170519105007', '127.0.0.1', '20151028175142', '20210629110410', '75815f60-c5a2-413e-9a67-c0a5bc8b7660', '335ec1fc-1011-11e5-b7ab-74d02b6b5f61', '', '100', '');
-INSERT INTO `tlingx_user` VALUES ('43b2f84b-6e2d-4c4a-87d6-ab67e8c883ae', 'admin', '超级管理员', '192b45b6b670e75212cd4e54e9da92d621232f297a57a5a743894a0e4a801fc3', '1', '', '', '1457', '20210701172910', '127.0.0.1', '20150425121212', '20210629105003', '6689ae6a-140f-11e5-b650-74d02b6b5f61', '335ec1fc-1011-11e5-b7ab-74d02b6b5f61', '53f139e187e60f8376343990737b8fec', '1', '');
+INSERT INTO `tlingx_user` VALUES ('43b2f84b-6e2d-4c4a-87d6-ab67e8c883ae', 'admin', '超级管理员', '192b45b6b670e75212cd4e54e9da92d621232f297a57a5a743894a0e4a801fc3', '1', '', '', '1459', '20210716140110', '127.0.0.1', '20150425121212', '20210629105003', '6689ae6a-140f-11e5-b650-74d02b6b5f61', '335ec1fc-1011-11e5-b7ab-74d02b6b5f61', '53f139e187e60f8376343990737b8fec', '1', '');
 
 -- ----------------------------
 -- Table structure for `tlingx_userfunc`

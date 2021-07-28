@@ -1,7 +1,7 @@
 
 ![](https://www.lingx.com/wp-content/uploads/2021/07/QQ图片20210701174626.png)
 
-> 需要功能定制或分布式JT808，联系QQ：283853318，微信或电话:15060620800
+> 需要功能定制或分布式JT808，联系QQ：283853318
 
 > 该项目由商业版简化而来，所以是成熟代码，放心使用；商业版地址：http://gps.lingx.com
 
@@ -11,7 +11,7 @@
 链接：https://pan.baidu.com/s/19rT2zS3EecXkYnNfGAKO6g 
 
 提取码：mowk
-> 限windows 64 bit
+> 该压缩包含：jt808网关、jt1078网关、web后台、mysql数据库；一键启动，立刻享用。限windows 64 bit，启动如有问题可以免费咨询:283853318
 
 ## 项目介绍
  - 项目主要用于个人学习使用，商业使用请购买商业版
