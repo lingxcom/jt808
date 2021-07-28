@@ -6,6 +6,12 @@
 > 该项目由商业版简化而来，所以是成熟代码，放心使用；商业版地址：http://gps.lingx.com
 
 > 流媒体服务源码引用于 https://gitee.com/matrixy/jtt1078-video-server ；这里只是为方便整合，商业版流媒体服务虽然也是Java开发，设计思路不一样
+## 一键启动版
+
+链接：https://pan.baidu.com/s/19rT2zS3EecXkYnNfGAKO6g 
+
+提取码：mowk
+> 限windows 64 bit
 
 ## 项目介绍
  - 项目主要用于个人学习使用，商业使用请购买商业版
