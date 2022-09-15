@@ -7,10 +7,9 @@
 
 > 流媒体服务源码引用于 https://gitee.com/matrixy/jtt1078-video-server ；这里只是为方便整合，商业版流媒体服务虽然也是Java开发，设计思路不一样
 ## 一键启动版
+https://pan.baidu.com/s/1PHMrDN5a0vo_swODDq-xxg
+gshn
 
-链接：https://pan.baidu.com/s/19rT2zS3EecXkYnNfGAKO6g 
-
-提取码：mowk
 > 该压缩包含：jt808网关、jt1078网关、web后台、mysql数据库；一键启动，立刻享用。限windows 64 bit，启动如有问题可以免费咨询:283853318
 
 ## 项目介绍
