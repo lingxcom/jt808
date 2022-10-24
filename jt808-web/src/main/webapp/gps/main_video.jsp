@@ -162,13 +162,16 @@ function FLVPlayer(opts)
  function playVideo()
  {	var tdh= $('#tdh').val()
 	 lgxInfo("正在下发播放指令，请稍等...");
-	 $.post("gps/handler.jsp",{c:"send9101",tid:tid,tdh:tdh},function(json){},"json");
-     window.videoPlayer = new FLVPlayer({
-         container : $('#video'),
-         url : 'http://127.0.0.1:3333/video/'+tid+"-" + tdh,
-         autoFastForward : false
-     });
-     window.videoPlayer.play();
+	 $.post("gps/handler.jsp",{c:"send9101",tid:tid,tdh:tdh},function(json){
+		 window.videoPlayer = new FLVPlayer({
+	         container : $('#video'),
+	         url : json.pull_address+"?jt1078=1&deviceId="+tid+"&channel="+tdh,
+	         autoFastForward : false
+	     });
+	     window.videoPlayer.play();
+		 
+	 },"json");
+     
  }
  function stopVideo(){
 	 var player=window.videoPlayer;

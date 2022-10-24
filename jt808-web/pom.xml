@@ -14,13 +14,7 @@
 		<maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
 		<org.springframework.version>5.2.6.RELEASE</org.springframework.version>
 	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>com.lingx</groupId>
-			<artifactId>jt808-server</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-	</dependencies>
+
 	<!-- 国内阿里云maven仓库 -->
 	<repositories>
 		<repository>

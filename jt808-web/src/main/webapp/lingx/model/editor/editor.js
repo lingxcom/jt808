@@ -1,4 +1,4 @@
-	var currentEntityCode='';
+﻿	var currentEntityCode='';
 	var currentEntityId='';
 	var currentScriptId='';
 	var extParams={};

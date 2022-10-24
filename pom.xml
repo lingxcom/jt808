@@ -6,8 +6,6 @@
   <packaging>pom</packaging>
   <name>jt808</name>
   <modules>
-  	<module>jt808-server</module>
   	<module>jt808-web</module>
-  	<module>jt1078-server</module>
   </modules>
 </project>
