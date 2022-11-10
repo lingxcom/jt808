@@ -12,7 +12,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
-		<org.springframework.version>5.2.6.RELEASE</org.springframework.version>
+		<org.springframework.version>3.2.13.RELEASE</org.springframework.version>
 	</properties>
 
   <dependencies>

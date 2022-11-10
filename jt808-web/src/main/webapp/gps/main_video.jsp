@@ -165,7 +165,7 @@ function FLVPlayer(opts)
 	 $.post("gps/handler.jsp",{c:"send9101",tid:tid,tdh:tdh},function(json){
 		 window.videoPlayer = new FLVPlayer({
 	         container : $('#video'),
-	         url : json.pull_address+"?jt1078=1&deviceId="+tid+"&channel="+tdh,
+	         url : json.pull_address,
 	         autoFastForward : false
 	     });
 	     window.videoPlayer.play();
