@@ -2,10 +2,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.lingx</groupId>
   <artifactId>jt808</artifactId>
-  <version>1.0.0</version>
+  <version>3.0.0</version>
   <packaging>pom</packaging>
   <name>jt808</name>
   <modules>
-  	<module>jt808-web</module>
+    <module>jt808-server</module>
+    <module>jt808-html</module>
   </modules>
 </project>
