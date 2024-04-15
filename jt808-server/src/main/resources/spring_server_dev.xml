@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+	 http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+	 http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	 http://www.springframework.org/schema/task
+	 http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+	<import resource="classpath*:xml_server_dev/lingx-*.xml"/>
+	<!--注解扫描 -->
+	<context:component-scan base-package="com.lingx" name-generator="com.lingx.web.core.MyAnnotationBeanNameGenerator"/>
+	<!-- 启用AOP注解功能 ：该功能慎重开启
+	<aop:aspectj-autoproxy/>  -->
+	<!-- 启用调度注解功能  -->
+	<task:annotation-driven />  
+	<bean id="configs"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath:config_server_dev/*.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+		<property name="properties" ref="configs" />
+	</bean>
+</beans>
