@@ -2,13 +2,15 @@
 
 ![index](QQ20240415154120.png "index.png")
 <p>
-    <img src="https://img.shields.io/badge/JDK-1.8+-green.svg"/>
     <img src="https://img.shields.io/badge/License-Apache 2.0-green.svg"/>
     <img src="https://img.shields.io/badge/platform-linux%20|%20macos%20|%20windows-blue.svg" />
     <img src="https://img.shields.io/badge/QQ-283853318-blue"/>
 </p>
 基于部标JT808标准实现的开箱即用的车载监控平台，负责实现核心信令与设备管理后台部分，支持海康、大华、锐明、通立等品牌的终端设备接入。
 
+> 引入H2数据库原本是为了方便，不需要额外安装与配置MySQL，没想到带来是不便。所以另外创建仓库,数据库为MySQL8.0，提供GUI界面方便操作：https://gitee.com/lingxcom/tracbds
+> 引入H2数据库原本是为了方便，不需要额外安装与配置MySQL，没想到带来是不便。所以另外创建仓库,数据库为MySQL8.0，提供GUI界面方便操作：https://gitee.com/lingxcom/tracbds
+> 引入H2数据库原本是为了方便，不需要额外安装与配置MySQL，没想到带来是不便。所以另外创建仓库,数据库为MySQL8.0，提供GUI界面方便操作：https://gitee.com/lingxcom/tracbds
 
 # 项目介绍
 * 基于Netty4.1，实现JT808协议、JT1078协议、苏标、粤标、HTTP的消息处理。
