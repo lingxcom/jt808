@@ -36,8 +36,8 @@ BDS: BeiDou Navigation Satellite System.
 数据库是采用MySQL8.0，下载地址：https://www.mysql.com/downloads/
 
 ## 代码仓库
-* Gitee仓库地址：[https://gitee.com/lingxcom/tracbds](https://gitee.com/lingxcom/tracbds)
-* Github仓库地址：[https://github.com/lingxcom/tracbds](https://github.com/lingxcom/tracbds)
+* Gitee仓库地址：[https://gitee.com/lingxcom/jt808](https://gitee.com/lingxcom/jt808)
+* Github仓库地址：[https://github.com/lingxcom/jt808](https://github.com/lingxcom/jt808)
 
 ## 免费版与商业版区别
 
@@ -64,11 +64,6 @@ BDS: BeiDou Navigation Satellite System.
 | 主动安全-BSD |-|✔| -          |
 | 主动安全-TPMS |-|✔| -          |
 
-## 商业版-支持视频、语音、对讲、二次开发
-安装包下载（包含安装说明）
-https://pan.baidu.com/s/1zUx8qCiROYQc4G_HnjRquw?pwd=z22s
-
-商业版可以申请免费KEY（三个月时效）。
 ## 商业版演示地址
 http://gps.lingx.com/
 
