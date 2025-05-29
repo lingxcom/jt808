@@ -1,0 +1,240 @@
+#默认
+添加=Add
+修改=Edit
+删除=Delete
+名称=Name
+导出=Excel
+导入=Input
+
+#菜单
+系统设置=Setting
+系统管理=System
+用户管理=User
+角色管理=Role
+菜单管理=Menu
+操作日志=Operation Log
+登录日志=Login log
+位置监控=Location
+实时定位=Realtime monitoring
+视频监控=Video
+主动安全=Security
+设备管理=Device
+添加设备=Add Device
+设备列表=Device List
+设备授权=Device Auth
+
+电子围栏=Fence
+统计报表=Report
+分组监控=Group monitoring
+轨迹回放=History
+轨迹回放1=History1
+轨迹回放2=History2
+多车轨迹=History3
+轨迹回放(多个)=History(multiple)
+轨迹回放(抽稀)=History(dilution)
+告警记录=Alarm
+指令记录=Command
+拍照记录=Photos
+事件记录=Event
+实时视频=Realtime Video
+历史视频=History Video
+
+
+管理中心=Management
+状态管理=Status Management
+规则管理=Rule Management
+动作管理=Action Management
+围栏管理=Fence
+
+离线统计=Offline Report
+里程统计(天)=Mileage Report(Day)
+里程统计(月)=Mileage Report(Month)
+报警统计=Alarm Report
+油量图表=Oil Charts
+
+
+#模型
+状态解析器=State parser
+SIM卡管理=SIM Card
+车牌号=Vehicle No
+SIM卡号=SIM
+套餐=Type
+费用=Fee
+生效日期=Start Time
+失效日期=End Time
+到期日期=End Time
+提前提醒=Remind
+备注=Remark
+
+隶属分组=Group
+分组名称=Group Name
+批量处理=Batch Add
+隶属车辆=Vehicle
+车辆摄像头=Camera
+标识=Tag
+通道号=Number
+分组管理=Group
+添加子节点=Add Node
+
+设备名称=Name
+告警类型=Alarm
+定位时间=Located
+时速km/h=Speed(km/h)
+持续时间(秒)=Duration(s)
+经度=Longitude
+纬度=Latitude
+系统时间=Update
+地址=Address
+
+设备号=Device ID
+SIM号码=SIM
+是否在线=Online
+用户姓名=User
+手机号码=Tel
+最后定位时间=Located
+创建时间=Created
+修改时间=Modify
+批量删除=Batch Del
+刷新=Refresh
+
+账号=Account
+电话=Tel
+电子邮箱=Email
+登录次数=Login Count
+最后登录时间=Last Login Time
+最后登录IP=Last Login IP
+用户角色=Role
+用户=User
+角色=Role
+组织=Org
+功能=Func
+类型=Type
+添加子账号=Add Account
+重置密码=Reset Password
+重置账号=Reset Account
+旧账号=Old Account
+新账号=New Account
+新密码=New Password
+登录账号=Account
+姓名=Name
+状态=State
+隶属用户=Created
+序号=Order
+操作=Operat
+菜单授权=Menu
+功能授权=Func
+接口授权=Api
+代码=Code
+上级=Parent
+展开=Expand
+操作者=Account
+详情=Info
+操作时间=Operate
+耗时msg=Time
+请求报文=Req
+回复报文=Res
+起始时间=Start Time
+截止时间=End Time
+正常=Enable
+禁用=Disable
+关闭=Close
+图标=Icon
+设备=Device
+分组=Group
+默认=Default
+汽车=Car
+飞行器=Aircraft
+卡车=Truck
+
+规则名称=Name
+规则模板=Rule
+绑定设备=Device
+执行动作=Action
+动作名称=Name
+动作模板=Action
+实现类=Class
+参数=Param
+状态模板=Status
+超速阀值=Speed limit
+触发方式=Trigger Mode
+出围栏=Out fence
+进围栏=Enter fence
+进出围栏=Enter/Out fence
+
+设备号|设备名称=Device ID|Name
+开始时间=Start Time
+结束时间=End Time
+地图展示=Map View
+地图类型=Map Type
+中文名称=Name1
+英文名称=Name2
+
+指令设置=Command
+指令=Command
+指令名称=Name
+是=YES
+否=NO
+
+分组授权=Group
+指令授权=Cmd Auth
+天=Day
+小时=H
+分=M
+秒=S
+1秒=1S
+静止=Parking
+停止=Parking
+行驶=Drive
+在线=Online
+离线=Offline
+里程=Mileage(km)
+
+平台到期=Expire
+
+天后到期=Day Expires
+定位=Locate
+未定位=Not locate
+紧急报警=SOS Alarm
+超速报警=Speed Alarm
+疲劳报警=Fatigue Alarm
+耗时ms=Time(ms)
+时间=Time
+添加根节点=Add Root
+
+密码=Password
+旧密码=Old Password
+密码确认=Password Confirm
+
+点名=Locate
+拍照=Take Photos
+下发文本=Send Text
+标志=Param
+文本信息=Text
+紧急=Urgent
+终端显示器显示=Device dispay
+终端TTS播读=TTS 
+广告屏显示=Ad screen display
+摄像头通道=Camera channel
+
+操作成功=Success
+操作失败=Fail
+
+终端设备无回复=No response from device
+终端设备不在线=Device is not online
+
+登录成功=Login succeeded
+Token登录成功=Token login succeeded
+账号或密码错误=Account or password error
+
+登录失败，IP不在白名单之内=Login failed, IP is not on the whitelist
+登录失败，参数不可为空=Login failed, parameter cannot be empty
+登录次数过多，锁定账号10分钟=Too many logins, locked account for 10 minutes
+登录失败，账号或密码错误=Login failed, incorrect account or password
+登录失败，用户禁止登录=Login failed, login prohibited
+登录失败，账号或密码错误。超过20次将被锁定=Login failed, incorrect account or password. More than 20 times will be locked
+
+点击“提交”执行操作=Click 'Submit' to perform the operation
+
+不可为空=cannot be empty
+{}参数无效，须唯一不能重复={} parameter is invalid, cannot be repeated
+{}参数无效={} parameter is invalid
