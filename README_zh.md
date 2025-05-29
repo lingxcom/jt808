@@ -13,7 +13,8 @@ BDS: BeiDou Navigation Satellite System.
 ## 项目介绍
 * 该项目是由商业版简化，保持了商业版的稳定性与可扩展性。
 * 基于Netty4.1，实现JT808协议的上行消息与下行消息。
-* 提供绿色完整部署包，连接数据库便可使用。 [下载一键启动版](https://gitee.com/lingxcom/tracbds/releases/download/1.0/tracbds-exe.zip)
+* 前端代码不开源，但已包含前端部署包。
+* 提供绿色完整部署包，连接数据库便可使用。 [下载一键启动版](https://gitee.com/lingxcom/jt808/releases/download/1.0/tracbds-exe.zip)
 
 ## 主要特性
 * 高并发、高稳定性，8核16G单网关支持高达13.6万终端接入，连续压测3天以上。
