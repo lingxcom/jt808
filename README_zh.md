@@ -116,7 +116,7 @@ https://tracbds.lingx.com
 
 ## License
 ```
-Copyright (C) 2021 magicxqq. All Rights Reserved.
+Apache License, Version 2.0
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
