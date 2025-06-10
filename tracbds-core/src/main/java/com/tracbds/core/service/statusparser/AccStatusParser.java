@@ -12,7 +12,7 @@ public class AccStatusParser implements IJT808StatusParser{
 	public String parse(Map<String, Object> map0x0200, List<AttachedBean0x0200> listAttached) {
 		if(map0x0200.containsKey("status")) {
 			long status=Long.parseLong(map0x0200.get("status").toString());
-			return (status&0b01)>0?"ACC ON":"ACC OFF";//"点火":"熄火"
+			return (status&0b01)>0?"点火":"熄火";//"点火":"熄火""ACC ON":"ACC OFF"
 		}
 		return null;
 	}

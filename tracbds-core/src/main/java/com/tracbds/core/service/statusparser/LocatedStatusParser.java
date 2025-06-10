@@ -12,7 +12,7 @@ public class LocatedStatusParser implements IJT808StatusParser{
 	public String parse(Map<String, Object> map0x0200, List<AttachedBean0x0200> listAttached) {
 		if(map0x0200.containsKey("status")) {
 			long status=Long.parseLong(map0x0200.get("status").toString());
-			return (status&0b10)>0?"Positioned":"Not positioned";//Positioned, not positioned
+			return (status&0b10)>0?"定位":"未定位";//Positioned, Not positioned
 		}
 		return null;
 	}

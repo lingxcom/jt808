@@ -59,7 +59,7 @@ public class JT808Handler extends SimpleChannelInboundHandler<byte[]> {
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, byte[] msg) throws Exception {
 		// System.out.println(Utils.bytesToHex(msg));
-		
+		log.info(Utils.bytesToHex(msg));
 		ByteBuf content = null;
 		MyByteBuf buff = null;
 		try {
