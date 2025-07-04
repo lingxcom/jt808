@@ -99,13 +99,12 @@ public class JT808DatabaseTableJob {
 			String dateStr=sdf2.format(date);
 			this.jdbcTemplate.update("delete from tgps_car_alarm where gpstime<?",time);//清除报警记录
 			this.jdbcTemplate.update("delete from tgps_car_cmd where ts<?",time);
-			this.jdbcTemplate.update("delete from tgps_event where ts<?",time);
 
 			date = new Date();
 			date.setDate(date.getDate() - days);
 			 time=sdf.format(date);
 			 dateStr=sdf2.format(date);
-			this.jdbcTemplate.update("delete from tgps_mileage where create_time<?",dateStr);
+			//this.jdbcTemplate.update("delete from tgps_mileage where create_time<?",dateStr);
 			
 			
 			this.jdbcTemplate.update("truncate tlingx_message");

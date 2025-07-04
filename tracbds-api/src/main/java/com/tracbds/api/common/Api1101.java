@@ -79,7 +79,7 @@ public class Api1101  extends AbstractAuthApi{
 		
 		if(Utils.isNotNull(text)){
 			text=text.trim();
-			List<Map<String,Object>> list2=this.jdbcTemplate.queryForList("select id,carno text,id `value`,speed,etime from tgps_car where (carno like '%"+text+"%' or tid like '%"+text+"%' or czxm like '%"+text+"%') and id in(select car_id from tgps_group_car where group_id in (select group_id from tgps_group_user where user_id='"+userid+"')) "+isVideoWhere+" order by online desc,carno  asc");
+			List<Map<String,Object>> list2=this.jdbcTemplate.queryForList("select id,carno text,id `value`,speed,etime from tgps_car where (carno like '%"+text+"%' or tid like '%"+text+"%' or czxm like '%"+text+"%') and id in(select car_id from tgps_group_car where group_id in (select group_id from tgps_group_user where user_id='"+userid+"')) "+isVideoWhere+" order by online desc,gpstime desc");
 			for(Map<String,Object> map:list2){
 				Map<String,Object> cache=commonService.getLast0x0200Data(map.get("id").toString());//cacheService.getCar(map.get("id").toString());
 				int zt=commonService.getJT808Status(cache);
@@ -108,7 +108,7 @@ public class Api1101  extends AbstractAuthApi{
 					map.put("type","group");
 			} 
 			 {//根据分组ID取车辆
-				List<Map<String,Object>> list2=this.jdbcTemplate.queryForList("select id,carno text,id `value`,speed,online,etime from tgps_car where id in(select car_id from tgps_group_car where group_id=?) "+isVideoWhere+" order by online desc,carno asc limit 100",node);
+				List<Map<String,Object>> list2=this.jdbcTemplate.queryForList("select id,carno text,id `value`,speed,online,etime from tgps_car where id in(select car_id from tgps_group_car where group_id=?) "+isVideoWhere+" order by online desc,gpstime desc limit 100",node);
 				for(Map<String,Object> map:list2){
 					Map<String,Object> cache=commonService.getLast0x0200Data(map.get("id").toString());//cacheService.getCar(map.get("id").toString());
 					if(cache==null)continue;

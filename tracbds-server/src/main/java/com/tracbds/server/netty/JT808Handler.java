@@ -59,7 +59,7 @@ public class JT808Handler extends SimpleChannelInboundHandler<byte[]> {
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, byte[] msg) throws Exception {
 		// System.out.println(Utils.bytesToHex(msg));
-		log.info(Utils.bytesToHex(msg));
+		//log.info(Utils.bytesToHex(msg));
 		ByteBuf content = null;
 		MyByteBuf buff = null;
 		try {
@@ -123,7 +123,7 @@ public class JT808Handler extends SimpleChannelInboundHandler<byte[]> {
 					return;
 				} else if (ind == max) {
 					if (IJT808Cache.FB_CACHE.getIfPresent(key) == null) {
-						Thread.currentThread().sleep(100);
+						Thread.currentThread().sleep(10);
 					}
 					if (IJT808Cache.FB_CACHE.getIfPresent(key) == null) {
 						return;
@@ -217,7 +217,7 @@ public class JT808Handler extends SimpleChannelInboundHandler<byte[]> {
 
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable throwable) throws Exception {
-		throwable.printStackTrace();
+		//throwable.printStackTrace();
 		// ctx.close();
 	}
 

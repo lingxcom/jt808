@@ -40,7 +40,7 @@ public class Api1160 extends AbstractAuthApi implements IApi{
 		List<Map<String,Object>> list=this.jdbcTemplate.queryForList("select id,name from tgps_group where id in(select group_id from tgps_group_user where user_id=?) order by CONVERT(name USING gbk) asc",userid);
 		for(Map<String,Object> groupMap:list) {
 			int online=0;
-			List<Map<String,Object>> list2=this.jdbcTemplate.queryForList("select id,carno text from tgps_car where id in(select car_id from tgps_group_car where group_id=?) order by online desc,carno asc",groupMap.get("id"));
+			List<Map<String,Object>> list2=this.jdbcTemplate.queryForList("select id,carno text from tgps_car where id in(select car_id from tgps_group_car where group_id=?) order by online desc,gpstime desc",groupMap.get("id"));
 			for(Map<String,Object> map:list2){
 				Map<String,Object> cache=commonService.getLast0x0200Data(map.get("id").toString());//cacheService.getCar(map.get("id").toString());
 				int zt=commonService.getJT808Status(cache);
