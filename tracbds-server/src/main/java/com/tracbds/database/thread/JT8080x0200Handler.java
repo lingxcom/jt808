@@ -115,7 +115,6 @@ public class JT8080x0200Handler implements Runnable,ILingxThread {
 		Map<String,Set<String>> map=IJT808Cache.REALTIME_TIDS.asMap();
 		for(String key:map.keySet()) {
 			if(map.get(key).contains(tid)) {
-				
 				Channel channel=WebSocketApi1005.WEBSOCKET_SESSIONS.getIfPresent(key);
 				if(channel!=null) {
 					String language=channel.attr(WebSocketApi1005.channel_langugae_key).get();

@@ -45,10 +45,27 @@ public class Api1199 extends AbstractAuthApi implements IApi {
 		String car_id=IApi.getParamString(params, "car_id", "");
 		String stime=IApi.getParamString(params, "stime", "");
 		String etime=IApi.getParamString(params, "etime", "");
+		String type=IApi.getParamString(params, "type", "1");
+		if("1".equals(type)) {//全部
+			String sql="select * from tgps_car_alarm where car_id=? and gpstime>=? and gpstime <=? order by gpstime desc";
+			List<Map<String,Object>> list=this.jdbcTemplate.queryForList(sql,car_id,stime,etime);
+			ret.put("data", list);
+		}else if("2".equals(type)) {//超速
+			String sql="select * from tgps_car_alarm where car_id=? and name in('超速报警','Overspeed ') and gpstime>=? and gpstime <=? order by gpstime desc";
+			List<Map<String,Object>> list=this.jdbcTemplate.queryForList(sql,car_id,stime,etime);
+			ret.put("data", list);
+		}else if("3".equals(type)) {//疲劳
+			String sql="select * from tgps_car_alarm where car_id=? and name in('疲劳驾驶','Fatigue driving') and gpstime>=? and gpstime <=? order by gpstime desc";
+			List<Map<String,Object>> list=this.jdbcTemplate.queryForList(sql,car_id,stime,etime);
+			ret.put("data", list);
+		}else if("4".equals(type)) {//超温报警
+			String sql="select * from tgps_car_alarm where car_id=? and name in('超温报警','Over-temperature') and gpstime>=? and gpstime <=? order by gpstime desc";
+			List<Map<String,Object>> list=this.jdbcTemplate.queryForList(sql,car_id,stime,etime);
+			ret.put("data", list);
+		}else {
+			ret.put("data", new String[] {});
+		}
 		
-		String sql="select * from tgps_car_alarm where car_id=? and gpstime>=? and gpstime <=? order by gpstime desc";
-		List<Map<String,Object>> list=this.jdbcTemplate.queryForList(sql,car_id,stime,etime);
-		ret.put("data", list);
 		return ret;
 
 	}

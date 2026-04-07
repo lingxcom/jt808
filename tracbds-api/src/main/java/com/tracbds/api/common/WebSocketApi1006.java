@@ -39,5 +39,8 @@ public class WebSocketApi1006 extends AbstractAuthApi  implements IApiChannelHan
 		this.ctx=arg0;
 	}
 
+	public boolean isLog() {
+		return false;
+	}
 
 }

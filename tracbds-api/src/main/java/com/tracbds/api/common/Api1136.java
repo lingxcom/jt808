@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.tracbds.core.service.GroupService;
+import com.lingx.utils.TokenUtils;
 import com.lingx.web.api.IApi;
 import com.lingx.web.api.impl.AbstractAuthApi;
 @Component
@@ -35,7 +36,10 @@ public class Api1136 extends AbstractAuthApi implements IApi{
 		Map<String,Object> ret=IApi.getRetMap(1, "SUCCESS");
 		if(this.checkIsNull(params, ret, "groupId"))return ret;
 		String groupId=IApi.getParamString(params, "groupId", "");
-		Set<String> sets=this.groupService.getCarIdsByGroupIds(groupId);
+		String type=IApi.getParamString(params,"type", "all");
+		String token=IApi.getParamString(params, "lingxtoken", "");
+		String userid=TokenUtils.getTokenDataUserId(token);
+		Set<String> sets=this.groupService.getCarIdsByGroupIds2(groupId,type,userid);
 		List<Map<String,Object>> list=new ArrayList<>();
 		StringBuilder tids=new StringBuilder();
 		for(String id:sets) {

@@ -60,6 +60,7 @@ public class JT808CommonService {
 		return get0x0200TableName(sdf.format(date));
 	}
 	public Map<String,Object> getLast0x0200Data(String car_id){
+		if(Utils.isNull(car_id))return null;
 		String temp=IJT808Cache.get(car_id);
 		if(temp==null) {
 			List<Map<String,Object>> list=this.jdbcTemplate.queryForList("select * from tgps_car where id=?",car_id);
@@ -126,14 +127,40 @@ public class JT808CommonService {
 		if (map.get("online") == null || map.get("comment") == null)
 			return "";
 		// this.addJT808Info(map);
-		if ("0".equals(map.get("online").toString()))
-			return map.get("comment").toString();
-		float speed = Float.parseFloat(map.get("speed").toString());
-		if (speed > 0) {
-			return new Float(speed).intValue() + " KM/H";
-		} else {
-			return this.languageService.text("静止", language);
+		if ("1".equals(map.get("online").toString())) {
+			long status=Long.parseLong(map.get("status").toString());
+			if((status&0b0010)==0) {
+				return  this.languageService.text("未定位", language);
+			}
+			float speed = Float.parseFloat(map.get("speed").toString());
+			if (speed > 0) {
+				return new Float(speed).intValue() + " km/h";
+			} else {
+				
+				return this.languageService.text("静止", language);
+			}
+		}else {
+			if(map.get("gpstime")==null)return this.languageService.text("未上线", language);
+			String gpstime=map.get("gpstime").toString();
+			long temp=DateUtils.fromDateStringToLong(gpstime);
+			long ctime=System.currentTimeMillis();
+			long time=(ctime-temp)/1000;
+			String unit;
+			if(time/24/60/60>0) {
+				time=time/24/60/60;
+				unit=this.languageService.text("天", language);
+			}else if(time/60/60>0){
+				time=time/60/60;
+				unit=this.languageService.text("小时", language);
+			}else if(time/60>0){
+				time=time/60;
+				unit=this.languageService.text("分钟", language);
+			}else {
+				unit=this.languageService.text("秒", language);
+			}
+			return this.languageService.text("离线", language)+"("+time+unit+")";
 		}
+		
 	}
 	public String getDtlc(String tid) {
 		String temp = IJT808Cache.get("dtlc_" + tid);

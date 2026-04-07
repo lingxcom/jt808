@@ -19,6 +19,7 @@ import com.lingx.web.api.IApiChannelHandlerContext;
 import com.lingx.web.api.impl.AbstractAuthApi;
 import com.tracbds.core.IJT808Cache;
 import com.tracbds.core.service.JT808CommonService;
+import com.tracbds.core.utils.Utils;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -34,6 +35,7 @@ public class WebSocketApi1005 extends AbstractAuthApi implements IApiChannelHand
 	private ChannelHandlerContext ctx;
 	private Map<String,Object> getGpsData(String car_id,String cid,Map<String, Object> param,String language){
 		Map<String, Object> map=jt808CommonService.getLast0x0200Data(car_id);
+		if(map==null)return null;
 		String tid=map.get("tid").toString();
 		if(IJT808Cache.REALTIME_TIDS.getIfPresent(cid)==null) {
 			Set<String> sets=new HashSet<String>();
@@ -61,6 +63,7 @@ public class WebSocketApi1005 extends AbstractAuthApi implements IApiChannelHand
 		String cid=ctx.channel().id().asLongText();
 		ctx.channel().attr(channel_langugae_key).set(language);
 		for(String id:array) {
+			if(Utils.isNotNull(id))
 			list.add(this.getGpsData(id, cid, params,language));
 		}
 		ret.put("data", list);
@@ -79,5 +82,9 @@ public class WebSocketApi1005 extends AbstractAuthApi implements IApiChannelHand
 	@Override
 	public void setChannelHandlerContext(ChannelHandlerContext arg0) {
 		this.ctx=arg0;
+	}
+
+	public boolean isLog() {
+		return false;
 	}
 }

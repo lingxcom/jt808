@@ -81,9 +81,11 @@ IP：47.100.112.218
 
 最新压测记录：https://blog.csdn.net/lingx_gps/article/details/136833506
 
-## 开源版演示地址
+## 商业版下载地址
 
-https://tracbds.lingx.com
+https://lingx.com/download/tracseek.zip
+
+车辆动态监控系统不限制功能，定位设备≤200 台、视频设备≤50 台，永久免费。
 
 ## 功能展示
 - Software Startup Tool

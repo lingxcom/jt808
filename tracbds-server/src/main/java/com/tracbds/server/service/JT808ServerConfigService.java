@@ -14,9 +14,6 @@ public class JT808ServerConfigService {
 	@Value("#{configs['jt808.server.port']}")
 	private String jt808ServerPort="8808";
 
-	@Value("#{configs['jt808.websocket.port']}")
-	private String websocketPort="8803";
-
 	public String getJt808ServerPort() {
 		return jt808ServerPort;
 	}
@@ -35,16 +32,10 @@ public class JT808ServerConfigService {
 	public String getAutoDropTable() {
 		return this.databaseConfigService.getConfigValue("lingx.jt808.data.autodroptable", "true");
 	}
-	public String getWebsocketPort() {
-		return websocketPort;
-	}
 
 	public void setJt808ServerPort(String jt808ServerPort) {
 		this.jt808ServerPort = jt808ServerPort;
 	}
 
-	public void setWebsocketPort(String websocketPort) {
-		this.websocketPort = websocketPort;
-	}
 	
 }

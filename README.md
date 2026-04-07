@@ -18,11 +18,11 @@ BDS+GPS Tracking System  is a location monitoring system based on the Chinese Mi
 
 - [Terminal device simulation software](https://github.com/lingxcom/jt808-client)
 
-## Demo
+## Download 
 
-https://tracbds.lingx.com/
+https://lingx.com/download/tracseek.zip
 
-
+The vehicle dynamic monitoring system offers unlimited functionality, with a maximum of 200 positioning devices and 50 video devices, at no cost forever.
 ## Features
 
 Some of the available features include:

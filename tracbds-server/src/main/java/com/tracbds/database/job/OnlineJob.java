@@ -46,12 +46,25 @@ public class OnlineJob {
 			}
 			Map<String,Object> m=JSON.parseObject(json);
 			if(m==null){
+				IJT808Cache.del(map.get("id").toString());
 				continue;
 			}
 			m.put("online", "0");
 			json=JSON.toJSONString(m);
 			IJT808Cache.set(map.get("id").toString(), json);
 			pushWebSocket(map.get("id").toString(), m);
+		}
+		list=this.jdbcTemplate.queryForList("select id from tgps_group order by id desc");
+		int total=0,online=0;
+		for(Map<String,Object> map:list) {
+			total=this.jdbcTemplate.queryForObject("select count(*) from tgps_car where id in(select car_id from tgps_group_car where group_id=?)", Integer.class,map.get("id"));
+			online=this.jdbcTemplate.queryForObject("select count(*) from tgps_car where id in(select car_id from tgps_group_car where group_id=?) and online='1'", Integer.class,map.get("id"));
+			List<Map<String,Object>> list2=this.jdbcTemplate.queryForList("select total,online from tgps_group where fid=?",map.get("id"));
+			for(Map<String,Object> map2:list2) {
+				total+=Integer.parseInt(map2.get("total").toString());
+				online+=Integer.parseInt(map2.get("online").toString());
+			}
+			this.jdbcTemplate.update("update tgps_group set total=?,online=? where id=?",total,online,map.get("id"));
 		}
 	}
 

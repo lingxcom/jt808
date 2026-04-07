@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 import com.tracbds.core.IJT808Cache;
 import com.tracbds.core.IJT808MsgHandler;
 import com.tracbds.core.cmd.Cmd8001;
-import com.tracbds.core.event.JT808OfflineEvent;
 import com.tracbds.core.event.JT808OnlineEvent;
 import com.tracbds.core.support.MyByteBuf;
 import com.tracbds.core.utils.JT808Utils;
@@ -29,7 +28,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.util.AttributeKey;
+import io.netty.handler.timeout.ReadTimeoutException;
 
 @Sharable
 @Component
@@ -217,8 +216,12 @@ public class JT808Handler extends SimpleChannelInboundHandler<byte[]> {
 
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable throwable) throws Exception {
-		//throwable.printStackTrace();
-		// ctx.close();
+		  if (throwable instanceof ReadTimeoutException) {
+		        // 什么都不做，或者只关连接
+		        ctx.close();
+		        return;
+		    }
+		    ctx.fireExceptionCaught(throwable);
 	}
 
 	public void setListMsgHandler(List<IJT808MsgHandler> listMsgHandler) {

@@ -9,6 +9,7 @@
   	<module>tracbds-server</module>
   	<module>tracbds-core</module>
   	<module>tracbds-api</module>
+  	<module>jt1078-server</module>
   </modules>
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

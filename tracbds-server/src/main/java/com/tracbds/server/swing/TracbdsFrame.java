@@ -48,16 +48,12 @@ public class TracbdsFrame extends JFrame {
 
     	PropUtils.init("/config.properties");
     	if(Utils.isNull(PropUtils.getProp("tracbds.ip"))) {
-    		PropUtils.setProp("tracbds.ip", "127.0.0.1");
     		PropUtils.setProp("tracbds.port1", "8808");
     		PropUtils.setProp("tracbds.port2", "8802");
-    		PropUtils.setProp("tracbds.port3", "8803");
     	}
     	
-    	MJTextField textField1=new MJTextField(PropUtils.getProp("tracbds.ip"));
     	MJTextField textField2=new MJTextField(PropUtils.getProp("tracbds.port1"));
     	MJTextField textField3=new MJTextField(PropUtils.getProp("tracbds.port2"));
-    	MJTextField textField4=new MJTextField(PropUtils.getProp("tracbds.port3"));
     	
     	JButton startButton = new JButton("启动(Start)");
         JButton  stopButton = new JButton("停止(Stop)");
@@ -72,13 +68,8 @@ public class TracbdsFrame extends JFrame {
         this.add(new JLabel("Info:",JLabel.RIGHT),"flex:3");
         this.add(new JLabel("Please init database before using it for the first time."),"flex:9;wrap;");
         
-        this.add(new JLabel("外网地址(IP):",JLabel.RIGHT),"flex:3");
-        this.add(textField1,"flex:5;wrap;");
-
         this.add(new JLabel("WEB端口(Web Port):",JLabel.RIGHT),"flex:3");
         this.add(textField3,"flex:5;wrap;");
-        //this.add(new JLabel("Websocket端口(Port):",JLabel.RIGHT),"flex:3");
-        //this.add(textField4,"flex:5;wrap;");
 
         this.add(new JLabel("JT808端口(JT808 Port):",JLabel.RIGHT),"flex:3");
         this.add(textField2,"flex:5;wrap;");
@@ -91,16 +82,7 @@ public class TracbdsFrame extends JFrame {
         this.add(dbButton,"flex:4;wrap;");
         this.add(new JLabel(),"flex:8");
         this.add(getButton,"flex:4;wrap;");
-        JLabel label1=new JLabel("网址(URL):",JLabel.RIGHT);
-        JLabel label2=new JLabel("默认(Default)",JLabel.RIGHT);
-        JLabel Info=new JLabel();
-        JLabel Info2=new JLabel();
-        this.add(label1,"flex:3");
-        this.add(Info,"flex:8;wrap;");
-        this.add(label2,"flex:3");
-        this.add(Info2,"flex:8;wrap;");
-        label1.setVisible(false);
-        label2.setVisible(false);
+       
         stopButton.setEnabled(false);
         getButton.addActionListener(new ActionListener() {
 			@Override
@@ -121,10 +103,8 @@ public class TracbdsFrame extends JFrame {
 					JOptionPane.showMessageDialog(null, "数据库连接失败(Database connection failed)");
 					 return;
 				 }
-				 PropUtils.setProp("tracbds.ip", textField1.getText());
 		    	 PropUtils.setProp("tracbds.port1",textField2.getText());
 		    	 PropUtils.setProp("tracbds.port2", textField3.getText());
-		    	 PropUtils.setProp("tracbds.port3", textField4.getText());
 		    	 PropUtils.save();
 				 context = new ClassPathXmlApplicationContext(
 						new String[] {configFile });
@@ -134,14 +114,10 @@ public class TracbdsFrame extends JFrame {
 				 StartupService bean=context.getBean(StartupService.class);
 				 configService.setWebHttpPort(textField3.getText());
 				 jt808ServerConfigService.setJt808ServerPort(textField2.getText());
-				 jt808ServerConfigService.setWebsocketPort(textField4.getText());
+				// jt808ServerConfigService.setWebsocketPort(textField4.getText());
 				 bean.startup();
 				 stopButton.setEnabled(true);
-				 String url="http://"+textField1.getText()+":"+textField3.getText();
-				 Info.setText(url);
-				 Info2.setText("账号(Account):admin,密码(Password):123456");
-			     label1.setVisible(true);
-			     label2.setVisible(true);
+				
 			}});
         stopButton.addActionListener(new ActionListener() {
 			@Override

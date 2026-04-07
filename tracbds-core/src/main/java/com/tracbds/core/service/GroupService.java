@@ -28,6 +28,36 @@ public class GroupService {
 		return sets;
 	}
 
+	public Set<String> getCarIdsByGroupIds2(String groupId,String type,String userid){
+		Set<String> sets=new HashSet<>();
+		this.addSetByGroupId(groupId, sets,type,userid);
+		return sets;
+	}
+
+	private void addSetByGroupId(Object groupId,Set<String> sets,String type,String userid) {
+		String vif="";
+		List<Map<String,Object>> listGroups=this.jdbcTemplate.queryForList("select id from tgps_group where fid=?"
+				,groupId);
+		for(Map<String,Object> map:listGroups){
+			this.addSetByGroupId(map.get("id").toString(), sets);
+		}
+		switch(type) {
+		case "all":break;
+		case "online":
+			vif=" and online='1'";
+			break;
+		case "offline":
+			vif=" and online<>'1'";
+			break;
+		case "follow":
+			vif=" and id in(select car_id from tgps_car_follow where user_id='"+userid+"')";
+			break;
+		}
+		List<Map<String,Object>> listCar=this.jdbcTemplate.queryForList("select id from tgps_car where id in (select car_id from tgps_group_car where group_id=?)"+vif,groupId);
+		for(Map<String,Object> map:listCar) {
+			sets.add(map.get("id").toString());
+		}
+	}
 
 	private void addSetByGroupId(Object groupId,Set<String> sets) {
 	
