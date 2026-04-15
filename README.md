@@ -1,4 +1,4 @@
-# [BDS+GPS Tracking System](https://www.lingx.com)
+#  [TracSeek](https://www.lingx.com)
 
 
 <p>
@@ -10,11 +10,7 @@
 
 ## Overview
 
-BDS: BeiDou Navigation Satellite System.
-
-GPS: Global Positioning System.
-
-BDS+GPS Tracking System  is a location monitoring system based on the Chinese Ministry of Transport standard JT808 communication protocol, which can be extended to other communication protocols.
+GPS Tracking System  is a location monitoring system based on the Chinese Ministry of Transport standard JT808 communication protocol, which can be extended to other communication protocols.
 
 - [Terminal device simulation software](https://github.com/lingxcom/jt808-client)
 
