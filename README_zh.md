@@ -1,6 +1,5 @@
-# 领新北斗-车辆动态监控系统（TracSeek GPS Tracking System）
+# 领新北斗-车辆动态监控系统（TracSeek）
 
-BDS: BeiDou Navigation Satellite System.
 
 <p>
     <img src="https://img.shields.io/badge/License-Apache 2.0-green.svg"/>
