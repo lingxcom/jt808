@@ -1,15 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.lingx</groupId>
-  <artifactId>tracbds</artifactId>
+  <artifactId>jt808</artifactId>
   <version>5.0.0</version>
   <packaging>pom</packaging>
-  <name>tracbds</name>
+  <name>jt808</name>
   <modules>
-  	<module>tracbds-server</module>
-  	<module>tracbds-core</module>
-  	<module>tracbds-api</module>
-  	<module>jt1078-server</module>
+  	<module>jt808-server</module>
+  	<module>jt808-core</module>
+  	<module>jt808-api</module>
+  	<module>jt808-database</module>
   </modules>
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

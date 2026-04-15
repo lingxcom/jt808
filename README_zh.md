@@ -1,4 +1,4 @@
-# 北斗GPS定位监控系统（BDS+GPS Tracking System）
+# 领新北斗-车辆动态监控系统（TracSeek GPS Tracking System）
 
 BDS: BeiDou Navigation Satellite System.
 
@@ -9,6 +9,24 @@ BDS: BeiDou Navigation Satellite System.
 </p>
 基于部标JT808标准实现的开箱即用的北斗定位监控平台，负责实现核心信令与设备管理后台部分，支持海康、大华、锐明、通立、博实结等品牌的终端设备接入。
 
+本仓库基于 Maven 多模块管理，主要运行在 Java 8 + Windows 运维场景。
+
+## 仓库结构
+
+根 `pom.xml` 聚合以下模块：
+
+- `jt808-core`：核心能力层（协议、缓存、公共服务、工具类）
+- `jt808-api`：API 服务层
+- `jt808-database`：数据库任务与统计作业（里程、油量等）
+- `jt808-server`：JT808 主服务与服务端 GUI 启动器
+
+## 技术栈
+
+- Java 8
+- Spring (XML Context / JDBC / Scheduling)
+- Netty
+- MySQL + Druid
+- Redis + Jedis
 
 ## 项目介绍
 * 该项目是由商业版简化，保持了商业版的稳定性与可扩展性。
@@ -41,12 +59,11 @@ BDS: BeiDou Navigation Satellite System.
 * Gitee仓库地址：[https://gitee.com/lingxcom/jt808](https://gitee.com/lingxcom/jt808)
 * Github仓库地址：[https://github.com/lingxcom/jt808](https://github.com/lingxcom/jt808)
 
-## 免费版与商业版区别
+## 开源版与商业版区别
 
-| 功能模块 |免费版|商业版| 备注         |
+| 功能模块 |开源版|商业版| 备注         |
 |--|----|----|------------|
 | 数据库 |MYSQL8|MYSQL8| -          |
-| 协议扩展 |✔|✔|  |
 | 实时定位 |✔|✔| -          |
 | 历史轨迹 |✔|✔| -          |
 | 指令下发 |✔|✔| -          |
@@ -65,6 +82,9 @@ BDS: BeiDou Navigation Satellite System.
 | 主动安全-DSM |-|✔| -          |
 | 主动安全-BSD |-|✔| -          |
 | 主动安全-TPMS |-|✔| -          |
+| 非标协议扩展 |-|✔|  |
+
+非标协议扩展（包括不限于）：油量、电量、温度、湿度、高精度、蓝牙信标、语音留言。
 
 ## 商业版演示地址
 http://gps.lingx.com/
