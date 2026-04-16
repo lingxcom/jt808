@@ -1,34 +1,184 @@
-#  [TracSeek](https://www.lingx.com)
+# 🚀 TracSeek — Scalable JT808 Vehicle Tracking Platform
 
 
-<p>
-    <img src="https://img.shields.io/badge/License-Apache 2.0-green.svg"/>
-    <img src="https://img.shields.io/badge/platform-linux%20|%20macos%20|%20windows-blue.svg" />
-</p>
+> ⚡ A high-performance vehicle tracking platform built for **large-scale device connections**  
+> 🧪 Built-in simulator — **no real GPS device required**  
+> 🌐 Full-stack solution: server + simulator + visualization
 
-[中文说明](README_zh.md)
+---
 
-## Overview
+## 🎬 Demo
 
-GPS Tracking System  is a location monitoring system based on the Chinese Ministry of Transport standard JT808 communication protocol, which can be extended to other communication protocols.
+> 👇 See devices moving in real-time (no hardware needed)
 
-- [Terminal device simulation software](https://github.com/lingxcom/jt808-client)
+![demo](./docs/demo.gif)
 
-## Download 
+> 💡 Tip: Replace with your real demo GIF (device movement + map + trajectory playback)
 
-https://lingx.com/download/tracseek.zip
+---
 
-The vehicle dynamic monitoring system offers unlimited functionality, with a maximum of 200 positioning devices and 50 video devices, at no cost forever.
-## Features
+## ✨ Why TracSeek?
 
-Some of the available features include:
+Most JT808 projects only provide partial solutions. TracSeek gives you a **complete, runnable system**.
 
-- Real-time GPS tracking
-- Detailed and summary reports
-- Geofencing functionality
-- Alarms and notifications
-- Account and device management
-- jt808-2013 and jt808-2019 support
+- 🧪 **Built-in device simulator** (test without real hardware)
+- ⚡ **High-performance Netty-based architecture**
+- 🌐 **Full-stack implementation** (server + simulator + UI)
+- 🚀 **Designed for scalability** (massive device connections)
+- 🛰 **Real-time tracking + trajectory playback + geofencing**
+
+---
+
+## ⚡ Quick Start (5 minutes)
+
+> 🚀 Get the full system running locally in minutes
+
+### 1. Clone repository
+
+```bash
+git clone https://github.com/lingxcom/tracseek.git
+cd tracseek
+```
+
+### 2. Start with Docker
+
+```bash
+docker-compose up -d
+```
+
+### 3. Open in browser
+
+http://localhost:8800
+
+---
+
+### 🎉 What you'll see
+
+- 🚗 Simulated devices automatically connected
+- 📍 Real-time location updates
+- 🛰 Trajectory playback
+- 🚨 Alert events
+
+👉 **No GPS device required — everything works out of the box**
+
+---
+
+## 🧪 Built-in Simulator (Key Feature)
+
+Unlike most projects, TracSeek includes a **fully integrated simulator**:
+
+- ✔ Simulate multiple devices
+- ✔ Auto location reporting
+- ✔ Alarm simulation
+- ✔ Suitable for testing & load simulation
+
+👉 This makes development and testing significantly easier
+
+---
+
+## 🧱 Architecture
+
+```
+Device / Simulator
+        │
+        ▼
+JT808 Access Layer (Netty)
+        │
+        ▼
+Business Processing
+        │
+        ▼
+Data Storage
+        │
+        ▼
+Visualization Platform
+```
+
+---
+
+## 📊 Features
+
+### 🚗 Vehicle Monitoring
+- Real-time tracking
+- Device status monitoring
+
+### 🛰 Trajectory System
+- Historical trajectory
+- Route playback
+
+### 🚨 Alert System
+- Overspeed alerts
+- Geofence alerts
+- Abnormal behavior detection
+
+### 📍 Visualization
+- Multi-device display
+- Dynamic map tracking
+
+---
+
+## 🎯 Use Cases
+
+- 🚚 Fleet management systems
+- 🚕 Ride-hailing platforms
+- 🏭 Enterprise vehicle monitoring
+- 🌍 IoT device access platforms
+- 🎓 Learning JT808 protocol implementation
+
+---
+
+## 🆚 Comparison
+
+| Feature | TracSeek | Typical Projects |
+|--------|---------|----------------|
+| Full JT808 Support | ✅ | ⚠️ |
+| Built-in Simulator | ✅ | ❌ |
+| One-click Deployment | ✅ | ⚠️ |
+| Visualization UI | ✅ | ⚠️ |
+| Complete End-to-End | ✅ | ❌ |
+
+---
+
+## 📦 Tech Stack
+
+- Java
+- Netty
+- JT808 protocol implementation
+- Frontend visualization system
+
+---
+
+## 📈 Roadmap
+
+- [ ] JT1078 (video streaming support)
+- [ ] Cluster / distributed deployment
+- [ ] Multi-tenant support
+- [ ] Enhanced permission system
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+- Submit Issues
+- Submit PRs
+- Share ideas
+
+---
+
+## ⭐ Support the Project
+
+If this project helps you:
+
+👉 Please give it a **Star ⭐**
+
+---
+
+## 📬 Contact
+
+283853318@qq.com
+
 
 ## Backend repository
 * Gitee ：[https://gitee.com/lingxcom/tracseek](https://gitee.com/lingxcom/tracseek)
@@ -47,40 +197,6 @@ Some of the available features include:
 * Gitee ：[https://gitee.com/lingxcom/jt808-client/releases/download/1.1/jt808tools-exe.zip](https://gitee.com/lingxcom/jt808-client/releases/download/1.1/jt808tools-exe.zip)
 * Github ：[https://github.com/lingxcom/jt808-client/releases/download/1.1/JT808.zip](https://github.com/lingxcom/jt808-client/releases/download/1.1/JT808.zip)
 
-## Getting Started
-> Run in IDE: com.lingx.jt808.server.DevApp
-
-> Run in IDE: com.lingx.jt808.server.DevAppUI
-
-
-## Preview
-- Software Startup Tool
-
-![index](readme/20250516164941.png "index.png")
-
-- Database Configuration Tool
-
-![index](readme/20250516165024.png "index.png")
-
-- Real-time GPS tracking
-
-![index](readme/20250516165146.png "index.png")
-
-- Real-time GPS tracking Group
-
-  ![index](readme/20250516165319.png "index.png")
-
-- History
-
-  ![index](readme/20250516165526.png "index.png")
-
-- History(dilution)
-
-  ![index](readme/20250516165713.png "index.png")
-
-- History(multiple)
-
-  ![index](readme/20250516165854.png "index.png")
 
 ## License
 ```

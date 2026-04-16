@@ -1,5 +1,6 @@
-# 领新北斗-车辆动态监控系统（TracSeek）
+## 🚀 领新北斗-车辆动态监控系统（TracSeek）
 
+> 一个支持 大规模设备接入的开源车联网系统，内置模拟终端 + 可视化平台，5分钟快速体验完整链路。
 
 <p>
     <img src="https://img.shields.io/badge/License-Apache 2.0-green.svg"/>
@@ -8,48 +9,79 @@
 </p>
 基于部标JT808标准实现的开箱即用的北斗定位监控平台，负责实现核心信令与设备管理后台部分，支持海康、大华、锐明、通立、博实结等品牌的终端设备接入。
 
-本仓库基于 Maven 多模块管理，主要运行在 Java 8 + Windows 运维场景。
+## ✨ 项目亮点
+* 🚗 完整支持 JT808 协议（车载终端接入标准）
+* ⚡ 高性能架构设计（可扩展至大规模设备接入）
+* 🛰 实时定位 / 轨迹回放 / 电子围栏
+* 🧪 内置模拟终端（无需真实设备即可测试）
+* 🌐 可视化监控平台
+* 🔧 适用于物流 / 车队管理 / IoT 场景
 
-## 仓库结构
+## 🎯 解决什么问题？
 
-根 `pom.xml` 聚合以下模块：
+如果你正在做：
+* 车联网系统
+* GPS / 北斗定位平台
+* 物流调度系统
+* IoT 设备接入平台
 
-- `jt808-core`：核心能力层（协议、缓存、公共服务、工具类）
-- `jt808-api`：API 服务层
-- `jt808-database`：数据库任务与统计作业（里程、油量等）
-- `jt808-server`：JT808 主服务与服务端 GUI 启动器
+你通常会遇到：
 
-## 技术栈
+* ❌ JT808 协议复杂难实现
+* ❌ 没有完整的服务端 + 终端闭环
+* ❌ 测试必须依赖真实设备
+* ❌ 系统难以扩展
 
-- Java 8
-- Spring (XML Context / JDBC / Scheduling)
-- Netty
-- MySQL + Druid
-- Redis + Jedis
+> 👉 TracSeek 提供一整套解决方案（服务端 + 模拟终端 + 可视化）
 
-## 项目介绍
-* 该项目是由商业版简化，保持了商业版的稳定性与可扩展性。
-* 基于Netty4.1，实现JT808协议的上行消息与下行消息。
-* 前端代码不开源，但已包含前端部署包。
-* 提供绿色完整部署包，连接数据库便可使用。
+## ⚡ 5分钟快速体验（强烈建议先跑这个）
+### 方式一：Docker（推荐）
 
-## 主要特性
-* 高并发、高稳定性，8核16G单网关支持高达13.6万终端接入，连续压测3天以上。
-* 支持分包粘包处理，避免漏包、丢包。保证数据的可靠性。
-* 兼容2011、2013、2019协议版本，支持分包请求、分包应答及超时分包补传。
-* 集成web界面，基于VUE3的Element UI开发的前端界面。
-* 支持多语言，目前支持中文与英文。
+
+```bash
+git clone https://github.com/lingxcom/tracseek.git
+cd tracseek
+docker-compose up -d
+```
+启动后访问：
+
+```bash
+http://localhost:8800
+```
+
+---
+### 方式二：下载一键启动
+* Gitee ：[https://gitee.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip](https://gitee.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip)
+* Github ：[https://github.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip](https://github.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip)
+
+
+## 🖥 在线 Demo
+http://gps.lingx.com/
+
+账号:admin
+
+密码:123456
+
+终端设备接入
+
+IP：47.100.112.218
+
+端口：8808
+
+压测记录：https://blog.csdn.net/lingx_gps/article/details/136833506
 
 ## 协议支持
-| 协议名称                | 版本   | 免费版|商业版 | 备注           |
-|---------------------|------|------|--------------|--------------|
-| JT/T 808            | 2011 | 支持   | 支持   |
-| JT/T 808            | 2013 | 支持   | 支持   |
-| JT/T 808            | 2019 | 支持   | 支持   |
-| JT/T 809            | 2011 | 未支持   | 支持   |
-| JT/T 1078           | 2016 | 未支持  |  支持   |
-| T/JSATL 12(主动安全-苏标) | 2017 | 未支持  | 支持   |
+| 协议名称                | 版本   | 开源版 |商业版 | 备注           |
+|---------------------|------|-----|--------------|--------------|
+| JT/T 808            | 2011 | 支持  | 支持   |
+| JT/T 808            | 2013 | 支持  | 支持   |
+| JT/T 808            | 2019 | 支持  | 支持   |
+| JT/T 809            | 2011 | 未支持 | 支持   |
+| JT/T 1078           | 2016 | 未支持 |  支持   |
+| T/JSATL 12(主动安全-苏标) | 2017 | 未支持 | 支持   |
+| 非标协议扩展              | -    | 未支持 | 支持   |
 
+非标协议扩展（包括不限于）：油量、电量、温度、湿度、高精度定位、蓝牙信标、语音留言。
 
 ## 数据库MySQL8.0
 数据库是采用MySQL8.0，下载地址：https://www.mysql.com/downloads/
@@ -71,53 +103,13 @@
 * Gitee ：[https://gitee.com/lingxcom/jt808-client/releases/download/1.1/jt808tools-exe.zip](https://gitee.com/lingxcom/jt808-client/releases/download/1.1/jt808tools-exe.zip)
 * Github ：[https://github.com/lingxcom/jt808-client/releases/download/1.1/JT808.zip](https://github.com/lingxcom/jt808-client/releases/download/1.1/JT808.zip)
 
-## 开源版与商业版区别
 
-| 功能模块 |开源版|商业版| 备注         |
-|--|----|----|------------|
-| 数据库 |MYSQL8|MYSQL8| -          |
-| 实时定位 |✔|✔| -          |
-| 历史轨迹 |✔|✔| -          |
-| 指令下发 |✔|✔| -          |
-| 参数设置 |✔|✔| -          |
-| 在线抓包 |✔|✔| -          |
-| 电子围栏 |✔|✔| -          |
-| 车辆管理 |✔|✔| -          |
-| 车队管理 |✔|✔| -          |
-| 车队授权 |✔|✔| -          |
-| JT808转发 |-|✔| -          |
-| JT809协议 |-|✔| -          |
-| 实时视频 |-|✔| -          |
-| 历史视频 |-|✔| -          |
-| 语音对讲 |-|✔| -          |
-| 主动安全-ADAS |-|✔| -          |
-| 主动安全-DSM |-|✔| -          |
-| 主动安全-BSD |-|✔| -          |
-| 主动安全-TPMS |-|✔| -          |
-| 非标协议扩展 |-|✔|  |
+##⭐ 如果这个项目对你有帮助
 
-非标协议扩展（包括不限于）：油量、电量、温度、湿度、高精度、蓝牙信标、语音留言。
+请给一个 Star ⭐
 
-## 商业版演示地址
-http://gps.lingx.com/
+这是对开源作者最大的支持 🙌
 
-账号:admin
-
-密码:123456
-
-终端设备接入
-
-IP：47.100.112.218
-
-端口：8808
-
-最新压测记录：https://blog.csdn.net/lingx_gps/article/details/136833506
-
-## 商业版下载地址
-
-https://lingx.com/download/tracseek.zip
-
-车辆动态监控系统不限制功能，定位设备≤200 台、视频设备≤50 台，永久免费。
 
 ## 功能展示
 - Software Startup Tool
