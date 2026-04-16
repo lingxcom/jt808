@@ -16,7 +16,7 @@ public class CustomPropertyConfigurer extends PropertySourcesPlaceholderConfigur
         String port=PropUtils.getProp("tracseek.database.port","3306");
         String username=PropUtils.getProp("tracseek.database.username","root");
         String password=PropUtils.getProp("tracseek.database.password","123456");
-        String template="jdbc:mysql://%s:%s/tracseek?useSSL=false&useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT&autoReconnect=true&rewriteBatchedStatements=true";
+        String template="jdbc:mysql://%s:%s/tracseek?useSSL=false&useUnicode=true&characterEncoding=utf8&connectionCollation=utf8mb4_unicode_ci&characterSetResults=utf8mb4&serverTimezone=Asia/Shanghai&autoReconnect=true&rewriteBatchedStatements=true";
         // 创建新的属性并覆盖目标值
         Properties props = new Properties();
         props.setProperty("database.type", "mysql"); 

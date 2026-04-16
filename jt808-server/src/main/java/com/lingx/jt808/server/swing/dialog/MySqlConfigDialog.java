@@ -109,7 +109,7 @@ public class MySqlConfigDialog extends JDialog{
 		this.setModal(true);
 	}
 	public static boolean isConnection(String ip,String port,String username,String password) {
-        String jdbcUrl = "jdbc:mysql://%s:%s/?useSSL=false&serverTimezone=UTC";
+        String jdbcUrl = "jdbc:mysql://%s:%s/?useSSL=false&useUnicode=true&characterEncoding=utf8&connectionCollation=utf8mb4_unicode_ci&characterSetResults=utf8mb4&serverTimezone=Asia/Shanghai";
 		try (Connection conn = DriverManager.getConnection(String.format(jdbcUrl, ip,port), username, password);
 	             Statement stmt = conn.createStatement()) {
             handleDbCfg(ip,Integer.parseInt(port),username,password);
@@ -123,7 +123,7 @@ public class MySqlConfigDialog extends JDialog{
 	
 	public static boolean  createDatabase(String ip,String port,String username,String password) {
         // 连接到MySQL服务器（不指定具体数据库）
-        String jdbcUrl = "jdbc:mysql://%s:%s/?useSSL=false&serverTimezone=UTC";
+        String jdbcUrl = "jdbc:mysql://%s:%s/?useSSL=false&useUnicode=true&characterEncoding=utf8&connectionCollation=utf8mb4_unicode_ci&characterSetResults=utf8mb4&serverTimezone=Asia/Shanghai";
         String dbName = "tracseek";  // 要创建的数据库名称
 
         try (Connection conn = DriverManager.getConnection(String.format(jdbcUrl, ip,port), username, password);
@@ -140,7 +140,7 @@ public class MySqlConfigDialog extends JDialog{
     }
 	
 	 public static boolean runSQLFile(String ip,String port,String username,String password) {
-	        String jdbcUrl = "jdbc:mysql://%s:%s/%s?useSSL=false&serverTimezone=UTC";
+	        String jdbcUrl = "jdbc:mysql://%s:%s/%s?useSSL=false&useUnicode=true&characterEncoding=utf8&connectionCollation=utf8mb4_unicode_ci&characterSetResults=utf8mb4&serverTimezone=Asia/Shanghai";
 	        File sqlFile = new File(System.getProperty("user.dir") + "/conf/tracseek.sql");
 	        try (Connection conn = DriverManager.getConnection(String.format(jdbcUrl, ip,port,"tracseek"), username, password);
 	             Statement stmt = conn.createStatement()) {
