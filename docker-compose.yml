@@ -22,7 +22,7 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql # 数据持久化，防止容器删了数据也没了
       - ./tracseek.sql:/docker-entrypoint-initdb.d/tracseek.sql:ro # 首次启动自动导入
-      - ./mysql/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - ./mysql/conf.d:/etc/mysql/conf.d:ro
 
   # 2. Redis服务
   redis:
