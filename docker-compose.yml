@@ -12,6 +12,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_DATABASE: tracseek
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p123456 --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 20s
     volumes:
       - ./data/mysql:/var/lib/mysql # 数据持久化，防止容器删了数据也没了
       - ./tracseek.sql:/docker-entrypoint-initdb.d/tracseek.sql:ro # 首次启动自动导入
@@ -30,8 +36,10 @@ services:
       - "18800:18800" # 映射 Web 端口
       - "8808:8808" # 假设这是 JT808 的接收端口
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
     environment:
       DB_HOST: db
       REDIS_HOST: redis
