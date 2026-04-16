@@ -39,9 +39,9 @@
 
 
 ```bash
-git clone https://github.com/lingxcom/tracseek.git
+git clone https://gitee.com/lingxcom/tracseek.git
 cd tracseek
-docker-compose up -d
+docker compose up -d
 ```
 启动后访问：
 

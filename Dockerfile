@@ -24,6 +24,7 @@ WORKDIR /app
 # server 模块编译产物 + 运行依赖
 COPY --from=build /build/jt808-server/target/jt808-server-*.jar /app/app.jar
 COPY --from=build /build/jt808-server/target/dependency /app/lib
+COPY --from=build /build/jt808-core/lib/lingx-core-5.0.0.jar /app/lib/lingx-core-5.0.0.jar
 
 EXPOSE 18800 8808
 

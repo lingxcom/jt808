@@ -43,7 +43,7 @@ cd tracseek
 ### 2. Start with Docker
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### 3. Open in browser
