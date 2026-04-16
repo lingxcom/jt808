@@ -5,10 +5,6 @@ services:
   db:
     image: mysql:8.0
     container_name: tracseek-db
-    command:
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
-      - --init-connect=SET NAMES utf8mb4
     environment:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_DATABASE: tracseek
@@ -21,6 +17,7 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql # 数据持久化，防止容器删了数据也没了
       - ./tracseek.sql:/docker-entrypoint-initdb.d/tracseek.sql:ro # 首次启动自动导入
+      - ./mysql/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf:ro
 
   # 2. Redis服务
   redis:
