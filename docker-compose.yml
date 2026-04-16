@@ -1,0 +1,38 @@
+version: '3.8'  # 配置文件版本
+
+services:
+  # 1. 数据库服务
+  db:
+    image: mysql:8.0
+    container_name: tracseek-db
+    environment:
+      MYSQL_ROOT_PASSWORD: your_password
+    volumes:
+      - ./data/mysql:/var/lib/mysql # 数据持久化，防止容器删了数据也没了
+
+  # 2. Redis服务
+  redis:
+    image: redis:6.2-alpine
+    container_name: tracseek-redis
+
+  # 3. 你的 Tracseek 后端服务
+  app:
+    build: . # 告诉 Docker 在当前目录下找 Dockerfile 来构建镜像
+    container_name: tracseek-server
+    ports:
+      - "18800:18800" # 映射 Web 端口
+      - "8808:8808" # 假设这是 JT808 的接收端口
+    depends_on:
+      - db
+      - redis
+    environment:
+      DB_HOST: db
+      REDIS_HOST: redis
+  # 4. 前端服务
+  web:
+    build: ./tracseek-web # 指向前端代码目录
+    container_name: tracseek-ui
+    ports:
+      - "8800:8800" # 用户通过 80 端口访问整个系统
+    depends_on:
+      - app
