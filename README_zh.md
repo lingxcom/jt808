@@ -31,7 +31,7 @@
 * 该项目是由商业版简化，保持了商业版的稳定性与可扩展性。
 * 基于Netty4.1，实现JT808协议的上行消息与下行消息。
 * 前端代码不开源，但已包含前端部署包。
-* 提供绿色完整部署包，连接数据库便可使用。 [下载一键启动版](https://gitee.com/lingxcom/jt808/releases/download/1.1/tracseek.zip)
+* 提供绿色完整部署包，连接数据库便可使用。
 
 ## 主要特性
 * 高并发、高稳定性，8核16G单网关支持高达13.6万终端接入，连续压测3天以上。
@@ -54,9 +54,18 @@
 ## 数据库MySQL8.0
 数据库是采用MySQL8.0，下载地址：https://www.mysql.com/downloads/
 
-## 代码仓库
-* Gitee仓库地址：[https://gitee.com/lingxcom/jt808](https://gitee.com/lingxcom/jt808)
-* Github仓库地址：[https://github.com/lingxcom/jt808](https://github.com/lingxcom/jt808)
+## 后端代码仓库
+* Gitee ：[https://gitee.com/lingxcom/tracseek](https://gitee.com/lingxcom/tracseek)
+* Github ：[https://github.com/lingxcom/tracseek](https://github.com/lingxcom/tracseek)
+
+## 前端代码仓库
+
+* Gitee仓库地址：[https://gitee.com/lingxcom/tracseek-web](https://gitee.com/lingxcom/tracseek-web)
+* Github仓库地址：[https://github.com/lingxcom/tracseek-web](https://github.com/lingxcom/tracseek-web)
+
+## 软件下载
+* Gitee ：[https://gitee.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip](https://gitee.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip)
+* Github ：[https://github.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip](https://github.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip)
 
 ## 开源版与商业版区别
 

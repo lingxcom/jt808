@@ -30,10 +30,22 @@ Some of the available features include:
 - Account and device management
 - jt808-2013 and jt808-2019 support
 
+## Backend repository
+* Gitee ：[https://gitee.com/lingxcom/tracseek](https://gitee.com/lingxcom/tracseek)
+* Github ：[https://github.com/lingxcom/tracseek](https://github.com/lingxcom/tracseek)
+
+## Frontend repository
+* Gitee ：[https://gitee.com/lingxcom/tracseek-web](https://gitee.com/lingxcom/tracseek-web)
+* Github ：[https://github.com/lingxcom/tracseek-web](https://github.com/lingxcom/tracseek-web)
+
+## Download
+* Gitee ：[https://gitee.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip](https://gitee.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip)
+* Github ：[https://github.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip](https://github.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip)
+
 ## Getting Started
-> Run in IDE: com.tracbds.server.AppUI
-## TODO
- - JT1078-2016 Real time Video Monitoring
+> Run in IDE: com.lingx.jt808.server.DevApp
+> Run in IDE: com.lingx.jt808.server.DevAppUI
+
 
 ## Preview
 - Software Startup Tool
