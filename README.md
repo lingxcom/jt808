@@ -42,6 +42,11 @@ Some of the available features include:
 * Gitee ：[https://gitee.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip](https://gitee.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip)
 * Github ：[https://github.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip](https://github.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip)
 
+
+## Terminal device simulation tool
+* Gitee ：[https://gitee.com/lingxcom/jt808-client/releases/download/1.1/jt808tools-exe.zip](https://gitee.com/lingxcom/jt808-client/releases/download/1.1/jt808tools-exe.zip)
+* Github ：[https://github.com/lingxcom/jt808-client/releases/download/1.1/JT808.zip](https://github.com/lingxcom/jt808-client/releases/download/1.1/JT808.zip)
+
 ## Getting Started
 > Run in IDE: com.lingx.jt808.server.DevApp
 
