@@ -18,6 +18,16 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for `tgps_0107`
 -- ----------------------------
+DROP TABLE IF EXISTS `tgps_car_tdh`;
+CREATE TABLE `tgps_car_tdh` (
+                                `id` int(11) NOT NULL AUTO_INCREMENT,
+                                `car_id` int(11) NOT NULL COMMENT '隶属设备',
+                                `tdh` int(11) NOT NULL COMMENT '通道号',
+                                `name` varchar(100) NOT NULL COMMENT '名称',
+                                PRIMARY KEY (`id`),
+                                UNIQUE KEY `UNI_CAR_TDH` (`car_id`,`tdh`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `tgps_0107`;
 CREATE TABLE `tgps_0107` (
   `id` varchar(32) NOT NULL DEFAULT '',
