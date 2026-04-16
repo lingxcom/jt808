@@ -41,12 +41,15 @@
 ```bash
 git clone https://gitee.com/lingxcom/tracseek.git
 cd tracseek
+git clone https://gitee.com/lingxcom/tracseek-web.git
 docker compose up -d
 ```
 启动后访问：
 
 ```bash
 http://localhost:8800
+账号：admin
+密码：a123456
 ```
 
 ---

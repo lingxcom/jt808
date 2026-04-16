@@ -38,6 +38,7 @@ Most JT808 projects only provide partial solutions. TracSeek gives you a **compl
 ```bash
 git clone https://github.com/lingxcom/tracseek.git
 cd tracseek
+git clone https://github.com/lingxcom/tracseek-web.git
 ```
 
 ### 2. Start with Docker
@@ -48,8 +49,11 @@ docker compose up -d
 
 ### 3. Open in browser
 
+```bash
 http://localhost:8800
-
+Account:admin
+Password:123456
+```
 ---
 
 ### 🎉 What you'll see
