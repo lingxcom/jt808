@@ -17,6 +17,8 @@ FROM eclipse-temurin:8-jre
 LABEL maintainer="lingxcom"
 
 ENV TZ=Asia/Shanghai
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
 
 WORKDIR /app
@@ -29,4 +31,4 @@ COPY --from=build /build/jt808-core/lib/lingx-core-5.0.0.jar /app/lib/lingx-core
 EXPOSE 18800 8808
 
 # 项目不是 Spring Boot fat-jar，使用 classpath 方式启动
-ENTRYPOINT ["java", "-Xms256m", "-Xmx512m", "-Djava.security.egd=file:/dev/./urandom", "-cp", "/app/app.jar:/app/lib/*", "com.lingx.jt808.server.DevApp"]
+ENTRYPOINT ["java", "-Xms256m", "-Xmx512m", "-Djava.security.egd=file:/dev/./urandom", "-Dfile.encoding=UTF-8", "-Dsun.jnu.encoding=UTF-8", "-cp", "/app/app.jar:/app/lib/*", "com.lingx.jt808.server.DevApp"]
