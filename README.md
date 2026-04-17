@@ -1,4 +1,4 @@
-# 🚀 TracSeek — Scalable JT808 Vehicle Tracking Platform
+# 🚀 TracSeek（领新北斗） — Scalable JT808 Vehicle Tracking Platform
 
 
 

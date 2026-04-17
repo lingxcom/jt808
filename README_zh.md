@@ -1,13 +1,6 @@
-## 🚀 领新北斗-车辆动态监控系统（TracSeek）
+## 🚀 领新北斗（TracSeek）-车辆动态监控系统
 
-> 一个支持 大规模设备接入的开源车联网系统，内置模拟终端 + 可视化平台，5分钟快速体验完整链路。
-
-<p>
-    <img src="https://img.shields.io/badge/License-Apache 2.0-green.svg"/>
-    <img src="https://img.shields.io/badge/platform-linux%20|%20macos%20|%20windows-blue.svg" />
-    <img src="https://img.shields.io/badge/QQ-283853318-blue"/>
-</p>
-基于部标JT808标准实现的开箱即用的北斗定位监控平台，负责实现核心信令与设备管理后台部分，支持海康、大华、锐明、通立、博实结等品牌的终端设备接入。
+> 单网关支持10万设备同时接入的开源车联网系统，内置模拟终端 + 可视化平台，5分钟快速体验完整链路。
 
 ## ✨ 项目亮点
 * 🚗 完整支持 JT808 协议（车载终端接入标准）
@@ -86,8 +79,6 @@ IP：47.100.112.218
 
 非标协议扩展（包括不限于）：油量、电量、温度、湿度、高精度定位、蓝牙信标、语音留言。
 
-## 数据库MySQL8.0
-数据库是采用MySQL8.0，下载地址：https://www.mysql.com/downloads/
 
 ## 后端代码仓库
 * Gitee ：[https://gitee.com/lingxcom/tracseek](https://gitee.com/lingxcom/tracseek)
@@ -97,10 +88,6 @@ IP：47.100.112.218
 
 * Gitee仓库地址：[https://gitee.com/lingxcom/tracseek-web](https://gitee.com/lingxcom/tracseek-web)
 * Github仓库地址：[https://github.com/lingxcom/tracseek-web](https://github.com/lingxcom/tracseek-web)
-
-## 软件下载
-* Gitee ：[https://gitee.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip](https://gitee.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip)
-* Github ：[https://github.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip](https://github.com/lingxcom/tracseek/releases/download/1.1/tracseek.zip)
 
 ## 终端设备模拟工具
 * Gitee ：[https://gitee.com/lingxcom/jt808-client/releases/download/1.1/jt808tools-exe.zip](https://gitee.com/lingxcom/jt808-client/releases/download/1.1/jt808tools-exe.zip)
