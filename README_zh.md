@@ -49,7 +49,7 @@ docker compose up -d
 ```bash
 http://localhost:8800
 账号：admin
-密码：a123456
+密码：123456
 ```
 
 ---
@@ -115,33 +115,11 @@ IP：47.100.112.218
 
 
 ## 功能展示
-- Software Startup Tool
-
-![index](readme/20250516164941.png "index.png")
-
-- Database Configuration Tool
-
-![index](readme/20250516165024.png "index.png")
-
-- Real-time GPS tracking
-
-![index](readme/20250516165146.png "index.png")
-
-- Real-time GPS tracking Group
-
-  ![index](readme/20250516165319.png "index.png")
-
-- History
-
-  ![index](readme/20250516165526.png "index.png")
-
-- History(dilution)
-
-  ![index](readme/20250516165713.png "index.png")
-
-- History(multiple)
-
-  ![index](readme/20250516165854.png "index.png")
+![index](readme/轨迹切换.gif "index.png")
+![index](readme/轨迹回放.gif "index.png")
+![index](readme/电子围栏.gif "index.png")
+![index](readme/分组监控.gif "index.png")
+![index](readme/实时监控.gif "index.png")
 
 ## License
 ```

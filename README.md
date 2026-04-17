@@ -1,19 +1,27 @@
 # 🚀 TracSeek — Scalable JT808 Vehicle Tracking Platform
 
 
-> ⚡ A high-performance vehicle tracking platform built for **large-scale device connections**  
-> 🧪 Built-in simulator — **no real GPS device required**  
-> 🌐 Full-stack solution: server + simulator + visualization
+
+> - 🚗 Full support for the JT808 protocol (standard for vehicle terminal integration) 
+> - ⚡ High-performance architecture design (scalable to large-scale device connectivity)  
+> - 🛰 Real-time positioning / route tracking / geofencing 
+> - 🧪 Built-in device simulator (testing without real hardware)  
+>-  🌐 Visual monitoring platform  
+> - 🔧 Suitable for logistics, fleet management, and IoT scenarios 
 
 ---
 
 ## 🎬 Demo
 
-> 👇 See devices moving in real-time (no hardware needed)
+> 👇 See devices moving in real-time and trajectory playback
 
-![demo](./docs/demo.gif)
+![index](readme/轨迹切换.gif "index.png")
+![index](readme/轨迹回放.gif "index.png")
+![index](readme/电子围栏.gif "index.png")
+![index](readme/分组监控.gif "index.png")
+![index](readme/实时监控.gif "index.png")
 
-> 💡 Tip: Replace with your real demo GIF (device movement + map + trajectory playback)
+> 💡 Tip: Large GIF file — loading may take a moment.
 
 ---
 
